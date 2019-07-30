@@ -1,0 +1,19 @@
+{
+  "name": "mattlaw.dev.gs",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "@gridsome/plugin-google-analytics": "^0.1.0",
+    "@gridsome/remark-prismjs": "^0.1.0",
+    "gridsome": "^0.6.0",
+    "vuetify": "^1.5.16"
+  },
+  "devDependencies": {
+    "@gridsome/source-filesystem": "^0.5.0",
+    "@gridsome/transformer-remark": "^0.3.2"
+  }
+}
