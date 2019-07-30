@@ -100,6 +100,11 @@ export default {
         { vmid: 'description', name: 'description', content: post.description },
         { vmid: 'og:title', property: 'og:title', content: post.title },
         {
+          vmid: 'og:type',
+          property: 'og:type',
+          content: 'article',
+        },
+        {
           vmid: 'og:description',
           property: 'og:description',
           content: post.description,
@@ -118,6 +123,12 @@ export default {
           vmid: 'twitter:card',
           name: 'twitter:card',
           content: 'summary',
+        },
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://www.mattlaw.dev${post.path}`,
         },
       ],
     };
