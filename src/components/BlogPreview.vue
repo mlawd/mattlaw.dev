@@ -13,7 +13,10 @@
             {{ blog.description }}
           </p>
           <p>
-            <v-chip light> Time to read: {{ blog.timeToRead }} minutes </v-chip>
+            <v-chip light>
+              Time to read: {{ blog.timeToRead }}
+              {{ blog.timeToRead > 1 ? 'minutes' : 'minute' }}
+            </v-chip>
           </p>
           <p>
             <v-chip v-for="tag of blog.tags" :key="tag.id">
