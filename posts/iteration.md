@@ -2,7 +2,7 @@
 title: Iterate and be damned!
 description: Pushing out features when they're ready to be learnt from is a good thing. But not at the expense of technical debt.
 tags: ['software development', 'agile', 'rant']
-headlineImage: /img/iteration/iteration.jpg
+headlineImage: /img/iteration/iteration.webp
 published: 2019 07 29
 ---
 
