@@ -10,15 +10,9 @@ import './assets/styles.css';
 
 export default function (Vue, { router, head, isClient }) {
   head.link.push({
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
-  }, {
-		rel: 'stylesheet',
-		href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons',
-	}, {
 		rel: 'stylesheet',
 		href: 'https://fonts.googleapis.com/css?family=Darker+Grotesque|PT+Sans+Narrow:700&display=swap',
-	})
+	});
 
 	head.meta.push({
 		name: 'description',
