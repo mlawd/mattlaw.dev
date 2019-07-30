@@ -19,7 +19,7 @@
           </v-btn>
         </v-flex>
         <v-flex xs12>
-          <v-img :src="$page.post.headlineImage" />
+          <v-img :src="$page.post.headlineImage" :alt="$page.post.title" />
         </v-flex>
         <v-flex lg8>
           <div

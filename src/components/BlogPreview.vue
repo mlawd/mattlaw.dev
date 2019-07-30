@@ -2,7 +2,7 @@
   <v-card class="zoom ma-1" :to="blog.path">
     <v-layout row wrap :reverse="reverse">
       <v-flex md4 xs12>
-        <v-img :src="blog.headlineImage"></v-img>
+        <v-img :src="blog.headlineImage" :alt="blog.title"></v-img>
       </v-flex>
       <v-flex md8 xs12>
         <v-card-title>

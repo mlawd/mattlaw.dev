@@ -20,6 +20,11 @@ export default function (Vue, { router, head, isClient }) {
 		href: 'https://fonts.googleapis.com/css?family=Darker+Grotesque|PT+Sans+Narrow:700&display=swap',
 	})
 
+	head.meta.push({
+		name: 'description',
+		content: 'A person site for a Software developer currently working as a Web Developer in Nottingham',
+	});
+
   Vue.use(Vuetify, {
     theme: {
       primary: '#5f9ea0',

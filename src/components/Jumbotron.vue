@@ -9,6 +9,7 @@
           <v-avatar size="256">
             <img
               src="https://www.gravatar.com/avatar/d1a10bb5688a532548bd960458e093a5?s=256"
+              alt="Me (MattLaw.Dev) and my gorgeous Fiancee Pen!"
             />
           </v-avatar>
         </v-flex>
