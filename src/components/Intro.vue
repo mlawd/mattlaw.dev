@@ -36,7 +36,7 @@ p {
   font-size: 12vw;
   position: relative;
   overflow-y: hidden;
-  background: url('/img/nottingham.jpg') center;
+  background: url('/img/nottingham.webp') center;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
