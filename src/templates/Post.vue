@@ -98,20 +98,20 @@ export default {
       title: post.title,
       meta: [
         { vmid: 'description', name: 'description', content: post.description },
-        { vmid: 'og:title', name: 'og:title', content: post.title },
+        { vmid: 'og:title', property: 'og:title', content: post.title },
         {
           vmid: 'og:description',
-          name: 'og:description',
+          property: 'og:description',
           content: post.description,
         },
         {
           vmid: 'og:image',
-          name: 'og:image',
+          property: 'og:image',
           content: `https://www.mattlaw.dev${post.headlineImage}`,
         },
         {
           vmid: 'og:url',
-          name: 'og:url',
+          property: 'og:url',
           content: `https://www.mattlaw.dev${post.path}`,
         },
         {
