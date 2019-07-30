@@ -9,6 +9,6 @@
 
 <style scoped>
 #app {
-  background: url('/img/prism.png') repeat;
+  background: url('/img/prism.webp') repeat;
 }
 </style>
