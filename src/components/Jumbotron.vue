@@ -2,6 +2,25 @@
   <v-layout row wrap reverse fill-height justify-center align-center>
     <v-flex md5 class="text-xs-center">
       <h1>Matt Law [.dev]</h1>
+      <v-btn fab icon href="https://github.com/np-matt" target="_blank">
+        <i class="fab fa-github"></i>
+      </v-btn>
+      <v-btn
+        fab
+        icon
+        href="https://www.linkedin.com/in/matthew-law-40659062/"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin"></i>
+      </v-btn>
+      <v-btn
+        fab
+        icon
+        href="https://twitter.com/Northern_Pariah"
+        target="_blank"
+      >
+        <i class="fab fa-twitter"></i>
+      </v-btn>
     </v-flex>
     <v-flex md5>
       <v-layout row wrap align-content-center class="text-xs-center ">
@@ -48,5 +67,9 @@ li {
 li {
   margin: 10px 0;
   background: rgba(66, 66, 66, 0.7) !important;
+}
+
+i {
+  font-size: 2.5em;
 }
 </style>
