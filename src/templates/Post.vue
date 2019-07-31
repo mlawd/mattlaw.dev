@@ -27,6 +27,9 @@
             v-html="$page.post.content"
             :class="{ padded: $vuetify.breakpoint.lgAndUp }"
           ></div>
+          <ClientOnly>
+            <social />
+          </ClientOnly>
         </v-flex>
         <v-flex lg4>
           <v-layout column>
@@ -89,9 +92,10 @@ query Post ($path: String!) {
 
 <script>
 import BlogPreview from '../components/BlogPreview.vue';
+import Social from '../components/Social.vue';
 
 export default {
-  components: { BlogPreview },
+  components: { BlogPreview, Social },
   metaInfo() {
     const { post } = this.$page;
     return {
