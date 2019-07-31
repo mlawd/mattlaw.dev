@@ -5,6 +5,7 @@ import colors from 'vuetify/es5/util/colors';
 import 'vuetify/dist/vuetify.min.css';
 import DefaultLayout from '~/layouts/Default.vue';
 import 'prismjs/themes/prism-tomorrow.css';
+import VueDisqus from 'vue-disqus';
 
 import './assets/styles.css';
 
@@ -42,7 +43,9 @@ export default function (Vue, { router, head, isClient }) {
       error: colors.deepOrange.accent4,
       success: colors.green.accent3,
     },
-  })
+  });
+
+	Vue.use(VueDisqus);
   
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)

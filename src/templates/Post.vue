@@ -30,6 +30,7 @@
           <ClientOnly>
             <social />
           </ClientOnly>
+          <vue-disqus shortname="mattlaw-dev" :identifier="$page.post.title" />
         </v-flex>
         <v-flex lg4>
           <v-layout column>
