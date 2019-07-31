@@ -12,16 +12,21 @@
 </template>
 
 <script>
-window.fbAsyncInit = function() {
-  FB.init({
-    appId: '339966533613489',
-    autoLogAppEvents: true,
-    xfbml: true,
-    version: 'v4.0',
-  });
-};
-
 export default {
+  mounted() {
+    const interval = setInterval(() => {
+      if (FB) {
+        FB.init({
+          appId: '339966533613489',
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: 'v4.0',
+        });
+
+        clearInterval(interval);
+      }
+    }, 500);
+  },
   methods: {
     facebook() {
       FB.ui(

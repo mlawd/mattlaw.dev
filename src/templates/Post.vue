@@ -27,7 +27,9 @@
             v-html="$page.post.content"
             :class="{ padded: $vuetify.breakpoint.lgAndUp }"
           ></div>
-          <social />
+          <ClientOnly>
+            <social />
+          </ClientOnly>
         </v-flex>
         <v-flex lg4>
           <v-layout column>
