@@ -1,4 +1,4 @@
-// This is where project configuration and plugin options are located. 
+// This is where project configuration and plugin options are located.
 // Learn more: https://gridsome.org/docs/config
 
 // Changes here require a server restart.
@@ -6,7 +6,7 @@
 
 module.exports = {
   siteName: 'MattLaw.Dev',
-	titleTemplate: '%s - MattLaw.dev',
+  titleTemplate: '%s - MattLaw.dev',
   plugins: [
     {
       use: '@gridsome/source-filesystem',
@@ -14,25 +14,26 @@ module.exports = {
         path: 'posts/**/*.md',
         typeName: 'Post',
         route: '/post/:slug',
-				remark: {
-					plugins: [
-            '@gridsome/remark-prismjs'
-					],
-				},
-				refs: {
-					tags: {
-						typeName: 'Tag',
-						route: '/tag/:id',
-						create: true,
-					}
-				}
-      }
+        remark: {
+          plugins: ['@gridsome/remark-prismjs'],
+        },
+        refs: {
+          tags: {
+            typeName: 'Tag',
+            route: '/tag/:id',
+            create: true,
+          },
+        },
+      },
     },
     {
       use: '@gridsome/plugin-google-analytics',
       options: {
-        id: 'UA-142705115-2'
-      }
-    }
-	]
-}
+        id: 'UA-142705115-2',
+        beforeFirstHit() {
+          Vue.$ga.set('anonymizeIp', true);
+        },
+      },
+    },
+  ],
+};
