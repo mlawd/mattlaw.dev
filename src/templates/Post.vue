@@ -49,6 +49,9 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <client-only>
+      <return-to-top />
+    </client-only>
   </layout>
 </template>
 
@@ -94,9 +97,10 @@ query Post ($path: String!) {
 <script>
 import BlogPreview from '../components/BlogPreview.vue';
 import Social from '../components/Social.vue';
+import ReturnToTop from '../components/ReturnToTop.vue';
 
 export default {
-  components: { BlogPreview, Social },
+  components: { BlogPreview, Social, ReturnToTop },
   metaInfo() {
     const { post } = this.$page;
     return {
