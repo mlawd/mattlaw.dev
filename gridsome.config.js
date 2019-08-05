@@ -35,5 +35,26 @@ module.exports = {
         },
       },
     },
+    {
+      use: 'gridsome-plugin-rss',
+      options: {
+        contentTypeName: 'Post',
+        feedOptions: {
+          title: 'MattLaw.Dev',
+          feed_url: 'https://mattlaw.dev/rss.xml',
+          site_url: 'https://mattlaw.dev',
+        },
+        feedItemOptions: node => ({
+          title: node.title,
+          description: node.description,
+          url: 'https://mattlaw.dev/post/' + node.path,
+          author: 'Matthew Law',
+        }),
+        output: {
+          dir: './static',
+          name: 'rss.xml',
+        },
+      },
+    },
   ],
 };
