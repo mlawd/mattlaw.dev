@@ -47,7 +47,7 @@ module.exports = {
         feedItemOptions: node => ({
           title: node.title,
           description: node.description,
-          url: 'https://mattlaw.dev/post/' + node.path,
+          url: 'https://mattlaw.dev' + node.path,
           author: 'Matthew Law',
         }),
         output: {
