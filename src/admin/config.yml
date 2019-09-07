@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: np-matt/mattlaw.dev
+
+media_folder: '/static/uploads'
+public_folder: '/img'
+
+collections:
+  - name: 'posts'
+    label: 'Posts'
+    folder: 'posts'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Headline image', name: 'headlineImage', widget: 'image' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Publish Date', name: 'published', widget: 'date' }
+      - { label: 'Tags (comma separated)', name: 'tags', widget: 'list' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
