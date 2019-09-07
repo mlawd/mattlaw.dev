@@ -4,9 +4,9 @@ headlineImage: /img/iteration/iteration.webp
 description: >-
   Pushing out features when they're ready to be learnt from is a good thing. But
   not at the expense of technical debt.
-date: 2019-06-29T10:50:19.069Z
+published: 2019-06-29T10:50:19.069Z
 tags:
-  - Software development
+  - software development
   - agile
   - rant
 ---
