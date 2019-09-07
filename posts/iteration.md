@@ -4,10 +4,11 @@ headlineImage: /img/iteration/iteration.webp
 description: >-
   Pushing out features when they're ready to be learnt from is a good thing. But
   not at the expense of technical debt.
-date: 2019-09-07T10:50:19.069Z
+date: 2019-06-29T10:50:19.069Z
 tags:
-  - Hello World
-  - this is a tag
+  - Software development
+  - agile
+  - rant
 ---
 
 > That's fine. We'll iterate on this and improve it later.
