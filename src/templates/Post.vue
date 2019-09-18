@@ -19,7 +19,7 @@
           </v-btn>
         </v-flex>
         <v-flex xs12>
-          <v-img :src="$page.post.headlineImage" :alt="$page.post.title" />
+          <g-image :src="$page.post.headlineImage" :alt="$page.post.title" />
         </v-flex>
         <v-flex lg8>
           <div
@@ -195,5 +195,9 @@ h1 {
 .flex {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
 }
 </style>

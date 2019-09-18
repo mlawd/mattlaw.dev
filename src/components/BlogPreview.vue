@@ -2,7 +2,7 @@
   <v-card class="zoom ma-1" :to="blog.path">
     <v-layout row wrap :reverse="reverse">
       <v-flex md4 xs12>
-        <v-img :src="blog.headlineImage" :alt="blog.title"></v-img>
+        <g-image :src="blog.headlineImage" :alt="blog.title" />
       </v-flex>
       <v-flex md8 xs12>
         <v-card-title>
@@ -51,11 +51,15 @@ export default {
   cursor: pointer;
 }
 
-.zoom:hover .v-image {
+img {
+  width: 100%;
+}
+
+.zoom:hover img {
   transform: scale(1.3);
 }
 
-.zoom .v-image {
+.zoom img {
   transition: transform 0.2s;
 }
 </style>
