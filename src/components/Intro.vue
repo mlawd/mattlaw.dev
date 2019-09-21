@@ -1,11 +1,11 @@
 <template>
   <v-layout row>
     <v-flex md8 offset-md2>
-      <v-layout column wrap justify-center>
-        <v-flex xs12 class="headline-text text-xs-center">
+      <v-layout column wrap align-content-center>
+        <div class="headline-text text-xs-center">
           <p>ABOUT ME</p>
-        </v-flex>
-        <v-flex xs12 class="text-xs-center title">
+        </div>
+        <div class="text-xs-center title">
           <p>
             Welcome to MattLaw.dev! I am a software developer from Sheffield,
             educated at Newcastle University and based in Nottingham.
@@ -20,17 +20,23 @@
             NodeJS, .NET Core, VueJS, WebGL &amp; pretty much anything that can
             solve problems on the web.
           </p>
-        </v-flex>
+          <p>
+            For more information on my development experience visit the below
+            links:
+          </p>
+        </div>
+        <v-layout row wrap>
+          <v-flex class="text-xs-center">
+            <v-btn flat to="/web-development">Web Development</v-btn>
+            <v-btn flat to="/software">Software</v-btn>
+          </v-flex>
+        </v-layout>
       </v-layout>
     </v-flex>
   </v-layout>
 </template>
 
 <style scoped>
-.layout {
-  min-height: 100vh;
-}
-
 img {
   position: absolute;
   width: 100%;
@@ -56,7 +62,7 @@ p {
   margin: 30px 0;
 }
 
-.intro p {
-  font-size: 2.5vw;
+.v-btn {
+  font-size: 2em;
 }
 </style>

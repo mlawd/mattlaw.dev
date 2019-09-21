@@ -1,6 +1,14 @@
 <template>
   <div v-scroll="onScroll">
-    <v-btn fab fixed bottom right v-if="show" @click="$vuetify.goTo(0)">
+    <v-btn
+      fab
+      fixed
+      bottom
+      right
+      depressed
+      v-if="show"
+      @click="$vuetify.goTo(0)"
+    >
       <i class="fas fa-angle-double-up"></i>
     </v-btn>
   </div>
