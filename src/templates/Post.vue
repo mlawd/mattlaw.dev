@@ -19,6 +19,11 @@
           </v-btn>
         </v-flex>
         <v-flex xs12>
+          <p class="display-1 text-xs-center font-italic">
+            {{ $page.post.description }}
+          </p>
+        </v-flex>
+        <v-flex xs12>
           <g-image :src="$page.post.headlineImage" :alt="$page.post.title" />
         </v-flex>
         <v-flex lg8>
@@ -39,11 +44,7 @@
               :key="post.node.title"
               xs12
             >
-              <blog-preview
-                :reverse="!!(i % 2)"
-                :blog="post.node"
-                no-description
-              />
+              <blog-preview :reverse="!!(i % 2)" :blog="post.node" simple />
             </v-flex>
           </v-layout>
         </v-flex>
@@ -186,6 +187,10 @@ h1 {
 #content >>> figcaption {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+#content >>> pre code::before {
+  content: '';
 }
 
 .v-btn {

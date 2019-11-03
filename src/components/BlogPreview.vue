@@ -1,15 +1,30 @@
 <template>
   <v-card class="zoom ma-1" :to="blog.path">
     <v-layout row wrap :reverse="reverse">
-      <v-flex md4 xs12>
+      <v-flex md4 v-show="!simple && $vuetify.breakpoint.mdAndUp">
+        <div
+          class="fill"
+          :style="{
+            backgroundImage: 'url(\'' + blog.headlineImage + '\')',
+            backgroundPosition: 'center center',
+            backgroundSize: 'cover',
+          }"
+        ></div>
+      </v-flex>
+      <v-flex xs12 v-show="simple || $vuetify.breakpoint.smAndDown">
         <g-image :src="blog.headlineImage" :alt="blog.title" />
       </v-flex>
-      <v-flex md8 xs12>
+      <v-flex :class="{ md8: !simple }">
         <v-card-title>
           <h4 class="display-1">{{ blog.title }}</h4>
         </v-card-title>
-        <v-card-text>
-          <p v-if="!noDescription">
+        <v-card-text v-if="simple">
+          <p>
+            {{ blog.description }}
+          </p>
+        </v-card-text>
+        <v-card-text v-else>
+          <p>
             {{ blog.description }}
           </p>
           <p>
@@ -35,6 +50,7 @@ export default {
     reverse: { type: Boolean },
     blog: { type: Object },
     noDescription: { type: Boolean },
+    simple: { type: Boolean },
   },
 };
 </script>
@@ -47,19 +63,25 @@ export default {
   overflow: hidden;
 }
 
-.zoom:hover {
-  cursor: pointer;
+.fill {
+  width: 100%;
+  height: 100%;
 }
 
 img {
   width: 100%;
 }
 
-.zoom:hover img {
-  transform: scale(1.3);
+.zoom:hover {
+  cursor: pointer;
+  z-index: 99;
 }
 
-.zoom img {
+.zoom:hover {
+  transform: scale(1.05);
+}
+
+.zoom {
   transition: transform 0.2s;
 }
 </style>
