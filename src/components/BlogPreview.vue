@@ -1,7 +1,11 @@
 <template>
-  <v-card class="zoom ma-1" :to="blog.path">
-    <v-layout row wrap :reverse="reverse">
-      <v-flex md4 v-show="!simple && $vuetify.breakpoint.mdAndUp">
+  <v-card class="zoom ma-2" :to="blog.path">
+    <v-row row wrap :class="{ 'flex-row-reverse': reverse }">
+      <v-col
+        class="pt-0 pb-0"
+        md="4"
+        v-show="!simple && $vuetify.breakpoint.mdAndUp"
+      >
         <div
           class="fill"
           :style="{
@@ -10,11 +14,15 @@
             backgroundSize: 'cover',
           }"
         ></div>
-      </v-flex>
-      <v-flex xs12 v-show="simple || $vuetify.breakpoint.smAndDown">
+      </v-col>
+      <v-col
+        class="pt-0 pb-0"
+        cols="12"
+        v-show="simple || $vuetify.breakpoint.smAndDown"
+      >
         <g-image :src="blog.headlineImage" :alt="blog.title" />
-      </v-flex>
-      <v-flex :class="{ md8: !simple }">
+      </v-col>
+      <v-col :class="{ md8: !simple }">
         <v-card-title>
           <h4 class="display-1">{{ blog.title }}</h4>
         </v-card-title>
@@ -39,8 +47,8 @@
             </v-chip>
           </p>
         </v-card-text>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 

@@ -1,6 +1,12 @@
 <template>
-  <v-layout row wrap reverse fill-height justify-center align-center>
-    <v-flex md5 class="text-xs-center">
+  <v-row
+    wrap
+    fill-height
+    justify="center"
+    align="center"
+    class="flex-row-reverse"
+  >
+    <v-col md="5" cols="12" class="text-center">
       <h1>Matt Law [.dev]</h1>
       <v-btn fab icon href="https://github.com/np-matt" target="_blank">
         <i class="fab fa-github"></i>
@@ -21,32 +27,32 @@
       >
         <i class="fab fa-twitter"></i>
       </v-btn>
-    </v-flex>
-    <v-flex md5>
-      <v-layout row wrap align-content-center class="text-xs-center ">
-        <v-flex>
+    </v-col>
+    <v-col md="5" cols="12">
+      <v-row row wrap align-content="center" class="text-center ">
+        <v-col>
           <v-avatar size="256">
             <img
               src="https://www.gravatar.com/avatar/d1a10bb5688a532548bd960458e093a5.jpg?s=256"
               alt="Me (MattLaw.Dev) and my gorgeous Fiancee Pen!"
             />
           </v-avatar>
-        </v-flex>
-        <v-flex>
+        </v-col>
+        <v-col>
           <ul class="title">
             <li>Often Programmer</li>
             <li>Occasional DIY-er</li>
             <li>Infrequent Cricketer</li>
             <li>Wistful Game Dev</li>
           </ul>
-        </v-flex>
-      </v-layout>
-    </v-flex>
-  </v-layout>
+        </v-col>
+      </v-row>
+    </v-col>
+  </v-row>
 </template>
 
 <style scoped>
-.layout {
+.row {
   min-height: 100vh;
 }
 
@@ -57,7 +63,7 @@ h1 {
 
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 0 !important;
 }
 
 li {

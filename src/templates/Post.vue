@@ -1,32 +1,33 @@
 <template>
   <layout>
     <v-container>
-      <v-layout row wrap>
-        <v-flex xs12>
+      <v-row>
+        <v-col cols="12">
           <h1>{{ $page.post.title }}</h1>
-          <v-chip>
+          <v-chip class="ma-1">
             Time to read: {{ $page.post.timeToRead }}
             {{ $page.post.timeToRead > 1 ? 'minutes' : 'minute' }}
           </v-chip>
           <v-btn
-            outline
-            round
+            outlined
+            rounded
             v-for="tag of $page.post.tags"
             :key="tag.id"
             :to="tag.path"
+            class="ma-1"
           >
             #{{ tag.id }}
           </v-btn>
-        </v-flex>
-        <v-flex xs12>
-          <p class="display-1 text-xs-center font-italic">
+        </v-col>
+        <v-col cols="12">
+          <p class="display-1 text-center font-italic">
             {{ $page.post.description }}
           </p>
-        </v-flex>
-        <v-flex xs12>
+        </v-col>
+        <v-col cols="12">
           <g-image :src="$page.post.headlineImage" :alt="$page.post.title" />
-        </v-flex>
-        <v-flex lg8>
+        </v-col>
+        <v-col lg="8" cols="12">
           <div
             id="content"
             v-html="$page.post.content"
@@ -36,19 +37,19 @@
             <social />
           </ClientOnly>
           <vue-disqus shortname="mattlaw-dev" :identifier="$page.post.title" />
-        </v-flex>
-        <v-flex lg4>
-          <v-layout column>
-            <v-flex
+        </v-col>
+        <v-col cols="12" lg="4">
+          <v-row column>
+            <v-col
               v-for="(post, i) of $page.posts.edges"
               :key="post.node.title"
               xs12
             >
               <blog-preview :reverse="!!(i % 2)" :blog="post.node" simple />
-            </v-flex>
-          </v-layout>
-        </v-flex>
-      </v-layout>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
     </v-container>
     <client-only>
       <return-to-top />
@@ -158,7 +159,7 @@ h1 {
 #content >>> p {
   font-size: 1.5em !important;
   line-height: 1.7em;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 #content >>> blockquote {
@@ -191,6 +192,11 @@ h1 {
 
 #content >>> pre code::before {
   content: '';
+}
+
+#content >>> code.language-text {
+  color: #ccc;
+  line-height: 1.7em;
 }
 
 .v-btn {

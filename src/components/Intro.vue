@@ -1,11 +1,13 @@
 <template>
-  <v-layout row>
-    <v-flex md8 offset-md2>
-      <v-layout column wrap justify-center>
-        <v-flex xs12 class="headline-text text-xs-center">
+  <v-row justify="center" class="fill-height">
+    <v-col md="8">
+      <v-row cols="12" justify="center" align="center">
+        <v-col class="headline-text text-center">
           <p>ABOUT ME</p>
-        </v-flex>
-        <v-flex xs12 class="text-xs-center title">
+        </v-col>
+      </v-row>
+      <v-row cols="12" justify="center" align="center">
+        <v-col cols="12" class="text-center title">
           <p>
             Welcome to MattLaw.dev! I am a software developer from Sheffield,
             educated at Newcastle University and based in Nottingham.
@@ -20,14 +22,14 @@
             NodeJS, .NET Core, VueJS, WebGL &amp; pretty much anything that can
             solve problems on the web.
           </p>
-        </v-flex>
-      </v-layout>
-    </v-flex>
-  </v-layout>
+        </v-col>
+      </v-row>
+    </v-col>
+  </v-row>
 </template>
 
 <style scoped>
-.layout {
+.fill-height {
   min-height: 100vh;
 }
 
