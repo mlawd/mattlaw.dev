@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <v-toolbar>
+    <v-app-bar elevation="0">
       <v-toolbar-items>
-        <v-btn class="title-btn" to="/" flat>Matt Law [.dev]</v-btn>
+        <v-btn text large class="title-btn" to="/">Matt Law [.dev]</v-btn>
       </v-toolbar-items>
-    </v-toolbar>
+    </v-app-bar>
     <slot />
     <client-only>
       <cookie-consent />
@@ -21,6 +21,9 @@ export default {
   components: {
     AppFooter,
     CookieConsent,
+  },
+  mounted() {
+    this.$vuetify.theme.dark = false;
   },
 };
 </script>
@@ -41,7 +44,5 @@ nav {
 
 .title-btn {
   text-transform: none;
-  font-weight: 100;
-  font-size: 2em;
 }
 </style>

@@ -4,6 +4,9 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const nodeExternals = require('webpack-node-externals');
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
+
 module.exports = {
   siteName: 'MattLaw.Dev',
   titleTemplate: '%s - MattLaw.dev',
@@ -59,8 +62,20 @@ module.exports = {
     {
       use: `gridsome-plugin-netlify-cms`,
       options: {
-        publicPath: `/admin`
-      }
+        publicPath: `/admin`,
+      },
     },
   ],
+  configureWebpack: {
+    plugins: [new VuetifyLoaderPlugin()],
+  },
+  chainWebpack(config, { isServer }) {
+    if (isServer) {
+      config.externals(
+        nodeExternals({
+          whitelist: [/^vuetify/, /\.css$/, /\?vue&type=style/],
+        })
+      );
+    }
+  },
 };

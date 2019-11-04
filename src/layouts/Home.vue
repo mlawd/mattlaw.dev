@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <slot />
     <client-only>
       <cookie-consent />
@@ -16,6 +16,9 @@ export default {
   components: {
     AppFooter,
     CookieConsent,
+  },
+  mounted() {
+    this.$vuetify.theme.dark = true;
   },
 };
 </script>

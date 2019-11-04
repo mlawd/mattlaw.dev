@@ -1,25 +1,23 @@
 <template>
   <home-layout>
-    <v-container id="jumbotron" grid-list-lg fluid dark>
+    <v-container id="jumbotron" grid-list-lg fluid>
       <jumbotron />
     </v-container>
     <v-container id="intro" fluid>
       <intro />
     </v-container>
     <v-container grid-list-md>
-      <v-layout row wrap>
-        <v-flex md10 offset-md1>
+      <v-row wrap justify="center">
+        <v-col md="10">
           <h2>Recent Blogs</h2>
-          <v-layout column>
-            <blog-preview
-              v-for="(post, i) of $page.posts.edges"
-              :key="post.node.title"
-              :reverse="!!(i % 2)"
-              :blog="post.node"
-            />
-          </v-layout>
-        </v-flex>
-      </v-layout>
+          <blog-preview
+            v-for="(post, i) of $page.posts.edges"
+            :key="post.node.title"
+            :reverse="!!(i % 2)"
+            :blog="post.node"
+          />
+        </v-col>
+      </v-row>
     </v-container>
   </home-layout>
 </template>
