@@ -1,6 +1,5 @@
 // This is the main.js file. Import global CSS and scripts here.
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
-import '@mdi/font/css/materialdesignicons.css';
 import Vuetify from 'vuetify/lib';
 import colors from 'vuetify/es5/util/colors';
 
