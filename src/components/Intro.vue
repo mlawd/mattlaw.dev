@@ -19,8 +19,8 @@
           </p>
           <p>
             Here you will find my thoughts on all things software development,
-            NodeJS, .NET Core, VueJS, WebGL &amp; pretty much anything that can
-            solve problems on the web.
+            NodeJS, .NET, VueJS, WebGL &amp; pretty much anything that takes my
+            fancy.
           </p>
         </v-col>
       </v-row>
@@ -52,6 +52,7 @@ p {
   position: relative;
   overflow-y: hidden;
   background: url('/img/nottingham.webp') center;
+  background-size: cover;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

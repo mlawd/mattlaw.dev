@@ -36,13 +36,11 @@
             {{ blog.description }}
           </p>
           <p>
-            <v-chip light>
+            <v-chip light class="ma-1">
               Time to read: {{ blog.timeToRead }}
               {{ blog.timeToRead > 1 ? 'minutes' : 'minute' }}
             </v-chip>
-          </p>
-          <p>
-            <v-chip v-for="tag of blog.tags" :key="tag.id">
+            <v-chip v-for="tag of blog.tags" :key="tag.id" class="ma-1">
               #{{ tag.id }}
             </v-chip>
           </p>
@@ -91,5 +89,9 @@ img {
 
 .zoom {
   transition: transform 0.2s;
+}
+
+h4 {
+  word-break: break-word;
 }
 </style>

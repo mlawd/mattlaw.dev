@@ -39,11 +39,11 @@
           <vue-disqus shortname="mattlaw-dev" :identifier="$page.post.title" />
         </v-col>
         <v-col cols="12" lg="4">
-          <v-row column>
+          <v-row>
             <v-col
               v-for="(post, i) of $page.posts.edges"
               :key="post.node.title"
-              xs12
+              cols="12"
             >
               <blog-preview :reverse="!!(i % 2)" :blog="post.node" simple />
             </v-col>
