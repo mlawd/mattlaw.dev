@@ -104,25 +104,35 @@
             within the CircleCI environment, to replace the Heroku build
             pipelines previously in place.
           </p>
-          <p>
-            Other responsibilities include the design and development of
-            micro-services for the processing of data from multiple sources and
-            creation of users and data in multiple systems such as MongoDB and
-            Tableau.
-          </p>
-          <p>
-            I advocated for the use of Azure Functions &amp; Service Bus Queues,
-            something I had been looking in to during my own time. The team
-            accepted and used these services along with Logic Apps to create a
-            highly scalable processing system that can handle thousands of user
-            updates coming in at once, with small services handling specific
-            stages of the processing such as fetching, mutation and storage.
-          </p>
-          <p>
-            I have also been successful in pushing the company to adopt VueJS
-            along with Vuetify for all new front-end work outside of the
-            previous legacy application
-          </p>
+          <ul>
+            <li>
+              Maintenance of large AngularJS &amp; Express NodeJS application
+            </li>
+            <li>Migrated existing legacy systems from AWS to Azure</li>
+            <li>
+              Management of CircleCI build pipelines to build and publish
+              dockerised applications
+            </li>
+            <li>
+              Design &amp; Development of Azure Function &amp; Service Bus Queue
+              based microservices for data processing and RESTful endpoints
+            </li>
+            <li>
+              Successfully promoted the use of VueJS &amp; static hosting for
+              all new front-end applications
+            </li>
+            <li>
+              Codification of Logic Apps used to process data from external
+              sources in to application databases
+            </li>
+            <li>
+              Unit testing of application code using either Mocha &amp; Chai or
+              Jest
+            </li>
+            <li>
+              End to end testing of applications via Cypress
+            </li>
+          </ul>
           <br />
           <br />
           <v-subheader class="title">
@@ -154,33 +164,37 @@
           </p>
           <p>
             Starting on the Graduate Scheme in August 2015, I worked in multiple
-            roles including Developer, Delivery Lead and Technical Lead. I also
-            took courses on Agile Fundamentals, Presentation Skills, Negotiation
-            and Project Management.
+            roles including Developer and Delivery Lead, finishing the Graduate
+            scheme as a Senior Engineer and the Technical Lead for 2 separate
+            simulation systems. I also took courses on Agile Fundamentals,
+            Presentation Skills, Negotiation and Project Management.
           </p>
-          <p>
-            As Technical Lead I was responsible for the architecture, design and
-            development of the C# based components required for 2 separate
-            distributed systems; one for integration testing of production
-            sub-systems and the other for complex training of end-users.
-          </p>
-          <p>
-            This involved co-ordinating across multiple pan-European teams to
-            ensure the testing simulations were available as and when necessary
-            for the production system integration events, including daily
-            in-person reports to Chief Engineers.
-          </p>
-          <p>
-            This role proved challenging due to working with the rapidly
-            changing requirements provided by the integration events, usually as
-            a result of limited functionality in the production sub-systems
-            coming from delays in development &amp; production.
-          </p>
-          <p class="mb-0">
-            I also drove the adoption of Web Services using NodeJS coupled with
-            C# &amp; C++ applications to deliver an Instructor Operator Station
-            that can run within a web-browser.
-          </p>
+          <ul>
+            <li>
+              Led the development of key software components for an in-house
+              framework built upon C# and .NET Framework version 4.0
+            </li>
+            <li>
+              Drove the adoption of web technologies including NodeJS coupled
+              with C# &amp; C++ applications to deliver an Instructor &amp;
+              Operator Station that can run within a web-browser
+            </li>
+            <li>
+              Design authority responsible for creating system and software
+              architectures, sequence diagrams &amp; data exchange
+              specifications/APIs
+            </li>
+            <li>
+              C++ development of VBS3 plugins &amp; libraries
+            </li>
+            <li>
+              Co-ordinated a pan-european team of software developers
+            </li>
+            <li>
+              Provided daily reports to Cheif Engineers in the run-up to key
+              integration events
+            </li>
+          </ul>
           <v-subheader class="title mb-2">Personal Interests</v-subheader>
           <p>
             Outside of work I enjoy working on my own projects, usually as a way
