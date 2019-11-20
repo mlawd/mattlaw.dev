@@ -40,7 +40,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
     theme: {
       themes: {
         light: {
-          primary: '#5f9ea0',
+          primary: '#067BC2',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,

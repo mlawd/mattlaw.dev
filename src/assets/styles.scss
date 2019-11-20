@@ -1,3 +1,7 @@
+@page {
+  margin: 0mm;
+}
+
 .v-application {
   h1,
   h2,
@@ -22,6 +26,19 @@
     font-size: 3em;
   }
 
+  .title {
+    font-size: 2em !important;
+  }
+
+  .v-footer span {
+    margin: auto;
+  }
+
+  code {
+    box-shadow: none;
+    all: unset;
+  }
+
   @media print {
     h1 {
       font-size: 3.5em;
@@ -39,26 +56,19 @@
     p {
       text-align: justify;
       font-size: 0.8em;
+      line-height: 1.3rem;
     }
 
     li {
       font-size: 0.8em;
     }
 
-    .container {
+    .body-1 {
+      line-height: 1.4rem;
     }
-  }
 
-  .title {
-    font-size: 2em !important;
-  }
-
-  .v-footer span {
-    margin: auto;
-  }
-
-  code {
-    box-shadow: none;
-    all: unset;
+    .title {
+      line-height: 2.2rem;
+    }
   }
 }

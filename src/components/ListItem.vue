@@ -1,6 +1,6 @@
 <template>
   <v-list-item>
-    <v-list-item-icon v-if="icon" class="text-center">
+    <v-list-item-icon v-if="icon" class="text-center mr-2">
       <v-icon>{{ icon }}</v-icon>
     </v-list-item-icon>
     <v-list-item-content>

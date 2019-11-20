@@ -34,10 +34,6 @@ nav {
   box-shadow: none !important;
 }
 
-.title {
-  font-size: 2em !important;
-}
-
 #app {
   background: none;
 }
