@@ -26,7 +26,7 @@
             fancy.
           </p>
           <p>
-            <g-link to="/about" class="text-decoration-none">
+            <g-link to="/about2" class="text-decoration-none">
               Want to know more?
             </g-link>
           </p>
