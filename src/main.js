@@ -2,9 +2,10 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 import Vuetify from 'vuetify/lib';
 import colors from 'vuetify/es5/util/colors';
+import VueDisqus from 'vue-disqus';
+import PrismicVue from 'prismic-vue';
 
 import DefaultLayout from '~/layouts/Default.vue';
-import VueDisqus from 'vue-disqus';
 
 export default function(Vue, { router, head, isClient, appOptions }) {
   head.link.push({
@@ -53,9 +54,43 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 
   Vue.use(VueDisqus);
 
+  Vue.use(PrismicVue, {
+    endpoint: 'https://mlblog.cdn.prismic.io/api/v2',
+    linkResolver(doc) {
+      if (doc.isBroken) {
+        return '/not-found';
+      }
+
+      if (doc.type === 'home') {
+        return '/prev';
+      }
+
+      if (doc.type === 'blogpost') {
+        return '/prev/post/' + doc.uid;
+      }
+
+      return '/not-found';
+    },
+    htmlSerializer(type, _, __, children) {
+      if (type.indexOf('heading') >= 0) {
+        const level = type[type.length - 1];
+        const text = children.join(' ');
+        const id = text.replace(/ /g, '-').toLowerCase();
+        return `
+				<h${level} id="${id}">
+					<a href="#${id}" id="${id}">
+						${text}
+					</a>
+				</h${level}>
+				`;
+      }
+
+      return null;
+    },
+  });
+
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout);
 
-  require('prismjs/themes/prism-tomorrow.css');
   require('./assets/styles.scss');
 }

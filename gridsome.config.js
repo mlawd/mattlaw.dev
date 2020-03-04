@@ -16,7 +16,6 @@ module.exports = {
       options: {
         path: 'posts/**/*.md',
         typeName: 'Post',
-        route: '/post/:slug',
         remark: {
           plugins: ['@gridsome/remark-prismjs'],
         },
@@ -65,7 +64,19 @@ module.exports = {
         publicPath: `/admin`,
       },
     },
+    {
+      use: 'gridsome-source-graphql-prismic',
+      options: {
+        url: 'https://mlblog.prismic.io',
+        fieldName: 'Prismic',
+        typeName: 'Prismic',
+        useMasterRef: true,
+      },
+    },
   ],
+  templates: {
+    Post: '/post/:title',
+  },
   configureWebpack: {
     plugins: [new VuetifyLoaderPlugin()],
   },
