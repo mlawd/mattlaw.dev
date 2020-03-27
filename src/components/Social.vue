@@ -1,14 +1,12 @@
 <template>
-  <v-layout>
-    <v-flex shrink>
-      <v-btn flat fab>
-        <i class="fab fa-facebook" @click.prevent="facebook"></i>
-      </v-btn>
-      <v-btn flat fab>
-        <i class="fab fa-twitter" @click.prevent="twitter"></i>
-      </v-btn>
-    </v-flex>
-  </v-layout>
+  <v-row justify="center">
+    <v-btn text icon class="ma-4">
+      <i class="fab fa-facebook" @click.prevent="facebook"></i>
+    </v-btn>
+    <v-btn text icon class="ma-4">
+      <i class="fab fa-twitter" @click.prevent="twitter"></i>
+    </v-btn>
+  </v-row>
 </template>
 
 <script>

@@ -1,46 +1,47 @@
 <template>
-  <layout>
-    <Post
-      :title="title"
-      :description="description"
-      :hero="hero"
-      :path="path"
-      :body="body"
-      :tags="tags"
-      :uid="uid"
-      :similar="$context.similar"
-    />
-    <client-only>
-      <return-to-top />
-    </client-only>
-  </layout>
+  <v-container>
+    <v-row justify="center">
+      <v-col md="10" lg="8">
+        <Blog
+          v-if="title"
+          :title="title"
+          :description="description"
+          :hero="hero"
+          :path="path"
+          :body="body"
+          :tags="tags"
+          :uid="uid"
+        />
+      </v-col>
+    </v-row>
+    <v-row justify="center">
+      <v-col md="4" v-for="post of similar" :key="post.node._meta.uid">
+        <BlogPreview :key="post.uid" :blog="post" />
+      </v-col>
+    </v-row>
+    <v-row justify="center">
+      <v-col md="10" lg="8">
+        <vue-disqus shortname="mattlaw-dev" :identifier="uid" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import Post from '../components/Post.vue';
-import ReturnToTop from '../components/ReturnToTop.vue';
+import Blog from '../components/Blog.vue';
+import BlogPreview from '../components/VertBlogPreview.vue';
 
 export default {
-  components: { Post, ReturnToTop },
-  data() {
-    return {
-      title: '',
-      description: '',
-      hero: '',
-      path: '',
-      body: '',
-      tags: [],
-      uid: '',
-    };
-  },
-  created() {
-    this.title = this.$context.post.title[0].text;
-    this.hero = this.$context.post.hero;
-    this.path = this.$context.post._meta.uid;
-    this.body = this.$context.post.body;
-    this.tags = this.$context.post._meta.tags;
-    this.description = this.$context.post.description[0].text;
-    this.uid = this.$context.post._meta.uid;
+  components: { Blog, BlogPreview },
+  props: {
+    title: { type: String },
+    description: { type: String },
+    hero: { type: Object },
+    path: { type: String },
+    body: { type: Array },
+    tags: { type: Array },
+    uid: { type: String },
+    similar: { type: Array },
   },
   mounted() {
     document.querySelectorAll('pre code').forEach(block => {

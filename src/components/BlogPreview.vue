@@ -1,5 +1,5 @@
 <template>
-  <v-card class="zoom ma-2" :to="blog.path">
+  <v-card class="zoom ma-2" :to="'post/' + blog._meta.uid">
     <v-row row wrap :class="{ 'flex-row-reverse': reverse }">
       <v-col
         class="pt-0 pb-0"
@@ -9,7 +9,7 @@
         <div
           class="fill"
           :style="{
-            backgroundImage: 'url(\'' + blog.headlineImage + '\')',
+            backgroundImage: 'url(\'' + blog.hero.url + '\')',
             backgroundPosition: 'center center',
             backgroundSize: 'cover',
           }"
@@ -20,28 +20,19 @@
         cols="12"
         v-show="simple || $vuetify.breakpoint.smAndDown"
       >
-        <g-image :src="blog.headlineImage" :alt="blog.title" />
+        <g-image :src="blog.hero.url" :alt="blog.title.text" />
       </v-col>
       <v-col :class="{ md8: !simple }">
         <v-card-title>
-          <h4 class="display-1">{{ blog.title }}</h4>
+          <h4 class="display-1">{{ blog.title[0].text }}</h4>
         </v-card-title>
-        <v-card-text v-if="simple">
+        <v-card-text>
           <p>
-            {{ blog.description }}
+            {{ blog.description[0].text }}
           </p>
-        </v-card-text>
-        <v-card-text v-else>
-          <p>
-            {{ blog.description }}
-          </p>
-          <p>
-            <v-chip light class="ma-1">
-              Time to read: {{ blog.timeToRead }}
-              {{ blog.timeToRead > 1 ? 'minutes' : 'minute' }}
-            </v-chip>
-            <v-chip v-for="tag of blog.tags" :key="tag.id" class="ma-1">
-              #{{ tag.id }}
+          <p v-if="!simple">
+            <v-chip v-for="tag of blog._meta.tags" :key="tag" class="ma-1">
+              #{{ tag }}
             </v-chip>
           </p>
         </v-card-text>

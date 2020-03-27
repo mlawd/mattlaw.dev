@@ -1,16 +1,92 @@
-// Server API makes it possible to hook into various parts of Gridsome
-// on server-side and add custom data to the GraphQL data layer.
-// Learn more: https://gridsome.org/docs/server-api
+module.exports = function(api) {
+  api.loadSource(async actions => {});
 
-// Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
+  api.createPages(async ({ createPage, graphql }) => {
+    const { data } = await graphql(`
+      query {
+        Prismic {
+          allBlogposts {
+            edges {
+              node {
+                title
+                hero
+                description
+                body {
+                  ...structuredPart
+                  ...quotePart
+                  ...codePart
+                }
+                _meta {
+                  tags
+                  uid
+                  id
+                }
+              }
+            }
+          }
+        }
+      }
 
-module.exports = function (api) {
-  api.loadSource(({ addContentType }) => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api
-  })
+      fragment structuredPart on Prismic_BlogpostBodyText {
+        type
+        label
+        primary {
+          text
+        }
+      }
 
-  api.createPages(({ createPage }) => {
-    // Use the Pages API here: https://gridsome.org/docs/pages-api
-  })
-}
+      fragment quotePart on Prismic_BlogpostBodyQuote {
+        type
+        label
+        primary {
+          quote
+        }
+      }
+
+      fragment codePart on Prismic_BlogpostBodyCode {
+        type
+        label
+        primary {
+          code
+        }
+      }
+    `);
+
+    await Promise.all(
+      data.Prismic.allBlogposts.edges.map(async d => {
+        const { data } = await graphql(`
+          query {
+            Prismic {
+              allBlogposts(
+                similar: { documentId: "XmgQohIAAB8AeWe5", max: 3 }
+                sortBy: meta_lastPublicationDate_DESC
+              ) {
+                edges {
+                  node {
+                    title
+                    hero
+                    description
+                    _meta {
+                      tags
+                      uid
+                      firstPublicationDate
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `);
+
+        createPage({
+          path: `/post/${d.node._meta.uid}`,
+          component: './src/templates/Post.vue',
+          context: {
+            post: d.node,
+            similar: data.Prismic.allBlogposts.edges.map(x => x.node),
+          },
+        });
+      })
+    );
+  });
+};

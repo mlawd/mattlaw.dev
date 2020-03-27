@@ -10,13 +10,16 @@
       <v-row wrap justify="center">
         <v-col md="10">
           <h2>Recent Blogs</h2>
-          <blog-preview
-            v-for="(post, i) of $page.posts.edges"
-            :key="post.node.title"
-            :reverse="!!(i % 2)"
-            :blog="post.node"
-          />
         </v-col>
+        <v-row justify="center" align="center">
+          <v-col
+            md="4"
+            v-for="(post, i) of $page.Prismic.allBlogposts.edges"
+            :key="post.node._meta.uid"
+          >
+            <blog-preview :blog="post.node" />
+          </v-col>
+        </v-row>
       </v-row>
     </v-container>
   </home-layout>
@@ -24,19 +27,21 @@
 
 <page-query>
 query {
-	posts: allPost (limit: 5, sort: { by: "published" }) {
-		edges {
-			node {
-				title
-				description
-				path
-				timeToRead
-				headlineImage
-				tags {
-					id
-				}
-			}
-		}
+  Prismic {
+    allBlogposts(first: 3, sortBy: meta_lastPublicationDate_DESC) {
+      edges {
+        node {
+          title
+					hero
+					description
+          _meta {
+						tags
+						uid
+            lastPublicationDate
+          }
+        }
+      }
+    }
   }
 }
 </page-query>
@@ -44,7 +49,7 @@ query {
 <script scoped>
 import Jumbotron from '../components/Jumbotron.vue';
 import Intro from '../components/Intro.vue';
-import BlogPreview from '../components/BlogPreview.vue';
+import BlogPreview from '../components/VertBlogPreview.vue';
 import HomeLayout from '../layouts/Home.vue';
 
 export default {

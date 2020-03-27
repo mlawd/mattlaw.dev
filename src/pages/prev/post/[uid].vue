@@ -1,6 +1,7 @@
 <template>
   <layout>
     <Post
+      v-if="title != ''"
       :title="title"
       :description="description"
       :hero="hero"
@@ -17,8 +18,8 @@
 </template>
 
 <script>
-import Post from '../components/Post.vue';
-import ReturnToTop from '../components/ReturnToTop.vue';
+import Post from '../../../components/Post.vue';
+import ReturnToTop from '../../../components/ReturnToTop.vue';
 
 export default {
   components: { Post, ReturnToTop },
@@ -33,18 +34,20 @@ export default {
       uid: '',
     };
   },
-  created() {
-    this.title = this.$context.post.title[0].text;
-    this.hero = this.$context.post.hero;
-    this.path = this.$context.post._meta.uid;
-    this.body = this.$context.post.body;
-    this.tags = this.$context.post._meta.tags;
-    this.description = this.$context.post.description[0].text;
-    this.uid = this.$context.post._meta.uid;
-  },
   mounted() {
-    document.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block);
+    const { uid } = this.$route.params;
+    this.$prismic.client.getSingle('blogpost').then(({ data, tags }) => {
+      this.title = data.title[0].text;
+      this.hero = data.hero;
+      this.body = data.body;
+      this.tags = tags;
+      this.description = data.description[0].text;
+      this.uid = uid;
+      this.$nextTick(() => {
+        document.querySelectorAll('pre code').forEach(block => {
+          hljs.highlightBlock(block);
+        });
+      });
     });
   },
   metaInfo() {
