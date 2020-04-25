@@ -1,5 +1,5 @@
 <template>
-  <v-card class="zoom ma-2" :to="'post/' + blog._meta.uid">
+  <v-card class="zoom ma-2" :to="'post/' + blog.slug">
     <v-row row wrap :class="{ 'flex-row-reverse': reverse }">
       <v-col
         class="pt-0 pb-0"
@@ -20,19 +20,24 @@
         cols="12"
         v-show="simple || $vuetify.breakpoint.smAndDown"
       >
-        <g-image :src="blog.hero.url" :alt="blog.title.text" />
+        <g-image :src="blog.hero.url" :alt="blog.name" />
       </v-col>
       <v-col :class="{ md8: !simple }">
         <v-card-title>
-          <h4 class="display-1">{{ blog.title[0].text }}</h4>
+          <h4 class="display-1">{{ blog.title }}</h4>
         </v-card-title>
         <v-card-text>
           <p>
-            {{ blog.description[0].text }}
+            {{ blog.description }}
           </p>
           <p v-if="!simple">
-            <v-chip v-for="tag of blog._meta.tags" :key="tag" class="ma-1">
-              #{{ tag }}
+            <v-chip
+              label
+              v-for="{ name } of blog.tags"
+              :key="name"
+              class="ma-1"
+            >
+              #{{ name }}
             </v-chip>
           </p>
         </v-card-text>

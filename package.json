@@ -8,23 +8,20 @@
   },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.0",
-    "@gridsome/remark-prismjs": "^0.3.0",
+    "@np-matt/gridsome-source-kentico-kontent": "https://github.com/np-matt/gridsome-source-kentico-kontent",
+    "@vue/composition-api": "^0.5.0",
     "axios": "^0.19.2",
+    "babel-runtime": "^6.26.0",
     "gridsome": "^0.7.13",
-    "gridsome-plugin-netlify-cms": "^1.0.9",
     "gridsome-plugin-rss": "^1.2.0",
-    "gridsome-source-graphql-prismic": "^0.1.6",
     "netlify-cms": "^2.10.30",
-    "prismic-dom": "^2.1.0",
-    "prismic-javascript": "^2.1.5",
-    "prismic-vue": "^2.0.0",
+    "v-runtime-template": "^1.10.0",
     "vue-disqus": "^3.0.5",
+    "vue-prismjs": "^1.2.0",
     "vuetify": "^2.2.15",
     "vuetify-loader": "^1.4.3"
   },
   "devDependencies": {
-    "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.5.0",
     "sass": "^1.26.2",
     "sass-loader": "^7.3.1",
     "webpack-node-externals": "^1.7.2"

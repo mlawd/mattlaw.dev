@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar elevation="0">
+    <v-app-bar app inverted-scroll elevation="0">
       <v-toolbar-items>
         <v-btn text large class="title-btn" to="/">Matt Law [.dev]</v-btn>
       </v-toolbar-items>

@@ -3,11 +3,16 @@
 import Vuetify from 'vuetify/lib';
 import colors from 'vuetify/es5/util/colors';
 import VueDisqus from 'vue-disqus';
-import PrismicVue from 'prismic-vue';
+import VueCompositionApi from '@vue/composition-api';
 
 import DefaultLayout from '~/layouts/Default.vue';
 
 export default function(Vue, { router, head, isClient, appOptions }) {
+  head.link.push({
+    rel: 'stylesheet',
+    href:
+      'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
+  });
   head.link.push({
     rel: 'stylesheet',
     href:
@@ -38,6 +43,9 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 
   appOptions.vuetify = new Vuetify({
     theme: {
+      options: {
+        customProperties: true,
+      },
       themes: {
         light: {
           primary: '#5f9ea0',
@@ -53,40 +61,10 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   });
 
   Vue.use(VueDisqus);
+  Vue.use(VueCompositionApi);
 
-  Vue.use(PrismicVue, {
-    endpoint: 'https://mlblog.cdn.prismic.io/api/v2',
-    linkResolver(doc) {
-      if (doc.isBroken) {
-        return '/not-found';
-      }
-
-      if (doc.type === 'home') {
-        return '/prev';
-      }
-
-      if (doc.type === 'blogpost') {
-        return '/prev/post/' + doc.uid;
-      }
-
-      return '/not-found';
-    },
-    htmlSerializer(type, _, __, children) {
-      if (type.indexOf('heading') >= 0) {
-        const level = type[type.length - 1];
-        const text = children.join(' ');
-        const id = text.replace(/ /g, '-').toLowerCase();
-        return `
-				<h${level} id="${id}">
-					<a href="#${id}" id="${id}">
-						${text}
-					</a>
-				</h${level}>
-				`;
-      }
-
-      return null;
-    },
+  Vue.filter('date', function(value) {
+    return value ? value.toLocaleDateString() : '';
   });
 
   // Set default layout as a global component

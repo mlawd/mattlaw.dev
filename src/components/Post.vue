@@ -11,6 +11,7 @@
           :body="body"
           :tags="tags"
           :uid="uid"
+          :date="date"
         />
       </v-col>
     </v-row>
@@ -38,15 +39,11 @@ export default {
     description: { type: String },
     hero: { type: Object },
     path: { type: String },
-    body: { type: Array },
+    body: { type: String },
     tags: { type: Array },
     uid: { type: String },
     similar: { type: Array },
-  },
-  mounted() {
-    document.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block);
-    });
+    date: { type: Date },
   },
   metaInfo() {
     return {

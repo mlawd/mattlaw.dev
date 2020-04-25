@@ -6,24 +6,22 @@
 
 const nodeExternals = require('webpack-node-externals');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
+const BlogPostContentItem = require('./src/custom-types/BlogPostContentItem');
 
 module.exports = {
   siteName: 'MattLaw.Dev',
   titleTemplate: '%s - MattLaw.dev',
+  runtimeCompiler: true,
   plugins: [
     {
-      use: '@gridsome/source-filesystem',
+      use: '@np-matt/gridsome-source-kentico-kontent',
       options: {
-        path: 'posts/**/*.md',
-        typeName: 'Post',
-        remark: {
-          plugins: ['@gridsome/remark-prismjs'],
+        deliveryClientConfig: {
+          projectId: process.env.KENTICO_KONTENT_PROJECT_ID,
         },
-        refs: {
-          tags: {
-            typeName: 'Tag',
-            route: '/tag/:id',
-            create: true,
+        contentItemConfig: {
+          contentItems: {
+            blog_post: BlogPostContentItem,
           },
         },
       },
@@ -40,16 +38,16 @@ module.exports = {
     {
       use: 'gridsome-plugin-rss',
       options: {
-        contentTypeName: 'Post',
+        contentTypeName: 'BlogPost',
         feedOptions: {
           title: 'MattLaw.Dev',
           feed_url: 'https://mattlaw.dev/rss.xml',
           site_url: 'https://mattlaw.dev',
         },
         feedItemOptions: node => ({
-          title: node.title,
+          title: node.name,
           description: node.description,
-          url: 'https://mattlaw.dev' + node.path,
+          url: 'https://mattlaw.dev/post/' + node.slug,
           author: 'Matthew Law',
         }),
         output: {
@@ -58,24 +56,14 @@ module.exports = {
         },
       },
     },
-    {
-      use: `gridsome-plugin-netlify-cms`,
-      options: {
-        publicPath: `/admin`,
-      },
-    },
-    {
-      use: 'gridsome-source-graphql-prismic',
-      options: {
-        url: 'https://mlblog.prismic.io',
-        fieldName: 'Prismic',
-        typeName: 'Prismic',
-        useMasterRef: true,
-      },
-    },
   ],
   templates: {
-    Post: '/post/:title',
+    BlogPost: [
+      {
+        path: '/post/:slug',
+        component: './src/templates/Post.vue',
+      },
+    ],
   },
   configureWebpack: {
     plugins: [new VuetifyLoaderPlugin()],

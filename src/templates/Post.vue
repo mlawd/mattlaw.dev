@@ -8,13 +8,33 @@
       :body="body"
       :tags="tags"
       :uid="uid"
-      :similar="$context.similar"
+      :date="date"
     />
     <client-only>
       <return-to-top />
     </client-only>
   </layout>
 </template>
+
+<page-query>
+query($id: ID!) {
+  blogPost(id: $id) {
+		codename
+		description
+		slug
+		title
+		body
+    date
+    tags {
+      name
+    }
+    hero {
+      url
+      name
+    }
+	}
+}
+</page-query>
 
 <script>
 import Post from '../components/Post.vue';
@@ -34,18 +54,14 @@ export default {
     };
   },
   created() {
-    this.title = this.$context.post.title[0].text;
-    this.hero = this.$context.post.hero;
-    this.path = this.$context.post._meta.uid;
-    this.body = this.$context.post.body;
-    this.tags = this.$context.post._meta.tags;
-    this.description = this.$context.post.description[0].text;
-    this.uid = this.$context.post._meta.uid;
-  },
-  mounted() {
-    document.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block);
-    });
+    this.title = this.$page.blogPost.title;
+    this.hero = this.$page.blogPost.hero[0];
+    this.body = this.$page.blogPost.body;
+    this.tags = this.$page.blogPost.tags.map(t => t.name);
+    this.description = this.$page.blogPost.description;
+    this.uid = this.$page.blogPost.codename;
+    this.date = new Date(this.$page.blogPost.date);
+    this.path = this.$page.blogPost.slug;
   },
   metaInfo() {
     return {
@@ -71,7 +87,7 @@ export default {
         {
           vmid: 'og:url',
           property: 'og:url',
-          content: `https://www.mattlaw.dev/prismic/${this.path}`,
+          content: `https://www.mattlaw.dev/post/${this.path}`,
         },
         {
           vmid: 'twitter:card',
@@ -82,7 +98,7 @@ export default {
       link: [
         {
           rel: 'canonical',
-          href: `https://www.mattlaw.dev/prismic/${this.path}`,
+          href: `https://www.mattlaw.dev/post/${this.path}`,
         },
       ],
     };

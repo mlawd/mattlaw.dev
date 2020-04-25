@@ -1,28 +1,17 @@
 <template>
   <article>
     <h1>{{ title }}</h1>
-    <v-btn outlined rounded v-for="tag of tags" :key="tag" class="ma-1">
+    <v-chip color="primary" label class="ma-1">
+      {{ date | date }}
+    </v-chip>
+    <v-chip label v-for="tag of tags" :key="tag" class="ma-1">
       #{{ tag }}
-    </v-btn>
+    </v-chip>
     <p class="display-1 text-center font-italic">
       {{ description }}
     </p>
     <g-image v-if="hero" :src="hero.url" :alt="hero.alt" id="hero" />
-    <div v-for="(part, i) of body" :key="i" id="content">
-      <prismic-rich-text
-        v-if="(part.slice_type || part.type) === 'text'"
-        :field="part.primary.text"
-      />
-      <Quote
-        v-else-if="(part.slice_type || part.type) === 'quote'"
-        :quote="part"
-      />
-      <pre v-else-if="part.primary.code">
-				<code>
-{{ part.primary.code[0].text }}
-				</code>
-			</pre>
-    </div>
+    <RichText :html="body" />
     <ClientOnly>
       <social />
     </ClientOnly>
@@ -34,18 +23,20 @@ import Vue from 'vue';
 import BlogPreview from './BlogPreview.vue';
 import Social from './Social.vue';
 import ReturnToTop from './ReturnToTop.vue';
-import Quote from './Quote.vue';
+import RichText from './RichText.vue';
 
 export default Vue.extend({
-  components: { BlogPreview, Social, ReturnToTop, Quote },
-  props: ['title', 'description', 'hero', 'path', 'body', 'tags', 'uid'],
-  mounted() {
-    this.$nextTick(() => {
-      document.querySelectorAll('pre code').forEach(block => {
-        hljs.highlightBlock(block);
-      });
-    });
-  },
+  components: { BlogPreview, Social, ReturnToTop, RichText },
+  props: [
+    'title',
+    'description',
+    'hero',
+    'path',
+    'body',
+    'tags',
+    'uid',
+    'date',
+  ],
 });
 </script>
 
@@ -62,10 +53,16 @@ img {
   padding-right: 3rem;
 }
 
-#content >>> p {
+#content >>> p,
+#content >>> li {
   font-size: 1.5em !important;
   line-height: 1.7em;
   font-weight: 300;
+}
+
+#content >>> ul {
+  margin-bottom: 20px;
+  margin-left: 20px;
 }
 
 #content >>> blockquote {
@@ -73,8 +70,6 @@ img {
   padding-left: 10px;
   margin-bottom: 20px;
   color: grey;
-  font-size: 1.3em !important;
-  line-height: 1.5em;
 }
 
 #content >>> h2 a {
@@ -102,6 +97,12 @@ img {
   content: '';
 }
 
+#content >>> p > code {
+  background-color: var(--v-primary-base);
+  color: black;
+  font-weight: 400;
+}
+
 #content >>> code.language-text {
   color: #ccc;
   line-height: 1.7em;
@@ -116,6 +117,7 @@ img {
   margin-bottom: 10px;
 }
 
+#content >>> img,
 img {
   max-width: 100%;
 }

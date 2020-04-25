@@ -41,9 +41,9 @@
         <v-col>
           <ul class="title">
             <li>Often Programmer</li>
+            <li>Dog Owner</li>
             <li>Occasional DIY-er</li>
             <li>Infrequent Cricketer</li>
-            <li>Wistful Game Dev</li>
           </ul>
         </v-col>
       </v-row>
