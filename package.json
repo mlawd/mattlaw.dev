@@ -14,11 +14,10 @@
     "babel-runtime": "^6.26.0",
     "gridsome": "^0.7.13",
     "gridsome-plugin-rss": "^1.2.0",
-    "netlify-cms": "^2.10.30",
     "v-runtime-template": "^1.10.0",
     "vue-disqus": "^3.0.5",
     "vue-prismjs": "^1.2.0",
-    "vuetify": "^2.2.15",
+    "vuetify": "^2.2.26",
     "vuetify-loader": "^1.4.3"
   },
   "devDependencies": {
