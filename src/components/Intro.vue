@@ -1,13 +1,13 @@
 <template>
   <v-row justify="center" class="fill-height">
-    <v-col md="8">
-      <v-row cols="12" justify="center" align="center">
+    <v-col>
+      <v-row justify="center" align="center">
         <v-col class="headline-text text-center">
           <p>ABOUT ME</p>
         </v-col>
       </v-row>
-      <v-row cols="12" justify="center" align="center">
-        <v-col cols="12" class="text-center title">
+      <v-row justify="center" align="center">
+        <v-col cols="12" lg="10" xl="8" class="text-center title">
           <p>
             Welcome to MattLaw.dev! I am a software developer from Sheffield,
             educated at Newcastle University and based in Nottingham.

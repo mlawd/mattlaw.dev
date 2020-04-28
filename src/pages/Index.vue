@@ -1,23 +1,27 @@
 <template>
   <home-layout>
-    <v-container id="jumbotron" grid-list-lg fluid>
+    <v-container id="jumbotron" :fluid="$vuetify.breakpoint.mdAndUp">
       <jumbotron />
     </v-container>
-    <v-container id="intro" fluid>
+    <v-container id="intro">
       <intro />
     </v-container>
     <v-container grid-list-md>
       <v-row wrap justify="center">
-        <v-col md="10">
+        <v-col cols="12" md="10" xl="8">
           <h2>Recent Blogs</h2>
         </v-col>
-        <v-col
-          cols="12"
-          md="4"
-          v-for="(blog, i) of blogs.slice(0, numPreviews)"
-          :key="blog.slug"
-        >
-          <blog-preview :blog="blog" />
+        <v-col cols="12" xl="10">
+          <v-row>
+            <v-col
+              cols="12"
+              md="4"
+              v-for="(blog, i) of blogs.slice(0, numPreviews)"
+              :key="blog.slug"
+            >
+              <blog-preview :blog="blog" />
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
       <v-row justify="center">

@@ -6,7 +6,7 @@
     align="center"
     class="flex-row-reverse"
   >
-    <v-col md="5" cols="12" class="text-center">
+    <v-col xl="3" md="5" cols="12" class="text-center">
       <h1>Matt Law [.dev]</h1>
       <v-btn fab icon href="https://github.com/np-matt" target="_blank">
         <i class="fab fa-github"></i>
@@ -28,7 +28,7 @@
         <i class="fab fa-twitter"></i>
       </v-btn>
     </v-col>
-    <v-col md="5" cols="12">
+    <v-col xl="3" md="5" cols="12">
       <v-row row wrap align-content="center" class="text-center ">
         <v-col>
           <v-avatar size="256">
