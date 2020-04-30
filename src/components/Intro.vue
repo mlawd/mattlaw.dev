@@ -51,11 +51,13 @@ p {
   font-size: 7rem;
   position: relative;
   overflow-y: hidden;
+  /*
   background: url('/img/nottingham.webp') center;
   background-size: cover;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+	*/
   margin: 30px 0;
 }
 

@@ -4,33 +4,41 @@ import Vuetify from 'vuetify/lib';
 import colors from 'vuetify/es5/util/colors';
 import VueDisqus from 'vue-disqus';
 import VueCompositionApi from '@vue/composition-api';
+import { VLazyImagePlugin } from 'v-lazy-image';
 
 import DefaultLayout from '~/layouts/Default.vue';
 
 export default function(Vue, { router, head, isClient, appOptions }) {
   head.link.push({
-    rel: 'stylesheet',
+    rel: 'preload',
+    as: 'style',
     href:
-      'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
+      'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap',
   });
+
   head.link.push({
-    rel: 'stylesheet',
+    rel: 'preload',
+    as: 'style',
     href:
       'https://fonts.googleapis.com/css?family=Darker+Grotesque|PT+Sans+Narrow:700&display=swap',
   });
 
   head.link.push({
     rel: 'stylesheet',
-    href: 'https://use.fontawesome.com/releases/v5.9.0/css/all.css',
-    integrity:
-      'sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E',
-    crossorigin: 'anonymous',
+    href:
+      'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap',
+  });
+
+  head.link.push({
+    rel: 'stylesheet',
+    href:
+      'https://fonts.googleapis.com/css?family=Darker+Grotesque|PT+Sans+Narrow:700&display=swap',
   });
 
   head.meta.push({
     name: 'description',
     content:
-      'A person site for a Software developer currently working as a Web Developer in Nottingham',
+      'A personal site for a Software developer currently working as a Web Developer in Nottingham',
   });
 
   head.script.push({
@@ -40,6 +48,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   });
 
   Vue.use(Vuetify);
+  Vue.use(VLazyImagePlugin);
 
   appOptions.vuetify = new Vuetify({
     theme: {

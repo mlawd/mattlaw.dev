@@ -10,7 +10,7 @@
     <p class="display-1 text-center font-italic">
       {{ description }}
     </p>
-    <g-image v-if="hero" :src="hero.url" :alt="hero.alt" id="hero" />
+    <Asset :node="hero" />
     <RichText :html="body" />
     <ClientOnly>
       <social />
@@ -24,9 +24,10 @@ import BlogPreview from './BlogPreview.vue';
 import Social from './Social.vue';
 import ReturnToTop from './ReturnToTop.vue';
 import RichText from './RichText.vue';
+import Asset from './RichTextElements/Asset.vue';
 
 export default Vue.extend({
-  components: { BlogPreview, Social, ReturnToTop, RichText },
+  components: { BlogPreview, Social, ReturnToTop, RichText, Asset },
   props: [
     'title',
     'description',

@@ -10,7 +10,9 @@ query {
     edges {
       node {
         id
-				url
+				url(width:1200)
+				url_400: url(width:400)
+				url_800: url(width:800)
 				description
       }
     }
@@ -64,11 +66,18 @@ export default {
       if (typeof query === 'undefined') {
         return null;
       }
+      if (codename === 'asset') {
+        console.log(id);
+        console.log(query);
+      }
 
       const edges = query.edges.filter(edge => {
-        return edge.node.id === id || edge.node.url === id;
+        return edge.node.id === id || (edge.node.url || '').indexOf(id) >= 0;
       });
 
+      if (codename === 'asset') {
+        console.log(edges);
+      }
       if (edges.length === 1) {
         return edges[0].node;
       }

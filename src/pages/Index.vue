@@ -75,7 +75,7 @@ query {
           name
         }
         hero {
-          url
+          url(width:500)
           name
         }
 			}

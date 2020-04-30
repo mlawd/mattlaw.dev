@@ -8,7 +8,13 @@
   >
     <v-col xl="3" md="5" cols="12" class="text-center">
       <h1>Matt Law [.dev]</h1>
-      <v-btn fab icon href="https://github.com/np-matt" target="_blank">
+      <v-btn
+        fab
+        icon
+        href="https://github.com/np-matt"
+        target="_blank"
+        rel="noopener"
+      >
         <i class="fab fa-github"></i>
       </v-btn>
       <v-btn
@@ -16,6 +22,7 @@
         icon
         href="https://www.linkedin.com/in/matthew-law-40659062/"
         target="_blank"
+        rel="noopener"
       >
         <i class="fab fa-linkedin"></i>
       </v-btn>
@@ -24,6 +31,7 @@
         icon
         href="https://twitter.com/Northern_Pariah"
         target="_blank"
+        rel="noopener"
       >
         <i class="fab fa-twitter"></i>
       </v-btn>

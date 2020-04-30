@@ -29,7 +29,10 @@ query($id: ID!) {
       name
     }
     hero {
-      url
+      url(width: 1200)
+      url_400: url(width: 400)
+      url_800: url(width: 800)
+      description
       name
     }
 	}

@@ -14,6 +14,7 @@
     "babel-runtime": "^6.26.0",
     "gridsome": "^0.7.13",
     "gridsome-plugin-rss": "^1.2.0",
+    "v-lazy-image": "^1.4.0",
     "v-runtime-template": "^1.10.0",
     "vue-disqus": "^3.0.5",
     "vue-prismjs": "^1.2.0",

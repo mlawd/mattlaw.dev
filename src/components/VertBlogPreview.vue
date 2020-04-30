@@ -7,7 +7,7 @@
       </v-chip>
     </v-card-title>
     <div class="overview">
-      <g-image :src="blog.hero.url" :alt="blog.hero.name" />
+      <v-lazy-image :src="blog.hero.url" :alt="blog.hero.name" />
       <div class="d-flex" :class="{ hoverable: $vuetify.breakpoint.mdAndUp }">
         <p class="text-center mb-0 pa-lg-4">
           {{ blog.description }}
