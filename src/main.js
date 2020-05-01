@@ -51,6 +51,9 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   Vue.use(VLazyImagePlugin);
 
   appOptions.vuetify = new Vuetify({
+    icons: {
+      iconFont: 'mdiSvg'
+    },
     theme: {
       options: {
         customProperties: true,

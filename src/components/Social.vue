@@ -1,15 +1,17 @@
 <template>
   <v-row justify="center">
-    <v-btn text icon class="ma-4">
-      <i class="fab fa-facebook" @click.prevent="facebook"></i>
+    <v-btn text icon class="ma-4" @click.prevent="facebook">
+      <v-icon large>{{ mdiFacebook }}</v-icon>
     </v-btn>
-    <v-btn text icon class="ma-4">
-      <i class="fab fa-twitter" @click.prevent="twitter"></i>
+    <v-btn text icon class="ma-4" @click.prevent="twitter">
+      <v-icon large>{{ mdiTwitter }}</v-icon>
     </v-btn>
   </v-row>
 </template>
 
 <script>
+import { mdiFacebook, mdiTwitter } from '@mdi/js';
+
 export default {
   mounted() {
     const interval = setInterval(() => {
@@ -43,6 +45,12 @@ export default {
         'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
       );
     },
+  },
+  setup() {
+    return {
+      mdiFacebook,
+      mdiTwitter,
+    };
   },
 };
 </script>

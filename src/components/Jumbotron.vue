@@ -15,7 +15,7 @@
         target="_blank"
         rel="noopener"
       >
-        <i class="fab fa-github"></i>
+        <v-icon large>{{ mdiGithub }}</v-icon>
       </v-btn>
       <v-btn
         fab
@@ -24,7 +24,7 @@
         target="_blank"
         rel="noopener"
       >
-        <i class="fab fa-linkedin"></i>
+        <v-icon large>{{ mdiLinkedin }}</v-icon>
       </v-btn>
       <v-btn
         fab
@@ -33,7 +33,7 @@
         target="_blank"
         rel="noopener"
       >
-        <i class="fab fa-twitter"></i>
+        <v-icon large>{{ mdiTwitter }}</v-icon>
       </v-btn>
     </v-col>
     <v-col xl="3" md="5" cols="12">
@@ -48,8 +48,8 @@
         </v-col>
         <v-col>
           <ul class="title">
+            <li>Permanent Dog Owner</li>
             <li>Often Programmer</li>
-            <li>Dog Owner</li>
             <li>Occasional DIY-er</li>
             <li>Infrequent Cricketer</li>
           </ul>
@@ -58,6 +58,19 @@
     </v-col>
   </v-row>
 </template>
+
+<script>
+import { mdiGithub, mdiTwitter, mdiLinkedin } from '@mdi/js';
+export default {
+  setup() {
+    return {
+      mdiGithub,
+      mdiTwitter,
+      mdiLinkedin,
+    };
+  },
+};
+</script>
 
 <style scoped>
 .row {
