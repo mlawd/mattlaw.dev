@@ -24,7 +24,7 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row justify="center">
+      <v-row justify="center" v-if="blogs.length > numPreviews">
         <v-col cols="12" lg="10">
           <v-list>
             <v-list-item
