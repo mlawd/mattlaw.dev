@@ -52,7 +52,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 
   appOptions.vuetify = new Vuetify({
     icons: {
-      iconFont: 'mdiSvg'
+      iconFont: 'mdiSvg',
     },
     theme: {
       options: {

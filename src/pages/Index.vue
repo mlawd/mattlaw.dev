@@ -12,7 +12,7 @@
           <h2>Recent Blogs</h2>
         </v-col>
         <v-col cols="12" xl="10">
-          <v-row>
+          <v-row justify="center">
             <v-col
               cols="12"
               md="4"

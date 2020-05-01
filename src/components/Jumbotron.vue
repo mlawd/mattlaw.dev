@@ -6,7 +6,7 @@
     align="center"
     class="flex-row-reverse"
   >
-    <v-col xl="3" md="5" cols="12" class="text-center">
+    <v-col xl="4" md="5" cols="12" class="text-center">
       <h1>Matt Law [.dev]</h1>
       <v-btn
         fab
@@ -36,7 +36,7 @@
         <v-icon large>{{ mdiTwitter }}</v-icon>
       </v-btn>
     </v-col>
-    <v-col xl="3" md="5" cols="12">
+    <v-col xl="4" md="5" cols="12">
       <v-row row wrap align-content="center" class="text-center ">
         <v-col>
           <v-avatar size="256">
