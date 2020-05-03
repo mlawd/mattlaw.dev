@@ -1,49 +1,46 @@
 <template>
   <Layout>
-    <div class="container fill">
-      <div class="row row--align-items-center">
-        <div class="col text-center">
+    <v-container fluid fill-height class="pa-0">
+      <v-row class="ma-0" justify="center">
+        <v-col class="text-center pa-0">
           <g-image src="~/assets/img/avatar.png" width="200" height="200" />
           <h1 class="pa-2">Matt Law</h1>
           <h2 class="pb-2 pb-md-4">.dev</h2>
-          <div class="row row--justify-content-center">
-            <Icon :path="meIcon" to="/me"> Me</Icon>
-            <Icon :path="blogIcon" to="/blog"> Blog </Icon>
-            <Icon :path="projectsIcon" to="/projects"> Projects</Icon>
-            <Icon
-              :path="mdiGithub"
-              to="https://github.com/np-matt"
-              target="_blank"
-              role="button"
-              ariaLabel="GitHub"
-              rel="noopener"
-            >
-              GitHub
-            </Icon>
-            <Icon
-              :path="mdiTwitter"
-              to="https://twitter.com/Northern_Pariah"
-              target="_blank"
-              role="button"
-              ariaLabel="Twitter"
-              rel="noopener"
-            >
-              Twitter
-            </Icon>
-            <Icon
-              :path="mdiLinkedin"
-              to="https://www.linkedin.com/in/mattlawdev"
-              target="_blank"
-              role="button"
-              aria-label="LinkedIn"
-              rel="noopener"
-            >
-              LinkedIn
-            </Icon>
-          </div>
-        </div>
-      </div>
-    </div>
+          <Icon :path="meIcon" to="/about">About</Icon>
+          <Icon :path="blogIcon" to="/blog">Blog</Icon>
+          <Icon
+            :path="mdiGithub"
+            to="https://github.com/np-matt"
+            target="_blank"
+            role="button"
+            ariaLabel="GitHub"
+            rel="noopener"
+          >
+            GitHub
+          </Icon>
+          <Icon
+            :path="mdiTwitter"
+            to="https://twitter.com/Northern_Pariah"
+            target="_blank"
+            role="button"
+            ariaLabel="Twitter"
+            rel="noopener"
+          >
+            Twitter
+          </Icon>
+          <Icon
+            :path="mdiLinkedin"
+            to="https://www.linkedin.com/in/mattlawdev"
+            target="_blank"
+            role="button"
+            aria-label="LinkedIn"
+            rel="noopener"
+          >
+            LinkedIn
+          </Icon>
+        </v-col>
+      </v-row>
+    </v-container>
   </Layout>
 </template>
 
@@ -87,29 +84,8 @@ img {
   }
 }
 
-.fill {
-  height: 100vh;
-}
-
-.spacer {
-  width: 20px;
-  display: inline-block;
-}
-
-.link {
-  display: inline-block;
-  font-size: 24px;
-  color: black;
-  text-decoration: none;
-  width: 80px;
-  flex-grow: 1;
-
-  &--right {
-    text-align: left;
-  }
-
-  &--left {
-    text-align: right;
-  }
+h1,
+h2 {
+  margin: 0;
 }
 </style>

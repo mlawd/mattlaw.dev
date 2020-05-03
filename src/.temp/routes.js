@@ -1,11 +1,11 @@
 export default [
   {
-    path: "/me/",
-    component: () => import(/* webpackChunkName: "page--src--pages--me-vue" */ "/home/np-matt/projects/mattlaw.dev/src/pages/Me.vue")
+    path: "/blog/",
+    component: () => import(/* webpackChunkName: "page--src--pages--blog-vue" */ "/home/np-matt/projects/mattlaw.dev/src/pages/Blog.vue")
   },
   {
-    path: "/design-components/",
-    component: () => import(/* webpackChunkName: "page--src--pages--design-components-vue" */ "/home/np-matt/projects/mattlaw.dev/src/pages/DesignComponents.vue")
+    path: "/about/",
+    component: () => import(/* webpackChunkName: "page--src--pages--about-vue" */ "/home/np-matt/projects/mattlaw.dev/src/pages/About.vue")
   },
   {
     name: "404",

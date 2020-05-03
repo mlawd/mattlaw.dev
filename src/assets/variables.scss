@@ -11,14 +11,14 @@ $bg-color: cadetblue;
 
 $sm: 600px;
 $md: 960px;
-$lg: 1264px;
-$xl: 1920px;
+$lg: 1265px;
+$xl: 1921px;
 
 $breakpoints: (
-  'sm': $sm,
-  'md': $md,
-  'lg': $lg,
   'xl': $xl,
+  'lg': $lg,
+  'md': $md,
+  'sm': $sm,
 );
 
 :root {

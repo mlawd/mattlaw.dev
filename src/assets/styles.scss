@@ -1,25 +1,4 @@
 @import './variables.scss';
-@import './grid.scss';
-@import './_mixins.scss';
-@import './_spacing.scss';
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  position: relative;
-  min-height: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: $bg-color;
-}
-
-body {
-  height: 100%;
-}
 
 h1,
 h2,
@@ -32,6 +11,7 @@ h4 {
 
 h1 {
   font-size: 4rem;
+  margin: 3rem 0;
   line-height: 4rem;
 
   @media (min-width: $md) {
@@ -39,11 +19,13 @@ h1 {
     line-height: 5rem;
   }
 
-  text-shadow: 1px 1px 1px $accent, 2px 2px 1px $accent, 3px 3px 1px $accent;
+  text-shadow: 1px 1px 1px var(--v-accent-base),
+    2px 2px 1px var(--v-accent-base), 3px 3px 1px var(--v-accent-base);
 }
 
 h2 {
   font-size: 3rem;
+  margin: 2.5rem 0;
   line-height: 3rem;
 
   @media (min-width: $md) {
@@ -54,6 +36,7 @@ h2 {
 
 h3 {
   font-size: 2rem;
+  margin: 1.5rem;
 }
 
 h4 {
@@ -64,26 +47,19 @@ h4 {
 p {
   font-family: $body-font;
   font-weight: 400;
-  font-size: 2rem;
-  margin-top: 0;
+  font-size: 20px;
 }
 
 #app {
   position: relative;
-  min-height: 100vh;
-  width: 100vw;
+  background-color: cadetblue;
 }
 
 .text-center {
   text-align: center;
 }
 
-.fill {
-  position: relative;
-  height: 100%;
-}
-
 .icon {
   margin: 5px;
-  color: $primary;
+  color: var(--v-primary-base);
 }
