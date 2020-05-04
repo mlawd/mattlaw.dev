@@ -1,11 +1,11 @@
 <template>
   <Layout>
-    <v-container fluid fill-height class="pa-0">
+    <v-container fill-height>
       <v-row class="ma-0" justify="center">
-        <v-col class="text-center pa-0">
+        <v-col cols="12" xl="8" class="text-right">
           <g-image src="~/assets/img/avatar.png" width="200" height="200" />
           <h1 class="pa-2">Matt Law</h1>
-          <h2 class="pb-2 pb-md-4">.dev</h2>
+          <h2 class="pb-2 pr-2 pb-md-4">.dev</h2>
           <Icon :path="meIcon" to="/about">About</Icon>
           <Icon :path="blogIcon" to="/blog">Blog</Icon>
           <Icon

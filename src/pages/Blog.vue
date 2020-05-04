@@ -7,7 +7,14 @@
         </v-col>
       </v-row>
       <v-row justify="center" dense>
-        <v-col cols="12" md="4" lg="3" v-for="blog in blogs" :key="blog.slug">
+        <v-col
+          cols="12"
+          md="4"
+          lg="3"
+          xl="2"
+          v-for="blog in blogs"
+          :key="blog.slug"
+        >
           <BlogPreview
             :title="blog.title"
             :description="blog.description"
@@ -33,7 +40,7 @@ export default Vue.extend({
       blogs: [
         {
           slug: 'some-title',
-          title: "Some title isn't she lovely",
+          title: "Some title isn't she lovely, need this to go on to two lines",
           publishedAt: new Date(),
           hero: {
             url: '~/assets/img/hucknall.jpg',

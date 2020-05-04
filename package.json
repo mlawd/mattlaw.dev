@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "@mdi/js": "^5.1.45",
-    "sass": "^1.26.5",
     "deepmerge": "^4.2.2",
     "fibers": "^5.0.0",
+    "sass": "^1.26.5",
     "sass-loader": "7.3.1",
     "ts-loader": "^7.0.2",
     "typescript": "^3.8.3",

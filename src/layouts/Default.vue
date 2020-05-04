@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <v-app-bar color="primary" dense fixed :value="showBar">
+    <v-app-bar color="primary" dark dense fixed :value="showBar">
       <v-toolbar-items>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-btn to="/" icon v-on="on">
-              <v-icon>{{ mdiHome }}</v-icon>
+              <v-icon dark>{{ mdiHome }}</v-icon>
             </v-btn>
           </template>
           <span>Home</span>

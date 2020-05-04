@@ -1,24 +1,29 @@
 <template>
   <v-card :to="'/blog/' + slug">
+    <g-image
+      :src="require(`!!assets-loader!@images/${'hucknall.jpg'}`)"
+      :alt="hero.description"
+    />
     <v-card-title>
-      <p class="headline">
-        {{ title }}
-      </p>
+      <div class="preview-title">
+        <span class="preview-title__bg">&nbsp;</span>
+        <p class="headline mb-0">
+          {{ title }}
+        </p>
+      </div>
+    </v-card-title>
+    <v-card-text class="pt-4">
+      <p class="subtitle-1">{{ description }}</p>
       <v-chip label color="accent">
         {{ publishedAt.toLocaleDateString() }}
       </v-chip>
-    </v-card-title>
-    <div class="preview">
-      <g-image
-        :src="require('../assets/img/hucknall.jpg')"
-        :alt="hero.description"
-      />
-      <div class="description">
-        <p>{{ description }}</p>
-      </div>
-    </div>
-    <v-card-text>
-      <v-chip label v-for="tag of tags" :key="tag" class="tag">
+      <v-chip
+        label
+        v-for="tag of tags"
+        :key="tag"
+        class="tag"
+        :to="'/tag/' + tag"
+      >
         #{{ tag }}
       </v-chip>
     </v-card-text>
@@ -45,11 +50,40 @@ export default Vue.extend({
   transition: 0.2s;
 
   &:hover {
-    z-index: 1;
-    transform: scale(1.05);
+    .v-card__title {
+      color: white;
+
+      .preview-title {
+        &__bg {
+          width: 100%;
+        }
+      }
+    }
+
     .preview {
-      .description {
+      .description.hidden {
         top: 0;
+      }
+    }
+  }
+
+  .v-card__title {
+    position: relative;
+    transition: 0.5s;
+
+    .preview-title {
+      &__bg {
+        transition: 0.2s;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        /*
+        background-color: rgba(95, 158, 160, 0.5);
+				*/
+        background-color: var(--v-primary-base);
       }
     }
   }
@@ -58,6 +92,9 @@ export default Vue.extend({
     word-break: break-word;
     width: 100%;
     height: 64px;
+    position: relative;
+    display: flex;
+    align-items: center;
   }
 
   .preview {
@@ -68,19 +105,23 @@ export default Vue.extend({
       transition: 0.2s;
       background-color: rgba(0, 0, 0, 0.7);
       position: absolute;
-      top: 100%;
       left: 0;
+      top: 0;
       height: 100%;
-      padding: 5px;
       color: white;
       text-align: center;
       display: flex;
       align-items: center;
+
+      &.hidden {
+        top: 100%;
+      }
     }
   }
 
   img {
     width: 100%;
+    display: block;
   }
 
   .v-chip {
