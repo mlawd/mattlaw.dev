@@ -4,9 +4,7 @@
     <v-card-title>
       <div class="preview-title">
         <span class="preview-title__bg">&nbsp;</span>
-        <p class="headline mb-0">
-          {{ title }}
-        </p>
+        <p class="headline mb-0">{{ title }}</p>
       </div>
     </v-card-title>
     <v-card-text class="pt-4">
@@ -37,10 +35,11 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .v-card {
   transition: 0.2s;
+  position: relative;
 
   &:hover {
     .v-card__title {
-      color: white;
+      color: black;
 
       .preview-title {
         &__bg {
@@ -51,8 +50,11 @@ export default Vue.extend({
   }
 
   .v-card__title {
-    position: relative;
+    position: absolute;
+    top: 0;
     transition: 0.5s;
+    background-color: var(--v-primary-base);
+    color: white;
 
     .preview-title {
       &__bg {
@@ -63,7 +65,7 @@ export default Vue.extend({
         left: 0;
         height: 100%;
         width: 0;
-        background-color: var(--v-primary-base);
+        background-color: white;
       }
     }
   }
@@ -77,6 +79,7 @@ export default Vue.extend({
   .headline {
     width: 100%;
     position: relative;
+    word-break: break-word;
   }
 
   img {
