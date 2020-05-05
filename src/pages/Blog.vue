@@ -9,25 +9,45 @@
       <v-row justify="center" dense>
         <v-col
           cols="12"
-          md="4"
-          lg="3"
-          xl="2"
-          v-for="blog in blogs"
-          :key="blog.slug"
+          md="6"
+          lg="4"
+          xl="3"
+          v-for="{ node: blog } in $page.allPost.edges"
+          :key="blog.path"
         >
           <BlogPreview
             :title="blog.title"
             :description="blog.description"
-            :publishedAt="blog.publishedAt"
-            :tags="blog.tags"
-            :slug="blog.slug"
-            :hero="blog.hero"
+            :publishedAt="new Date(blog.published)"
+            :tags="blog.tags.map(t => t.title)"
+            :slug="blog.path"
+            :hero="blog.headlineImage"
           />
         </v-col>
       </v-row>
     </v-container>
   </Layout>
 </template>
+
+<page-query>
+query {
+  allPost(sortBy:"published", order:DESC) {
+    edges {
+      node {
+        title
+        path
+        headlineImage
+        description
+        timeToRead
+        tags {
+          title
+        }
+        published
+      }
+    }
+  }
+}
+</page-query>
 
 <script lang="ts">
 import Vue from 'vue';

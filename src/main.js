@@ -1,6 +1,7 @@
 import Layout from './layouts/Default.vue';
 import VueCompositionApi from '@vue/composition-api';
 import Vuetify from 'vuetify/lib/framework';
+import 'prismjs/themes/prism-coy.css';
 
 export default function(Vue, { head, appOptions }) {
   Vue.component('Layout', Layout);
