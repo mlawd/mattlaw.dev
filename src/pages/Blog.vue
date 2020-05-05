@@ -12,17 +12,22 @@
           md="6"
           lg="4"
           xl="3"
-          v-for="{ node: blog } in $page.allPost.edges"
+          v-for="({ node: blog }, i) in $page.allPost.edges"
           :key="blog.path"
         >
-          <BlogPreview
-            :title="blog.title"
-            :description="blog.description"
-            :publishedAt="new Date(blog.published)"
-            :tags="blog.tags.map(t => t.title)"
-            :slug="blog.path"
-            :hero="blog.headlineImage"
-          />
+          <div
+            class="fade-in"
+            :style="{ 'animation-delay': `calc(0.3s * ${i}` }"
+          >
+            <BlogPreview
+              :title="blog.title"
+              :description="blog.description"
+              :publishedAt="new Date(blog.published)"
+              :tags="blog.tags.map(t => t.title)"
+              :slug="blog.path"
+              :hero="blog.heroUrl"
+            />
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -36,7 +41,8 @@ query {
       node {
         title
         path
-        headlineImage
+				heroUrl
+				heroCaption
         description
         timeToRead
         tags {
@@ -55,59 +61,18 @@ import BlogPreview from '../components/BlogPreview.vue';
 
 export default Vue.extend({
   components: { BlogPreview },
-  setup() {
-    return {
-      blogs: [
-        {
-          slug: 'some-title',
-          title: "Some title isn't she lovely, need this to go on to two lines",
-          publishedAt: new Date(),
-          hero: {
-            url: '~/assets/img/hucknall.jpg',
-            description: 'Lorem ipsum',
-          },
-          description:
-            "Lorem ipsum dolor sit amet, why isn't this easier to test? Honestly let' look in to it",
-          tags: ['csharp', 'dev', 'agile'],
-        },
-        {
-          slug: 'some-title-two',
-          title: 'Some title',
-          publishedAt: new Date(),
-          hero: {
-            url: '~/assets/img/hucknall.jpg',
-            description: 'Lorem ipsum',
-          },
-          description:
-            "Lorem ipsum dolor sit amet, why isn't this easier to test? Honestly let' look in to it",
-          tags: ['csharp', 'dev', 'agile'],
-        },
-        {
-          slug: 'some-title-three',
-          title: "Some title isn't she lovely",
-          publishedAt: new Date(),
-          hero: {
-            url: '~/assets/img/hucknall.jpg',
-            description: 'Lorem ipsum',
-          },
-          description:
-            "Lorem ipsum dolor sit amet, why isn't this easier to test? Honestly let' look in to it",
-          tags: ['csharp', 'dev', 'agile'],
-        },
-        {
-          slug: 'some-title-four',
-          title: 'Some title',
-          publishedAt: new Date(),
-          hero: {
-            url: '~/assets/img/hucknall.jpg',
-            description: 'Lorem ipsum',
-          },
-          description:
-            "Lorem ipsum dolor sit amet, why isn't this easier to test? Honestly let' look in to it",
-          tags: ['csharp', 'dev', 'agile'],
-        },
-      ],
-    };
-  },
 });
 </script>
+
+<style lang="scss" scoped>
+@keyframes fadein {
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadein 0.5s forwards;
+  opacity: 0;
+}
+</style>
