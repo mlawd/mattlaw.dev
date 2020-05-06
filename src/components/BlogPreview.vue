@@ -9,11 +9,11 @@
     </v-card-title>
     <v-card-text class="pt-4">
       <p class="subtitle-1">{{ description }}</p>
-      <v-chip label color="accent">
+      <v-chip label color="primary" dark>
         {{ publishedAt.toLocaleDateString() }}
       </v-chip>
-      <v-chip label v-for="tag of tags" :key="tag.title" :to="tag.path">
-        #{{ tag.title }}
+      <v-chip label v-for="tag of tags" :key="tag.title" outlined>
+        {{ tag.title }}
       </v-chip>
     </v-card-text>
   </v-card>

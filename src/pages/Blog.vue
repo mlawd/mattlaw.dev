@@ -9,7 +9,7 @@
       <v-row justify="center" dense>
         <v-col
           cols="12"
-          md="6"
+          sm="6"
           lg="4"
           xl="3"
           v-for="({ node: blog }, i) in $page.allPost.edges"

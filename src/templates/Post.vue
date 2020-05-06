@@ -5,15 +5,20 @@
         <v-row>
           <v-col cols="12" md="10" xl="8">
             <h1 class="mb-2">{{ $page.post.title }}</h1>
-            <v-chip label color="accent">
+            <v-chip label color="primary" dark>
               {{ new Date($page.post.published).toLocaleDateString() }}
+            </v-chip>
+            <v-chip label>
+              Time to read: {{ $page.post.timeToRead }} minutes
             </v-chip>
             <v-chip
               label
-              v-for="tag of $page.post.tags.map(t => t.id)"
-              :key="tag"
+              v-for="tag of $page.post.tags"
+              :key="tag.title"
+              :to="tag.path"
+              outlined
             >
-              #{{ tag }}
+              {{ tag.title }}
             </v-chip>
           </v-col>
           <v-col cols="12" md="10" xl="7">
@@ -29,9 +34,6 @@
             </figure>
           </v-col>
           <v-col cols="12" md="10" xl="5">
-            <v-chip label color="accent" class="mb-4">
-              Time to read: {{ $page.post.timeToRead }} minutes
-            </v-chip>
             <div v-html="$page.post.content"></div>
           </v-col>
         </v-row>
@@ -53,7 +55,8 @@ query Post ($path: String!) {
     published
     timeToRead
     tags {
-      id
+			title
+			path
     }
   }
 }
@@ -73,7 +76,7 @@ export default {
           vmid: 'keywords',
           name: 'keywords',
           content: post.tags.reduce((acc, cur) => {
-            acc += acc === '' ? cur.id : `, ${cur.id}`;
+            acc += acc === '' ? cur.id : `,${cur.id}`;
             return acc;
           }, ''),
         },
@@ -164,6 +167,18 @@ img {
       border-left: 5px solid var(--v-primary-base);
       padding-left: 10px;
       margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: transparent;
+
+      code {
+        width: 100%;
+
+        &::before {
+          content: '';
+        }
+      }
     }
   }
 }

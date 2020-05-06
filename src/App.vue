@@ -4,7 +4,7 @@
       <v-toolbar-items>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-btn to="/" icon v-on="on">
+            <v-btn to="/" icon v-on="on" aria-label="Home">
               <v-icon dark>{{ mdiHome }}</v-icon>
             </v-btn>
           </template>
@@ -12,7 +12,7 @@
         </v-tooltip>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-btn to="/about" icon v-on="on">
+            <v-btn to="/about" icon v-on="on" aria-label="About">
               <v-icon>{{ mdiClipboardAccountOutline }}</v-icon>
             </v-btn>
           </template>
@@ -20,7 +20,7 @@
         </v-tooltip>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-btn to="/blog" icon v-on="on">
+            <v-btn to="/blog" icon v-on="on" aria-label="Blog">
               <v-icon>{{ mdiNewspaper }}</v-icon>
             </v-btn>
           </template>
@@ -36,7 +36,7 @@
               href="https://github.com/np-matt"
               target="_blank"
               role="button"
-              ariaLabel="GitHub"
+              aria-label="GitHub"
               rel="noopener"
               v-on="on"
             >
@@ -52,7 +52,7 @@
               href="https://twitter.com/Northern_Pariah"
               target="_blank"
               role="button"
-              ariaLabel="Twitter"
+              aria-label="Twitter"
               rel="noopener"
               v-on="on"
             >
@@ -68,7 +68,7 @@
               href="https://www.linkedin.com/in/mattlawdev"
               target="_blank"
               role="button"
-              ariaLabel="LinkedIn"
+              aria-label="LinkedIn"
               rel="noopener"
               v-on="on"
             >

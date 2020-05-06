@@ -3,18 +3,31 @@
     <v-container fill-height>
       <v-row class="ma-0" justify="center">
         <v-col cols="12" xl="8" class="text-right">
-          <g-image src="~/assets/img/avatar.png" width="200" height="200" />
+          <g-image
+            src="~/assets/img/avatar.png"
+            width="200"
+            height="200"
+            alt="Matt Law - Software Developer"
+          />
           <h1 class="pa-2 fade-slide wait-2">Matt Law</h1>
           <h2 class="pb-2 pr-2 pb-md-4 fade-slide wait-4">.dev</h2>
           <Icon :path="meIcon" to="/about" class="fade-in wait-3">About</Icon>
           <Icon :path="blogIcon" to="/blog" class="fade-in wait-4">Blog</Icon>
+          <Icon
+            :path="emailIcon"
+            to="mailto:me@mattlaw.dev"
+            class="fade-in wait-4"
+          >
+            Email
+          </Icon>
           <Icon
             :path="mdiGithub"
             to="https://github.com/np-matt"
             target="_blank"
             role="button"
             ariaLabel="GitHub"
-            rel="noopener" class="fade-in wait-5"
+            rel="noopener"
+            class="fade-in wait-5"
           >
             GitHub
           </Icon>
@@ -24,7 +37,8 @@
             target="_blank"
             role="button"
             ariaLabel="Twitter"
-            rel="noopener" class="fade-in wait-6"
+            rel="noopener"
+            class="fade-in wait-6"
           >
             Twitter
           </Icon>
@@ -34,7 +48,8 @@
             target="_blank"
             role="button"
             aria-label="LinkedIn"
-            rel="noopener" class="fade-in wait-7"
+            rel="noopener"
+            class="fade-in wait-7"
           >
             LinkedIn
           </Icon>
@@ -53,6 +68,7 @@ import {
   mdiClipboardAccountOutline,
   mdiNewspaper,
   mdiCodeJson,
+  mdiAt,
 } from '@mdi/js';
 import Icon from '../components/Icon.vue';
 
@@ -63,6 +79,7 @@ export default Vue.extend({
       mdiTwitter,
       mdiGithub,
       mdiLinkedin,
+      emailIcon: mdiAt,
       meIcon: mdiClipboardAccountOutline,
       blogIcon: mdiNewspaper,
       projectsIcon: mdiCodeJson,
@@ -95,7 +112,7 @@ h2 {
   }
 }
 
-.slide-down{
+.slide-down {
   animation: slideY 0.5s forwards;
   transform: translateY(-20px);
 }
@@ -105,7 +122,7 @@ h2 {
   opacity: 0;
 }
 
-.fade-slide{
+.fade-slide {
   opacity: 0;
   transform: translateY(-20px);
   animation: fadein 0.5s forwards, slideY 0.5s forwards;
