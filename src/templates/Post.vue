@@ -59,6 +59,63 @@ query Post ($path: String!) {
 }
 </page-query>
 
+<script>
+export default {
+  metaInfo() {
+    const { post } = this.$page;
+    return {
+      title: post.title,
+      meta: [
+        { vmid: 'description', name: 'description', content: post.description },
+        { vmid: 'og:title', property: 'og:title', content: post.title },
+        { vmid: 'author', name: 'author', content: 'Matt Law' },
+        {
+          vmid: 'keywords',
+          name: 'keywords',
+          content: post.tags.reduce((acc, cur) => {
+            acc += acc === '' ? cur.id : `, ${cur.id}`;
+            return acc;
+          }, ''),
+        },
+        {
+          vmid: 'og:type',
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          vmid: 'og:description',
+          property: 'og:description',
+          content: post.description,
+        },
+        {
+          vmid: 'og:image',
+          property: 'og:image',
+          content: `https://www.mattlaw.dev/assets/static/content/blog/${
+            post.heroUrl
+          }`,
+        },
+        {
+          vmid: 'og:url',
+          property: 'og:url',
+          content: `https://www.mattlaw.dev${post.path}`,
+        },
+        {
+          vmid: 'twitter:card',
+          name: 'twitter:card',
+          content: post.description,
+        },
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://www.mattlaw.dev${post.path}`,
+        },
+      ],
+    };
+  },
+};
+</script>
+
 <style lang="scss" scoped>
 img {
   width: 100%;
