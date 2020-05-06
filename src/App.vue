@@ -79,9 +79,7 @@
         </v-tooltip>
       </v-toolbar-items>
     </v-app-bar>
-    <transition name="fade" mode="out-in">
-      <router-view />
-    </transition>
+    <router-view />
     <v-btn fab fixed bottom right v-if="isDev">
       {{ $vuetify.breakpoint.name }}
     </v-btn>
@@ -148,15 +146,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

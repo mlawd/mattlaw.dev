@@ -1,8 +1,8 @@
 <template>
   <Layout>
     <v-container>
-      <v-row justify="center">
-        <v-col cols="12" md="10">
+      <v-row>
+        <v-col cols="12" md="10" xl="8">
           <h1>Hey, I'm Matt!</h1>
         </v-col>
         <v-col cols="12" md="6">

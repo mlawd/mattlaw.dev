@@ -1,8 +1,8 @@
 <template>
   <Layout>
-    <v-container fluid>
-      <v-row justify="center">
-        <v-col cols="12" md="10">
+    <v-container>
+      <v-row>
+        <v-col cols="12" md="10" xl="8">
           <h1>Recent Blogs</h1>
         </v-col>
       </v-row>

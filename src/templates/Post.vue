@@ -1,24 +1,41 @@
 <template>
   <Layout>
     <v-container>
-      <v-row justify="center">
-        <v-col cols="12" md="10" xl="6" class="article">
-          <article>
-            <h1>{{ $page.post.title }}</h1>
-            <figure class="mb-8">
+      <article class="article">
+        <v-row>
+          <v-col cols="12" md="10" xl="8">
+            <h1 class="mb-2">{{ $page.post.title }}</h1>
+            <v-chip label color="accent">
+              {{ new Date($page.post.published).toLocaleDateString() }}
+            </v-chip>
+            <v-chip
+              label
+              v-for="tag of $page.post.tags.map(t => t.id)"
+              :key="tag"
+            >
+              #{{ tag }}
+            </v-chip>
+          </v-col>
+          <v-col cols="12" md="10" xl="7">
+            <figure>
               <g-image
                 :src="require(`!!assets-loader!@blogs/${$page.post.heroUrl}`)"
-                :alt="title"
+                :alt="$page.post.title"
               />
               <figcaption
                 v-html="$page.post.heroCaption"
                 class="text-center"
               ></figcaption>
             </figure>
+          </v-col>
+          <v-col cols="12" md="10" xl="5">
+            <v-chip label color="accent" class="mb-4">
+              Time to read: {{ $page.post.timeToRead }} minutes
+            </v-chip>
             <div v-html="$page.post.content"></div>
-          </article>
-        </v-col>
-      </v-row>
+          </v-col>
+        </v-row>
+      </article>
     </v-container>
   </Layout>
 </template>
@@ -33,6 +50,8 @@ query Post ($path: String!) {
 		heroCaption
     timeToRead
     path  
+    published
+    timeToRead
     tags {
       id
     }
@@ -41,11 +60,16 @@ query Post ($path: String!) {
 </page-query>
 
 <style lang="scss" scoped>
-.article {
-  img {
-    width: 100%;
-  }
+img {
+  width: 100%;
+}
 
+.v-chip {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.article {
   ::v-deep {
     h2,
     h3,
