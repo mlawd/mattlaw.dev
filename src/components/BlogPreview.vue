@@ -12,7 +12,9 @@
       <v-chip label color="accent">
         {{ publishedAt.toLocaleDateString() }}
       </v-chip>
-      <v-chip label v-for="tag of tags" :key="tag">#{{ tag }}</v-chip>
+      <v-chip label v-for="tag of tags" :key="tag.title" :to="tag.path">
+        #{{ tag.title }}
+      </v-chip>
     </v-card-text>
   </v-card>
 </template>

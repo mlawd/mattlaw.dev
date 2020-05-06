@@ -23,7 +23,7 @@
               :title="blog.title"
               :description="blog.description"
               :publishedAt="new Date(blog.published)"
-              :tags="blog.tags.map(t => t.title)"
+              :tags="blog.tags"
               :slug="blog.path"
               :hero="blog.heroUrl"
             />
@@ -47,6 +47,7 @@ query {
         timeToRead
         tags {
           title
+					path
         }
         published
       }
