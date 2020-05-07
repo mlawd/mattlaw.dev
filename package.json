@@ -1,32 +1,34 @@
 {
-  "name": "mattlaw.dev.gs",
+  "name": "mattlaw.dev",
+  "version": "2.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/np-matt/mattlaw.dev.git",
+  "author": "Matthew Law <me@mattlaw.dev>",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "build": "gridsome build",
-    "develop": "gridsome develop",
-    "explore": "gridsome explore"
+    "develop": "gridsome develop"
   },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.0",
-    "@gridsome/remark-prismjs": "^0.3.0",
-    "axios": "^0.19.2",
-    "gridsome": "^0.7.13",
-    "gridsome-plugin-netlify-cms": "^1.0.9",
+    "@vue/composition-api": "^0.5.0",
+    "gridsome": "^0.7.14",
     "gridsome-plugin-rss": "^1.2.0",
-    "gridsome-source-graphql-prismic": "^0.1.6",
-    "netlify-cms": "^2.10.30",
-    "prismic-dom": "^2.1.0",
-    "prismic-javascript": "^2.1.5",
-    "prismic-vue": "^2.0.0",
-    "vue-disqus": "^3.0.5",
-    "vuetify": "^2.2.15",
-    "vuetify-loader": "^1.4.3"
+    "vuetify": "^2.2.26"
   },
   "devDependencies": {
+    "@gridsome/plugin-sitemap": "^0.2.3",
+    "@gridsome/remark-prismjs": "^0.3.0",
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.5.0",
-    "sass": "^1.26.2",
-    "sass-loader": "^7.3.1",
-    "webpack-node-externals": "^1.7.2"
+    "@mdi/js": "^5.1.45",
+    "deepmerge": "^4.2.2",
+    "fibers": "^5.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "7.3.1",
+    "ts-loader": "^7.0.2",
+    "typescript": "^3.8.3",
+    "vuetify-loader": "^1.4.3"
   }
 }

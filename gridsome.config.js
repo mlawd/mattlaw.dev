@@ -1,28 +1,16 @@
-// This is where project configuration and plugin options are located.
-// Learn more: https://gridsome.org/docs/config
-
-// Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
-
-const nodeExternals = require('webpack-node-externals');
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
-
 module.exports = {
-  siteName: 'MattLaw.Dev',
-  titleTemplate: '%s - MattLaw.dev',
+  siteName: 'MattLaw.dev',
+  siteUrl: 'https://www.mattlaw.dev',
   plugins: [
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'posts/**/*.md',
+        baseDir: './content',
+        path: 'blog/**/*.md',
         typeName: 'Post',
-        remark: {
-          plugins: ['@gridsome/remark-prismjs'],
-        },
         refs: {
           tags: {
             typeName: 'Tag',
-            route: '/tag/:id',
             create: true,
           },
         },
@@ -34,6 +22,22 @@ module.exports = {
         id: 'UA-142705115-2',
         beforeFirstHit() {
           Vue.$ga.set('anonymizeIp', true);
+        },
+      },
+    },
+    {
+      use: '@gridsome/plugin-sitemap',
+      options: {
+        cacheTime: 600000, // default
+        config: {
+          '/blog/*': {
+            changefreq: 'weekly',
+            priority: 0.5,
+          },
+          '/about': {
+            changefreq: 'monthly',
+            priority: 0.7,
+          },
         },
       },
     },
@@ -58,35 +62,20 @@ module.exports = {
         },
       },
     },
-    {
-      use: `gridsome-plugin-netlify-cms`,
-      options: {
-        publicPath: `/admin`,
-      },
-    },
-    {
-      use: 'gridsome-source-graphql-prismic',
-      options: {
-        url: 'https://mlblog.prismic.io',
-        fieldName: 'Prismic',
-        typeName: 'Prismic',
-        useMasterRef: true,
-      },
-    },
   ],
+  transformers: {
+    remark: {
+      plugins: ['@gridsome/remark-prismjs'],
+      externalLinksRel: ['noopener'],
+      autolinkHeadings: false,
+    },
+  },
   templates: {
-    Post: '/post/:title',
+    Post: '/blog/:title',
+    Tag: '/tag/:title',
   },
-  configureWebpack: {
-    plugins: [new VuetifyLoaderPlugin()],
-  },
-  chainWebpack(config, { isServer }) {
-    if (isServer) {
-      config.externals(
-        nodeExternals({
-          whitelist: [/^vuetify/, /\.css$/, /\?vue&type=style/],
-        })
-      );
-    }
+  chainWebpack: config => {
+    config.resolve.alias.set('@images', '@/assets/img');
+    config.resolve.alias.set('@blogs', '@/../content/blog');
   },
 };

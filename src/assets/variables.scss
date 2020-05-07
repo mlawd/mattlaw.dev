@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque|Roboto:300&display=swap');
+
+$head-font: 'Darker Grotesque', sans-serif;
+$body-font: 'Roboto', sans-serif;
+
+$primary: #224f51;
+$secondary: #c45931;
+$accent: #f60d55;
+
+$bg-color: cadetblue;
+
+$sm: 600px;
+$md: 960px;
+$lg: 1265px;
+$xl: 1921px;
+
+$breakpoints: (
+  'xl': $xl,
+  'lg': $lg,
+  'md': $md,
+  'sm': $sm,
+);
+
+:root {
+  --primary: #224f51;
+  --secondary: #c45931;
+  --accent: #f60d55;
+  --sm: 600px;
+  --md: 960px;
+  --lg: 1264px;
+  --xl: 1920px;
+}

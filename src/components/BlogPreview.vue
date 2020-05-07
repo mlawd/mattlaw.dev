@@ -1,88 +1,97 @@
 <template>
-  <v-card class="zoom ma-2" :to="'post/' + blog._meta.uid">
-    <v-row row wrap :class="{ 'flex-row-reverse': reverse }">
-      <v-col
-        class="pt-0 pb-0"
-        md="4"
-        v-show="!simple && $vuetify.breakpoint.mdAndUp"
-      >
-        <div
-          class="fill"
-          :style="{
-            backgroundImage: 'url(\'' + blog.hero.url + '\')',
-            backgroundPosition: 'center center',
-            backgroundSize: 'cover',
-          }"
-        ></div>
-      </v-col>
-      <v-col
-        class="pt-0 pb-0"
-        cols="12"
-        v-show="simple || $vuetify.breakpoint.smAndDown"
-      >
-        <g-image :src="blog.hero.url" :alt="blog.title.text" />
-      </v-col>
-      <v-col :class="{ md8: !simple }">
-        <v-card-title>
-          <h4 class="display-1">{{ blog.title[0].text }}</h4>
-        </v-card-title>
-        <v-card-text>
-          <p>
-            {{ blog.description[0].text }}
-          </p>
-          <p v-if="!simple">
-            <v-chip v-for="tag of blog._meta.tags" :key="tag" class="ma-1">
-              #{{ tag }}
-            </v-chip>
-          </p>
-        </v-card-text>
-      </v-col>
-    </v-row>
+  <v-card :to="slug">
+    <g-image :src="require(`!!assets-loader!@blogs/${hero}`)" :alt="title" />
+    <v-card-title>
+      <div class="preview-title">
+        <span class="preview-title__bg">&nbsp;</span>
+        <p class="headline mb-0">{{ title }}</p>
+      </div>
+    </v-card-title>
+    <v-card-text class="pt-4">
+      <p class="subtitle-1">{{ description }}</p>
+      <v-chip label color="primary" dark>
+        {{ publishedAt.toLocaleDateString() }}
+      </v-chip>
+      <v-chip label v-for="tag of tags" :key="tag.title" outlined>
+        {{ tag.title }}
+      </v-chip>
+    </v-card-text>
   </v-card>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
   props: {
-    reverse: { type: Boolean },
-    blog: { type: Object },
-    noDescription: { type: Boolean },
-    simple: { type: Boolean },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    publishedAt: { type: Date, required: true },
+    tags: { type: Array, required: true },
+    slug: { type: String, required: true },
+    hero: { type: String, required: true },
   },
-};
+});
 </script>
 
-<style scoped>
-.flex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: hidden;
-}
+<style lang="scss" scoped>
+.v-card {
+  transition: 0.2s;
+  position: relative;
 
-.fill {
-  width: 100%;
-  height: 100%;
-}
+  &:hover {
+    .v-card__title {
+      color: black;
 
-img {
-  width: 100%;
-}
+      .preview-title {
+        &__bg {
+          width: 100%;
+        }
+      }
+    }
+  }
 
-.zoom:hover {
-  cursor: pointer;
-  z-index: 99;
-}
+  .v-card__title {
+    position: absolute;
+    top: 0;
+    transition: 0.5s;
+    background-color: var(--v-primary-base);
+    color: white;
 
-.zoom:hover {
-  transform: scale(1.05);
-}
+    .preview-title {
+      &__bg {
+        transition: 0.2s;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: white;
+      }
+    }
+  }
 
-.zoom {
-  transition: transform 0.2s;
-}
+  .subtitle-1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-h4 {
-  word-break: break-word;
+  .headline {
+    width: 100%;
+    position: relative;
+    word-break: break-word;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+
+  .v-chip {
+    margin-right: 5px;
+    margin-top: 5px;
+  }
 }
 </style>

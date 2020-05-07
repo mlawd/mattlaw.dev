@@ -1,58 +1,85 @@
 <template>
-  <layout>
-    <Post
-      :title="title"
-      :description="description"
-      :hero="hero"
-      :path="path"
-      :body="body"
-      :tags="tags"
-      :uid="uid"
-      :similar="$context.similar"
-    />
-    <client-only>
-      <return-to-top />
-    </client-only>
-  </layout>
+  <Layout>
+    <v-container>
+      <article class="article">
+        <v-row>
+          <v-col cols="12" md="10" xl="8">
+            <h1 class="mb-2">{{ $page.post.title }}</h1>
+            <v-chip label color="primary" dark>
+              {{ new Date($page.post.published).toLocaleDateString() }}
+            </v-chip>
+            <v-chip label>
+              Time to read: {{ $page.post.timeToRead }} minutes
+            </v-chip>
+            <v-chip
+              label
+              v-for="tag of $page.post.tags"
+              :key="tag.title"
+              :to="tag.path"
+              outlined
+            >
+              {{ tag.title }}
+            </v-chip>
+          </v-col>
+          <v-col cols="12" md="10" xl="7">
+            <figure>
+              <g-image
+                :src="require(`!!assets-loader!@blogs/${$page.post.heroUrl}`)"
+                :alt="$page.post.title"
+              />
+              <figcaption
+                v-html="$page.post.heroCaption"
+                class="text-center"
+              ></figcaption>
+            </figure>
+          </v-col>
+          <v-col cols="12" md="10" xl="5">
+            <div v-html="$page.post.content"></div>
+          </v-col>
+        </v-row>
+      </article>
+    </v-container>
+  </Layout>
 </template>
 
-<script>
-import Post from '../components/Post.vue';
-import ReturnToTop from '../components/ReturnToTop.vue';
+<page-query>
+query Post ($path: String!) {
+  post: post (path: $path) {
+    title
+    description
+    content
+		heroUrl
+		heroCaption
+    timeToRead
+    path  
+    published
+    timeToRead
+    tags {
+			title
+			path
+    }
+  }
+}
+</page-query>
 
+<script>
 export default {
-  components: { Post, ReturnToTop },
-  data() {
-    return {
-      title: '',
-      description: '',
-      hero: '',
-      path: '',
-      body: '',
-      tags: [],
-      uid: '',
-    };
-  },
-  created() {
-    this.title = this.$context.post.title[0].text;
-    this.hero = this.$context.post.hero;
-    this.path = this.$context.post._meta.uid;
-    this.body = this.$context.post.body;
-    this.tags = this.$context.post._meta.tags;
-    this.description = this.$context.post.description[0].text;
-    this.uid = this.$context.post._meta.uid;
-  },
-  mounted() {
-    document.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block);
-    });
-  },
   metaInfo() {
+    const { post } = this.$page;
     return {
-      title: this.title,
+      title: post.title,
       meta: [
-        { vmid: 'description', name: 'description', content: this.description },
-        { vmid: 'og:title', property: 'og:title', content: this.title },
+        { vmid: 'description', name: 'description', content: post.description },
+        { vmid: 'og:title', property: 'og:title', content: post.title },
+        { vmid: 'author', name: 'author', content: 'Matt Law' },
+        {
+          vmid: 'keywords',
+          name: 'keywords',
+          content: post.tags.reduce((acc, cur) => {
+            acc += acc === '' ? cur.id : `,${cur.id}`;
+            return acc;
+          }, ''),
+        },
         {
           vmid: 'og:type',
           property: 'og:type',
@@ -61,28 +88,30 @@ export default {
         {
           vmid: 'og:description',
           property: 'og:description',
-          content: this.description,
+          content: post.description,
         },
         {
           vmid: 'og:image',
           property: 'og:image',
-          content: `https://www.mattlaw.dev${this.hero.url}`,
+          content: `https://www.mattlaw.dev/assets/static/content/blog/${
+            post.heroUrl
+          }`,
         },
         {
           vmid: 'og:url',
           property: 'og:url',
-          content: `https://www.mattlaw.dev/prismic/${this.path}`,
+          content: `https://www.mattlaw.dev${post.path}`,
         },
         {
           vmid: 'twitter:card',
           name: 'twitter:card',
-          content: 'summary',
+          content: post.description,
         },
       ],
       link: [
         {
           rel: 'canonical',
-          href: `https://www.mattlaw.dev/prismic/${this.path}`,
+          href: `https://www.mattlaw.dev${post.path}`,
         },
       ],
     };
@@ -90,68 +119,67 @@ export default {
 };
 </script>
 
-<style scoped>
-h1 {
-  padding-bottom: 20px;
-}
-
-#content.padded {
-  padding-right: 3rem;
-}
-
-#content >>> p {
-  font-size: 1.5em !important;
-  line-height: 1.7em;
-  font-weight: 300;
-}
-
-#content >>> blockquote {
-  border-left: 5px solid cadetblue;
-  padding-left: 10px;
-  font-style: italic;
-  color: grey;
-}
-
-#content >>> h2 a {
-  text-decoration: none;
-  color: black;
-}
-
-#content >>> h2 {
-  position: relative;
-}
-
-#content >>> h2:hover::before {
-  content: '#';
-  position: absolute;
-  left: -50px;
-  color: cadetblue;
-}
-
-#content >>> figcaption {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-#content >>> pre code::before {
-  content: '';
-}
-
-#content >>> code.language-text {
-  color: #ccc;
-  line-height: 1.7em;
-}
-
-.v-btn {
-  text-transform: none;
-}
-
-.flex {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
+<style lang="scss" scoped>
 img {
-  max-width: 100%;
+  width: 100%;
+}
+
+.v-chip {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.article {
+  ::v-deep {
+    h2,
+    h3,
+    h4 {
+      position: relative;
+
+      &:hover {
+        &::before {
+          position: absolute;
+          left: -50px;
+          content: '#';
+        }
+      }
+    }
+
+    ol,
+    ul {
+      margin-left: 20px;
+    }
+
+    li {
+      font-size: 24px;
+    }
+
+    a {
+      color: black;
+    }
+
+    p {
+      color: black;
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 5px solid var(--v-primary-base);
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: transparent;
+
+      code {
+        width: 100%;
+
+        &::before {
+          content: '';
+        }
+      }
+    }
+  }
 }
 </style>
