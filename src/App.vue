@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-app-bar color="primary" dark dense fixed :value="showBar">
+  <v-app :class="{ 'bg-green': $route.name === 'home' }">
+    <v-app-bar color="primary" dark dense fixed :value="showBar" app>
       <v-toolbar-items>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
@@ -80,7 +80,7 @@
       </v-toolbar-items>
     </v-app-bar>
     <router-view />
-    <v-btn fab fixed bottom right v-if="isDev">
+    <v-btn fab fixed bottom left v-if="isDev">
       {{ $vuetify.breakpoint.name }}
     </v-btn>
   </v-app>
