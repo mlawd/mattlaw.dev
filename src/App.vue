@@ -108,18 +108,6 @@ import {
 import { watch, ref } from '@vue/composition-api';
 
 export default {
-  metaInfo() {
-    return {
-      title: this.$static.metadata.siteName,
-      meta: [
-        {
-          key: 'description',
-          name: 'description',
-          content: this.$static.metadata.siteDescription,
-        },
-      ],
-    };
-  },
   setup(
     _,
     {

@@ -62,6 +62,11 @@ import BlogPreview from '../components/BlogPreview.vue';
 
 export default Vue.extend({
   components: { BlogPreview },
+  metaInfo() {
+    return {
+      title: 'Recent blogs',
+    };
+  },
 });
 </script>
 

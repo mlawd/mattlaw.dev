@@ -78,5 +78,10 @@ export default {
       return this.$page.allTag.edges[0].node.belongsTo.edges;
     },
   },
+  metaInfo() {
+    return {
+      title: `Blogs about ${this.tag}`,
+    };
+  },
 };
 </script>

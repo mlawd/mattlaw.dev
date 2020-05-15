@@ -14,3 +14,13 @@
     </v-container>
   </Layout>
 </template>
+
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: 'About me',
+    };
+  },
+};
+</script>

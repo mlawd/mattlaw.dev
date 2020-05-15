@@ -81,11 +81,11 @@ export default {
     return {
       title: post.title,
       meta: [
-        { vmid: 'description', name: 'description', content: post.description },
-        { vmid: 'og:title', property: 'og:title', content: post.title },
-        { vmid: 'author', name: 'author', content: 'Matt Law' },
+        { key: 'description', name: 'description', content: post.description },
+        { key: 'og:title', property: 'og:title', content: post.title },
+        { key: 'author', name: 'author', content: 'Matt Law' },
         {
-          vmid: 'keywords',
+          key: 'keywords',
           name: 'keywords',
           content: post.tags.reduce((acc, cur) => {
             acc += acc === '' ? cur.id : `,${cur.id}`;
@@ -93,29 +93,29 @@ export default {
           }, ''),
         },
         {
-          vmid: 'og:type',
+          key: 'og:type',
           property: 'og:type',
           content: 'article',
         },
         {
-          vmid: 'og:description',
+          key: 'og:description',
           property: 'og:description',
           content: post.description,
         },
         {
-          vmid: 'og:image',
+          key: 'og:image',
           property: 'og:image',
           content: `https://www.mattlaw.dev/assets/static/content/blog/${
             post.heroUrl
           }`,
         },
         {
-          vmid: 'og:url',
+          key: 'og:url',
           property: 'og:url',
           content: `https://www.mattlaw.dev${post.path}`,
         },
         {
-          vmid: 'twitter:card',
+          key: 'twitter:card',
           name: 'twitter:card',
           content: post.description,
         },

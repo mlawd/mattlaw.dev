@@ -74,6 +74,19 @@ import Icon from '../components/Icon.vue';
 
 export default Vue.extend({
   components: { Icon },
+  metaInfo() {
+    return {
+      title: 'Welcome!',
+      meta: [
+        {
+          key: 'description',
+          name: 'description',
+          content:
+            'Personal portfolio website for Matthew Law, a web & software developer living in Nottingham',
+        },
+      ],
+    };
+  },
   setup() {
     return {
       mdiTwitter,
