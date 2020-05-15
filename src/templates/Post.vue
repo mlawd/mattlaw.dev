@@ -1,28 +1,39 @@
 <template>
   <Layout>
-    <v-container>
-      <article class="article">
-        <v-row>
-          <v-col cols="12" md="10" xl="8">
-            <h1 class="mb-2">{{ $page.post.title }}</h1>
-            <v-chip label color="primary" dark>
-              {{ new Date($page.post.published).toLocaleDateString() }}
-            </v-chip>
-            <v-chip label>
-              Time to read: {{ $page.post.timeToRead }} minutes
-            </v-chip>
-            <v-chip
-              label
-              v-for="tag of $page.post.tags"
-              :key="tag.title"
-              :to="tag.path"
-              outlined
-            >
-              {{ tag.title }}
-            </v-chip>
-          </v-col>
-          <v-col cols="12" md="10" xl="7">
-            <figure>
+    <v-container fluid class="mb-8">
+      <v-row class="mb-8">
+        <v-col sm="2" offset-lg="1" class="pt-6 text-right">
+          <Social
+            :url="`https://www.mattlaw.dev${$page.post.path}`"
+            :collapse="$vuetify.breakpoint.xsOnly"
+            :title="$page.post.title"
+            :description="$page.post.description"
+            :tags="$page.post.tags.map(t => t.title)"
+          />
+        </v-col>
+        <v-col cols="12" sm="10" md="8" lg="6">
+          <article class="article">
+            <h1 class="mb-8">{{ $page.post.title }}</h1>
+            <div class="mb-3 mt-3">
+              <v-chip label color="primary" dark>
+                {{ new Date($page.post.published).toLocaleDateString() }}
+              </v-chip>
+              <v-chip label>
+                Time to read: {{ $page.post.timeToRead }} minutes
+              </v-chip>
+              <br v-if="$vuetify.breakpoint.xsOnly" />
+              <v-chip
+                label
+                v-for="tag of $page.post.tags"
+                :key="tag.title"
+                :to="tag.path"
+                outlined
+              >
+                {{ tag.title }}
+              </v-chip>
+            </div>
+            <p>{{ $page.post.description }}</p>
+            <figure class="mb-8">
               <g-image
                 :src="require(`!!assets-loader!@blogs/${$page.post.heroUrl}`)"
                 :alt="$page.post.title"
@@ -32,12 +43,10 @@
                 class="text-center"
               ></figcaption>
             </figure>
-          </v-col>
-          <v-col cols="12" md="10" xl="5">
             <div v-html="$page.post.content"></div>
-          </v-col>
-        </v-row>
-      </article>
+          </article>
+        </v-col>
+      </v-row>
     </v-container>
   </Layout>
 </template>
@@ -63,7 +72,10 @@ query Post ($path: String!) {
 </page-query>
 
 <script>
+import Social from '../components/Social.vue';
+
 export default {
+  components: { Social },
   metaInfo() {
     const { post } = this.$page;
     return {
@@ -141,6 +153,7 @@ img {
           position: absolute;
           left: -50px;
           content: '#';
+          color: var(--v-primary-base);
         }
       }
     }
@@ -152,14 +165,6 @@ img {
 
     li {
       font-size: 24px;
-    }
-
-    a {
-      color: black;
-    }
-
-    p {
-      color: black;
     }
 
     blockquote {
