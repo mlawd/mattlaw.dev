@@ -1,7 +1,7 @@
 ---
 title: GraphQL with .NET
 heroUrl: graphql-with-dotnet/graph.jpg
-heroCaption: <span>Photo by <a href="https://unsplash.com/@isaacmsmith?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Isaac Smith</a> on <a href="/s/photos/isaac-smith-graph?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+heroCaption: <span>Photo by <a href="https://unsplash.com/@isaacmsmith?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Isaac Smith</a> on <a href="https://unsplash.com/@isaacmsmith?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
 description: Creating a GraphQL API using DotNet Core 3 and graphql-dotnet
 published: 2019-11-03T00:00:00Z
 tags:
