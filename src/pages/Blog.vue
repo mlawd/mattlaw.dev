@@ -59,13 +59,23 @@ query {
 <script lang="ts">
 import Vue from 'vue';
 import BlogPreview from '../components/BlogPreview.vue';
+import { setMeta } from '../set-meta';
 
 export default Vue.extend({
   components: { BlogPreview },
   metaInfo() {
-    return {
-      title: 'Recent blogs',
-    };
+    const keywords = Array.from(
+      this.$page.allPost.edges.reduce((acc, { node }) => {
+        node.tags.forEach(t => acc.add(t.title));
+        return acc;
+      }, new Set(['software developer', 'web developer', 'developer', 'vuejs', 'dotnet', '.net', 'javascript', 'blog', 'portfolio']))
+    );
+    return setMeta(
+      'Recent Blogs about Software Development',
+      "My name is Matt Law and I'm a Software Developing in Nottingham specialising in all things web. Particularly JavaScript, VueJS, C#, .NET and all things process driven. Here is a place for my blog and portfolio where you can view examples of my work and thoughts as I navigate daily development practices.",
+      keywords,
+      '/blog'
+    );
   },
 });
 </script>

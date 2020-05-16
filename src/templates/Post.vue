@@ -73,60 +73,19 @@ query Post ($path: String!) {
 
 <script>
 import Social from '../components/Social.vue';
+import { setMeta } from '@/set-meta';
 
 export default {
   components: { Social },
   metaInfo() {
     const { post } = this.$page;
-    return {
-      title: post.title,
-      meta: [
-        { key: 'description', name: 'description', content: post.description },
-        { key: 'og:title', property: 'og:title', content: post.title },
-        { key: 'author', name: 'author', content: 'Matt Law' },
-        {
-          key: 'keywords',
-          name: 'keywords',
-          content: post.tags.reduce((acc, cur) => {
-            acc += acc === '' ? cur.id : `,${cur.id}`;
-            return acc;
-          }, ''),
-        },
-        {
-          key: 'og:type',
-          property: 'og:type',
-          content: 'article',
-        },
-        {
-          key: 'og:description',
-          property: 'og:description',
-          content: post.description,
-        },
-        {
-          key: 'og:image',
-          property: 'og:image',
-          content: `https://www.mattlaw.dev/assets/static/content/blog/${
-            post.heroUrl
-          }`,
-        },
-        {
-          key: 'og:url',
-          property: 'og:url',
-          content: `https://www.mattlaw.dev${post.path}`,
-        },
-        {
-          key: 'twitter:card',
-          name: 'twitter:card',
-          content: post.description,
-        },
-      ],
-      link: [
-        {
-          rel: 'canonical',
-          href: `https://www.mattlaw.dev${post.path}`,
-        },
-      ],
-    };
+    return setMeta(
+      post.title,
+      post.description,
+      post.tags,
+      post.path,
+      post.heroUrl
+    );
   },
 };
 </script>

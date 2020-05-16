@@ -16,11 +16,16 @@
 </template>
 
 <script>
+import { setMeta } from '../set-meta';
+
 export default {
   metaInfo() {
-    return {
-      title: 'About me',
-    };
+    return setMeta(
+      'About me & my software development experience',
+      'I (Matt Law) am a software developer in Nottingham (UK). I specialise in Web Technologies such as .NET Core, C#, JavaScript, VueJS, HTML & CSS. I also have experience as a system architect and have worked with a variety of cloud providers such as Azure, AWS & Google Firebase.',
+      [],
+      '/about'
+    );
   },
 };
 </script>

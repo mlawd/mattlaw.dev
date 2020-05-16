@@ -24,11 +24,5 @@ export default function(Vue, { head, appOptions }) {
     },
   });
 
-  head.meta.push({
-    name: 'description',
-    content:
-      'Personal portfolio website for Matthew Law, a web & software developer living in Nottingham',
-  });
-
   require('./assets/styles.scss');
 }

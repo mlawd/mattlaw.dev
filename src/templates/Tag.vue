@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col cols="12" md="10" xl="8">
-          <h1>{{ tag }}</h1>
+          <h1>{{ tag | capitalize }} Posts</h1>
         </v-col>
       </v-row>
       <v-row justify="center" dense>
@@ -40,6 +40,7 @@ query ($id: ID!) {
 	  edges {
 			node {
 		    title
+				path
 			  belongsTo {
 			    edges {
 			      node {
@@ -67,21 +68,35 @@ query ($id: ID!) {
 
 <script>
 import BlogPreview from '../components/BlogPreview.vue';
+import { setMeta } from '../set-meta';
 
 export default {
   components: { BlogPreview },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return '';
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+  },
   computed: {
     tag() {
       return this.$page.allTag.edges[0].node.title;
+    },
+    path() {
+      return this.$page.allTag.edges[0].node.path;
     },
     posts() {
       return this.$page.allTag.edges[0].node.belongsTo.edges;
     },
   },
   metaInfo() {
-    return {
-      title: `Blogs about ${this.tag}`,
-    };
+    return setMeta(
+      `Blogs about ${this.tag}`,
+      `Read all my thoughts about ${this.tag}`,
+      [this.tag],
+      this.path
+    );
   },
 };
 </script>

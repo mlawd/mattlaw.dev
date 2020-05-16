@@ -71,21 +71,17 @@ import {
   mdiAt,
 } from '@mdi/js';
 import Icon from '../components/Icon.vue';
+import { setMeta } from '../set-meta';
 
 export default Vue.extend({
   components: { Icon },
   metaInfo() {
-    return {
-      title: 'Welcome!',
-      meta: [
-        {
-          key: 'description',
-          name: 'description',
-          content:
-            'Personal portfolio website for Matthew Law, a web & software developer living in Nottingham',
-        },
-      ],
-    };
+    return setMeta(
+      'Welcome to my Software Development Portfolio!',
+      "My name is Matt Law and I'm a Software Developing in Nottingham specialising in all things web. Particularly JavaScript, VueJS, C#, .NET and all things process driven. Here is a place for my blog and portfolio where you can view examples of my work and thoughts as I navigate daily development practices.",
+      [],
+      '/'
+    );
   },
   setup() {
     return {
