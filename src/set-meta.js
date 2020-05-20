@@ -48,12 +48,12 @@ export function setMeta(title, description, tags, path, imageUrl) {
       {
         key: 'og:image',
         property: 'og:image',
-        content: `https://www.mattlaw.dev/assets/static/content/blog/${imageUrl}`,
+        content: `https://mattlaw.dev/assets/static/content/blog/${imageUrl}`,
       },
       {
         key: 'og:url',
         property: 'og:url',
-        content: `https://www.mattlaw.dev${path}`,
+        content: `https://mattlaw.dev${path}`,
       },
       {
         key: 'twitter:card',
