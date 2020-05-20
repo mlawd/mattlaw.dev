@@ -3,7 +3,7 @@ title: Test Driven Development - An Opinion
 heroUrl: test-driven-development/tdd.jpg
 heroCaption: <span>Photo by <a href="https://unsplash.com/@antoine1003?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Antoine Dautry</a> on <a href="https://unsplash.com/@antoine1003?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 description:
-  I've seen a lot of hate recently for TDD. People seems to think it's either
+  I've seen a lot of hate recently for TDD. People seem to think it's either
   completely crazy or massively inefficient. However, done right I think it is
   an invaluable tool for software developers
 published: 2019-11-07T00:00:00Z
