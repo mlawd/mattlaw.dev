@@ -1,6 +1,6 @@
 module.exports = {
   siteName: 'MattLaw.dev',
-  siteUrl: 'https://www.mattlaw.dev',
+  siteUrl: 'https://mattlaw.dev',
   plugins: [
     {
       use: '@gridsome/source-filesystem',

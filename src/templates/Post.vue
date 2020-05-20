@@ -4,7 +4,7 @@
       <v-row class="mb-8">
         <v-col sm="2" offset-lg="1" class="pt-6 text-right">
           <Social
-            :url="`https://www.mattlaw.dev${$page.post.path}`"
+            :url="`https://mattlaw.dev${$page.post.path}`"
             :collapse="$vuetify.breakpoint.xsOnly"
             :title="$page.post.title"
             :description="$page.post.description"
