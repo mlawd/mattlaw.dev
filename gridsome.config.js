@@ -72,7 +72,6 @@ module.exports = {
   },
   templates: {
     Post: '/blog/:title',
-    Tag: '/tag/:title',
   },
   chainWebpack: config => {
     config.resolve.alias.set('@images', '@/assets/img');

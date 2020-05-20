@@ -47,7 +47,6 @@ query {
         timeToRead
         tags {
           title
-					path
         }
         published
       }

@@ -26,7 +26,6 @@
                 label
                 v-for="tag of $page.post.tags"
                 :key="tag.title"
-                :to="tag.path"
                 outlined
               >
                 {{ tag.title }}
@@ -65,7 +64,6 @@ query Post ($path: String!) {
     timeToRead
     tags {
 			title
-			path
     }
   }
 }
