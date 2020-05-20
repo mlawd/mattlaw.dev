@@ -107,6 +107,8 @@ extend `ObjectGraphType` and describe the fields you wish to publish.
 The Movie class for instance:
 
 ```dotnet
+using Newtonsoft.Json;
+
 namespace GqlMovies.Api.Models
 {
 	public class Movie
@@ -118,24 +120,20 @@ namespace GqlMovies.Api.Models
 		public string Tagline { get; set; }
 		public double Popularity { get; set; }
 
-		public double vote_average { private get; set; }
-		public double VoteAverage => vote_average;
+		[JsonProperty(PropertyName = "vote_average")]
+		public double VoteAverage { get; set; }
 
-		public string poster_path { private get; set; }
-		public string PosterPath => poster_path;
+		[JsonProperty(PropertyName = "poster_path")]
+		public string PosterPath { private get; set; }
 
-		public string release_date { private get; set; }
-		public string ReleaseDate => release_date;
+		[JsonProperty(PropertyName = "release_date")]
+		public string ReleaseDate { private get; set; }
 
-		public string imdb_id { private get; set; }
-		public string ImdbId => imdb_id;
+		[JsonProperty(PropertyName = "imdb_id")]
+		public string ImdbId { private get; set; }
 	}
 }
 ```
-
-Notice the weird looking `poster_path` and `PosterPath` properties going on.
-This is to allow the deserialization of JSON responses from The Movie Database
-API (which returns snake_case) and pump out some sweet PascalCase/CamelCase.
 
 This then gets passed in to a `MovieType`:
 
