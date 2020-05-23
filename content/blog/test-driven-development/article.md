@@ -7,7 +7,7 @@ description:
   completely crazy or massively inefficient. However, done right I think it is
   an invaluable tool for software developers
 published: 2019-11-07T00:00:00Z
-tags: 
+tags:
   - process
   - tdd
   - testing
@@ -131,7 +131,7 @@ code anyway? And when it comes down to it, isn't this all that TDD is saying?
 Test without seeing the code? And for the developer, the only way to achieve
 this is to write the tests first.
 
-## [To surmise](#to-surmise)
+## [In summary](#in-summary)
 
 The article in question finishes off with the following:
 
