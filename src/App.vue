@@ -33,7 +33,7 @@
           <template v-slot:activator="{ on }">
             <v-btn
               icon
-              href="https://github.com/np-matt"
+              href="https://github.com/mlawd"
               target="_blank"
               role="button"
               aria-label="GitHub"
@@ -49,7 +49,7 @@
           <template v-slot:activator="{ on }">
             <v-btn
               icon
-              href="https://twitter.com/Northern_Pariah"
+              href="https://twitter.com/mattlawdev"
               target="_blank"
               role="button"
               aria-label="Twitter"

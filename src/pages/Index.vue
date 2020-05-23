@@ -22,7 +22,7 @@
           </Icon>
           <Icon
             :path="mdiGithub"
-            to="https://github.com/np-matt"
+            to="https://github.com/mlawd"
             target="_blank"
             role="button"
             ariaLabel="GitHub"
@@ -33,7 +33,7 @@
           </Icon>
           <Icon
             :path="mdiTwitter"
-            to="https://twitter.com/Northern_Pariah"
+            to="https://twitter.com/mattlawdev"
             target="_blank"
             role="button"
             ariaLabel="Twitter"
