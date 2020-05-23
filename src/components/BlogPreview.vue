@@ -1,17 +1,23 @@
 <template>
   <v-card :to="slug">
-    <g-image :src="require(`!!assets-loader!@blogs/${hero}`)" :alt="title" />
-    <v-card-title>
-      <div class="preview-title">
-        <span class="preview-title__bg">&nbsp;</span>
-        <p class="headline mb-0">{{ title }}</p>
+    <div class="preview">
+      <g-image :src="require(`!!assets-loader!@blogs/${hero}`)" :alt="title" />
+      <v-card-title>
+        <div class="preview-title">
+          <span class="preview-title__bg">&nbsp;</span>
+          <p class="title mb-0">{{ title }}</p>
+        </div>
+      </v-card-title>
+      <div class="description">
+        <p class="subtitle-1">{{ description }}</p>
       </div>
-    </v-card-title>
+    </div>
     <v-card-text class="pt-4">
-      <p class="subtitle-1">{{ description }}</p>
       <v-chip label color="primary" dark>
         {{ publishedAt.toLocaleDateString() }}
       </v-chip>
+      <v-chip label color="secondary" dark> {{ timeToRead }} minutes </v-chip>
+      <br />
       <v-chip label v-for="tag of tags" :key="tag.title" outlined>
         {{ tag.title }}
       </v-chip>
@@ -30,6 +36,7 @@ export default Vue.extend({
     tags: { type: Array, required: true },
     slug: { type: String, required: true },
     hero: { type: String, required: true },
+    timeToRead: { type: Number, required: true },
   },
 });
 </script>
@@ -51,12 +58,34 @@ export default Vue.extend({
     }
   }
 
+  .preview {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 64px 20px 10px;
+  }
+
   .v-card__title {
     position: absolute;
     top: 0;
     transition: 0.5s;
     background-color: var(--v-primary-base);
     color: white;
+    z-index: 99;
 
     .preview-title {
       &__bg {
@@ -72,13 +101,7 @@ export default Vue.extend({
     }
   }
 
-  .subtitle-1 {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .headline {
+  .title {
     width: 100%;
     position: relative;
     word-break: break-word;

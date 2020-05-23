@@ -26,6 +26,7 @@
               :tags="blog.tags"
               :slug="blog.path"
               :hero="blog.heroUrl"
+              :timeToRead="blog.timeToRead"
             />
           </div>
         </v-col>
@@ -83,11 +84,13 @@ export default Vue.extend({
 @keyframes fadein {
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .fade-in {
   animation: fadein 0.5s forwards;
   opacity: 0;
+  transform: translateY(20px);
 }
 </style>

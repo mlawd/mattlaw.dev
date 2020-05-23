@@ -118,6 +118,7 @@ img {
     ol,
     ul {
       margin-left: 20px;
+      margin-bottom: 20px;
     }
 
     li {
