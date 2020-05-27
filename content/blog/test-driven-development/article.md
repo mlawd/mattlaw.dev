@@ -1,7 +1,11 @@
 ---
 title: Test Driven Development - An Opinion
 heroUrl: test-driven-development/tdd.jpg
-heroCaption: <span>Photo by <a href="https://unsplash.com/@antoine1003?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Antoine Dautry</a> on <a href="https://unsplash.com/@antoine1003?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+heroCaption:
+  <span>Photo by <a
+  href="https://unsplash.com/@antoine1003?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Antoine
+  Dautry</a> on <a
+  href="https://unsplash.com/@antoine1003?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 description:
   I've seen a lot of hate recently for TDD. People seem to think it's either
   completely crazy or massively inefficient. However, done right I think it is
@@ -16,7 +20,7 @@ tags:
 I recently read an article proclaiming Test-Driven Development (TDD) to be
 "[fundamentally wrong](https://hackernoon.com/test-driven-development-is-fundamentally-wrong-hor3z4d)".
 It was quite an interesting article, although I believe the author may have been
-a little narrow in their understanding of what TTD is & aims to achieve.
+a little narrow in their understanding of what TDD is & aims to achieve.
 
 ## [Bad Designs and TDD](#bad-designs-and-tdd)
 
@@ -47,7 +51,7 @@ says "Given an object, when I post, then it is mutated in to the Database and a
 201 is returned". I can then write the code that implements it and
 **immediately** validate my implementation.
 
-No external software required. No postman. No curl. Event no database if I'm
+No external software required. No postman. No curl. Even no database if I'm
 being smart with my setup.
 
 Just because designs are fluid though doesn't mean that TDD should be completely
