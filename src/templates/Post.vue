@@ -8,7 +8,7 @@
             :collapse="$vuetify.breakpoint.xsOnly"
             :title="$page.post.title"
             :description="$page.post.description"
-            :tags="$page.post.tags.map(t => t.title)"
+            :tags="$page.post.tags.map((t) => t.title)"
           />
         </v-col>
         <v-col cols="12" sm="10" md="8" lg="6">
@@ -142,6 +142,13 @@ img {
           content: '';
         }
       }
+    }
+
+    hr {
+      width: 40px;
+      border: none;
+      border-top: 10px dotted;
+      margin: 2.5rem auto;
     }
   }
 }

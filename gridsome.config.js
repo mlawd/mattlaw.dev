@@ -6,7 +6,7 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         baseDir: './content',
-        path: 'blog/**/*.md',
+        path: 'blog/**/article.md',
         typeName: 'Post',
         refs: {
           tags: {
