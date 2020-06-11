@@ -9,9 +9,6 @@
       <v-row justify="center" dense>
         <v-col
           cols="12"
-          sm="6"
-          lg="4"
-          xl="3"
           v-for="({ node: blog }, i) in $page.allPost.edges"
           :key="blog.path"
         >
@@ -58,7 +55,7 @@ query {
 
 <script lang="ts">
 import Vue from 'vue';
-import BlogPreview from '../components/BlogPreview.vue';
+import BlogPreview from '../components/BlogPreviewHorizontal.vue';
 import { setMeta } from '../set-meta';
 
 export default Vue.extend({
