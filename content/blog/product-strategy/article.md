@@ -37,19 +37,19 @@ pay for these things, it shows they're as committed to you as you are to them.
 ## The Secret Weapon to Finding Focus
 
 The first talk of the day was delivered by [Melissa
-Perry][https://twitter.com/lissijean] and it was a fantastic start to the
+Perry](https://twitter.com/lissijean) and it was a fantastic start to the
 conference.
 
 The talk was about keeping laser-focused when defining your product strategy and
 ensuring that your organisation isn't falling into "The Build Trap".
 
-The Build Trap The Build Trap is a common pitfall that product teams can quite
-easily fall into. The trap snares organisations that get over-eager with regards
-to building new features. They dive into developing as many new features as
-possible instead of taking the time to analyse where their effort should be
-pointed for maximum returns. This was referred to as "Peanut Buttering", where
-you spread your development team too thin working away (and spending money) on
-multiple features that end up either sub-parr or not required at all.
+The Build Trap is a common pitfall that product teams can quite easily fall
+into. The trap snares organisations that get over-eager with regards to building
+new features. They dive into developing as many new features as possible instead
+of taking the time to analyse where their effort should be pointed for maximum
+returns. This was referred to as "Peanut Buttering", where you spread your
+development team too thin working away (and spending money) on multiple features
+that end up either sub-parr or not required at all.
 
 This gives us the feeling of _fake progress_, where we are creating plenty of
 output but none of it is valuable. Interestingly, parallels could be drawn
@@ -93,9 +93,9 @@ and was centred around the premise of empowering teams to work towards outcomes
 instead of output.
 
 Josh argued that definitions are becoming increasingly important and defined an
-outcome as "A change in human behaviour that creates value". Compare this is an
-output, which is something that simply meets requirements. This might seem like
-a small difference, but it is key.
+outcome as "A change in human behaviour that creates value". Whereas an output
+which is something that simply meets requirements. This might seem like a small
+difference, but it is key.
 
 For me, outcomes over output is not a new concept. It is something I often talk
 about with a couple of developer friends of mine, 1 of which works in an
@@ -113,7 +113,7 @@ change.
 The left-most 3 items build into the outputs, that is what you create to try and
 achieve your impact.
 
-A whilst you may meet the requirements for your outputs (and therefore,
+And whilst you may meet the requirements for your outputs (and therefore,
 traditionally congratulate yourselves on a job well done), if the outcomes
 aren't met (aka if the behaviours aren't changed), then you don't achieve your
 impact and therefore your whole project is a failure.
