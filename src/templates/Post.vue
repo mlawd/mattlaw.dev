@@ -115,6 +115,11 @@ img {
       }
     }
 
+    img {
+      display: block;
+      margin: auto;
+    }
+
     ol,
     ul {
       margin-left: 20px;
