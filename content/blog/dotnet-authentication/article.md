@@ -8,7 +8,7 @@ heroCaption:
   href="https://unsplash.com/s/photos/cookie?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 description:
   Adding simple custom cookie-based authentication to a .NET core 3.1 app
-published: 2020-21-09T00:00:00Z
+published: 2020-09-21T00:00:00Z
 tags:
   - authentication
   - dotnet
