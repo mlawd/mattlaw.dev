@@ -63,7 +63,7 @@ export default Vue.extend({
   metaInfo() {
     const keywords = Array.from(
       this.$page.allPost.edges.reduce((acc, { node }) => {
-        node.tags.forEach(t => acc.add(t.title));
+        node.tags.forEach((t) => acc.add(t.title));
         return acc;
       }, new Set(['software developer', 'web developer', 'developer', 'vuejs', 'dotnet', '.net', 'javascript', 'blog', 'portfolio']))
     );

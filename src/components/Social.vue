@@ -102,11 +102,7 @@ export default {
       },
       linkedin() {
         window.open(
-          `https://www.linkedin.com/shareArticle?mini=true&url=${
-            props.url
-          }&title=${props.title}&summary=${
-            props.description
-          }&source=mattlaw.dev`,
+          `https://www.linkedin.com/shareArticle?mini=true&url=${props.url}&title=${props.title}&summary=${props.description}&source=mattlaw.dev`,
           '',
           'left=200,top=100,width=600,height=500,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
         );
