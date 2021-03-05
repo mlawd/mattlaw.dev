@@ -1,5 +1,5 @@
 <template>
-  <v-card :to="slug">
+  <v-card class="fill-height d-flex flex-column" :to="slug">
     <div class="preview">
       <g-image :src="require(`!!assets-loader!@blogs/${hero}`)" :alt="title" />
       <v-card-title>
@@ -8,19 +8,21 @@
           <p class="title mb-0">{{ title }}</p>
         </div>
       </v-card-title>
-      <div class="description">
-        <p class="subtitle-1">{{ description }}</p>
-      </div>
     </div>
-    <v-card-text class="pt-4">
-      <v-chip label color="primary" dark>
-        {{ publishedAt.toLocaleDateString() }}
-      </v-chip>
-      <v-chip label color="secondary" dark> {{ timeToRead }} minutes </v-chip>
-      <br />
-      <v-chip label v-for="tag of tags" :key="tag.title" outlined>
-        {{ tag.title }}
-      </v-chip>
+    <v-card-text
+      class="pt-4 flex-grow-1 d-flex flex-column justify-space-between"
+    >
+      <p class="subtitle-1">{{ description }}</p>
+      <span>
+        <v-chip label color="primary" dark>
+          {{ publishedAt.toLocaleDateString() }}
+        </v-chip>
+        <v-chip label color="secondary" dark> {{ timeToRead }} minutes </v-chip>
+        <br />
+        <v-chip label v-for="tag of tags" :key="tag.title" outlined>
+          {{ tag.title }}
+        </v-chip>
+      </span>
     </v-card-text>
   </v-card>
 </template>
@@ -64,6 +66,7 @@ export default Vue.extend({
     flex-direction: column;
   }
 
+  /*
   .description {
     position: absolute;
     top: 0;
@@ -78,6 +81,7 @@ export default Vue.extend({
     text-align: center;
     padding: 64px 20px 10px;
   }
+  */
 
   .v-card__title {
     position: absolute;

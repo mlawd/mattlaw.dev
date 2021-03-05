@@ -3,17 +3,20 @@
     <v-container>
       <v-row>
         <v-col cols="12" md="10" xl="8">
-          <h1>Recent Blogs</h1>
+          <h1 class="mb-8">Recent Blogs</h1>
         </v-col>
       </v-row>
       <v-row justify="center" dense>
         <v-col
           cols="12"
+          sm="6"
+          lg="4"
+          xl="3"
           v-for="({ node: blog }, i) in $page.allPost.edges"
           :key="blog.path"
         >
           <div
-            class="fade-in"
+            class="fade-in fill-height"
             :style="{ 'animation-delay': `calc(0.3s * ${i}` }"
           >
             <BlogPreview
@@ -55,10 +58,10 @@ query {
 
 <script lang="ts">
 import Vue from 'vue';
-import BlogPreview from '../components/BlogPreviewHorizontal.vue';
+import BlogPreview from '../components/BlogPreview.vue';
 import { setMeta } from '../set-meta';
 
-export default Vue.extend({
+export default {
   components: { BlogPreview },
   metaInfo() {
     const keywords = Array.from(
@@ -74,7 +77,7 @@ export default Vue.extend({
       '/blog'
     );
   },
-});
+};
 </script>
 
 <style lang="scss" scoped>
@@ -89,5 +92,10 @@ export default Vue.extend({
   animation: fadein 0.5s forwards;
   opacity: 0;
   transform: translateY(20px);
+}
+
+.fill-height {
+  position: relative;
+  height: 100%;
 }
 </style>
