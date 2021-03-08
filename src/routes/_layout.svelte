@@ -41,6 +41,7 @@
     @apply text-primary;
     font-size: 36px;
     font-weight: 700;
+    line-height: 42px;
   }
 
   h2 {
