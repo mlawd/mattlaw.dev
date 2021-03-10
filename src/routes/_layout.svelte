@@ -93,10 +93,6 @@
     font-weight: 700;
   }
 
-  main {
-    max-width: 300px;
-  }
-
   .hero {
     background-image: linear-gradient(
         90deg,
@@ -118,16 +114,10 @@
     .hero__text {
       max-width: 400px;
     }
-    main {
-      max-width: 400px;
-    }
   }
 
   @screen md {
     .hero__text {
-      max-width: 600px;
-    }
-    main {
       max-width: 600px;
     }
   }
