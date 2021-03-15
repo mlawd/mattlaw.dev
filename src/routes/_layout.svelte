@@ -34,7 +34,7 @@
       <Menu size="24px" />
     {/if}
   </span>
-  <main class="mx-auto py-8">
+  <main class="mx-auto py-8 container">
     <slot />
   </main>
 {/if}

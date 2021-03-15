@@ -7,23 +7,41 @@
       },
       body: JSON.stringify({
         query: `
-        {
-          posts {
-            title
-            excerpt
-            coverImage {
-              fileName
-              url
-            }
-          }
-        }
-        `,
+query {
+  allPost (where: {title:{ matches: "with" } }){
+    title
+    excerpt
+    slug {
+      current
+    }
+    categories {
+      title
+    }
+    mainImage {
+      asset {
+        originalFilename
+        url
+      }
+    }
+  }
+}`,
       }),
     });
 
-    const { data } = await resp.json();
+    const { allPost } = await resp.json();
 
-    return data;
+    return {
+      posts: allPost.map((p) => ({
+        title: p.title,
+        except: p.excerpt,
+        slug: `blog/${p.slug.current}`,
+        categories: p.categories.map((c) => c.title),
+        image: {
+          url: p.mainImage.asset.url,
+          filename: p.mainImage.asset.fileName,
+        },
+      })),
+    };
   }
 </script>
 
@@ -41,9 +59,11 @@
 
 <h1>.blog</h1>
 
-{#each posts as post}
-  <PostPreview {...post} />
-{/each}
+<div class="grid lg:grid-cols-3">
+  {#each posts as post}
+    <PostPreview {...post} />
+  {/each}
+</div>
 
 <style>
 </style>
