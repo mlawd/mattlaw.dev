@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   purge: {
     mode: 'all',
@@ -17,6 +19,8 @@ module.exports = {
       primary: '#F2CC8F',
       secondary: '#F4F1DE',
       accent: '#3d405b',
+      cta: '#81b29a',
+      gray: colors.coolGray,
     },
     extend: {
       backgroundImage: (theme) => ({
@@ -28,7 +32,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      animation: ['hover', 'focus'],
+    },
   },
   plugins: [],
 };

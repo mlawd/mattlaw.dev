@@ -8,9 +8,10 @@
       body: JSON.stringify({
         query: `
 query {
-  allPost (where: {title:{ matches: "with" } }){
+  allPost {
     title
     excerpt
+    publishedAt
     slug {
       current
     }
@@ -33,9 +34,10 @@ query {
     return {
       posts: allPost.map((p) => ({
         title: p.title,
-        except: p.excerpt,
+        excerpt: p.excerpt,
         slug: `blog/${p.slug.current}`,
         categories: p.categories.map((c) => c.title),
+        date: new Date(p.publishedAt),
         image: {
           url: p.mainImage.asset.url,
           filename: p.mainImage.asset.fileName,
@@ -57,13 +59,15 @@ query {
   <title>Blog</title>
 </svelte:head>
 
-<h1>.blog</h1>
+<section class="mx-auto container p-4">
+  <h1 class="mb-4">.blog</h1>
 
-<div class="grid lg:grid-cols-3">
-  {#each posts as post}
-    <PostPreview {...post} />
-  {/each}
-</div>
+  <div class="grid lg:grid-cols-3 xl:grid-cols-4 gap-1.5">
+    {#each posts as post}
+      <PostPreview {...post} />
+    {/each}
+  </div>
+</section>
 
 <style>
 </style>

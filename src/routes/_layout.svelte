@@ -25,7 +25,7 @@
 
 {#if !isHome}
   <span
-    class="absolute top-8 right-8 z-50 hover:cursor-pointer"
+    class="absolute top-6 right-6 z-50 hover:cursor-pointer"
     on:click={toggleMenu}
   >
     {#if open}
@@ -34,7 +34,7 @@
       <Menu size="24px" />
     {/if}
   </span>
-  <main class="mx-auto py-8 container">
+  <main>
     <slot />
   </main>
 {/if}
