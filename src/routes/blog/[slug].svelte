@@ -12,6 +12,7 @@ query {
     title
     excerpt
     publishedAt
+    bodyRaw
     slug {
       current
     }
@@ -35,8 +36,7 @@ query {
 
     return {
       post: {
-        title: p.title,
-        excerpt: p.excerpt,
+        ...p,
         categories: p.categories.map((c) => c.title),
         date: new Date(p.publishedAt),
         image: {
@@ -49,6 +49,8 @@ query {
 </script>
 
 <script lang="ts">
+  import BlockContent from '@movingbrands/svelte-portable-text';
+  import { serializers } from '../../components/serializers/';
   export let post;
 </script>
 
@@ -56,16 +58,12 @@ query {
   <title>mattlaw.dev | {post.title}</title>
 </svelte:head>
 
-<article>
-  <div>
-    <img src={post.image.url} />
-    <div class="title">
-      {post.title}
-    </div>
-  </div>
+<article class="max-w-screen-md mx-auto prose-lg">
+  <h1>{post.title}</h1>
+  <BlockContent blocks={post.bodyRaw} {serializers} />
 </article>
 
-<style>
+<style lang="scss">
   /*
 		By default, CSS is locally scoped to the component,
 		and any unused styles are dead-code-eliminated.
@@ -74,28 +72,6 @@ query {
 		so we have to use the :global(...) modifier to target
 		all elements inside .content
 	*/
-  .content :global(h2) {
-    font-size: 1.4em;
-    font-weight: 500;
-  }
-
-  .content :global(pre) {
-    background-color: #f9f9f9;
-    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
-    padding: 0.5em;
-    border-radius: 2px;
-    overflow-x: auto;
-  }
-
-  .content :global(pre) :global(code) {
-    background-color: transparent;
-    padding: 0;
-  }
-
-  .content :global(ul) {
-    line-height: 1.5;
-  }
-
   .content :global(li) {
     margin: 0 0 0.5em 0;
   }

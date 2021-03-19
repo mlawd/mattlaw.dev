@@ -62,7 +62,7 @@ query {
 <section class="mx-auto container p-4">
   <h1 class="mb-4">.blog</h1>
 
-  <div class="grid lg:grid-cols-3 xl:grid-cols-4 gap-1.5">
+  <div class="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-1.5">
     {#each posts as post}
       <PostPreview {...post} />
     {/each}

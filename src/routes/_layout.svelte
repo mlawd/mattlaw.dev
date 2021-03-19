@@ -34,7 +34,7 @@
       <Menu size="24px" />
     {/if}
   </span>
-  <main>
+  <main class="mx-auto p-8">
     <slot />
   </main>
 {/if}

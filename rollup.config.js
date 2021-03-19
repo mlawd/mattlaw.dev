@@ -21,6 +21,7 @@ const onwarn = (warning, onwarn) =>
   (warning.code === 'CIRCULAR_DEPENDENCY' &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   warning.code === 'THIS_IS_UNDEFINED' ||
+  warning.code === 'css-unused-selector' ||
   onwarn(warning);
 
 const preprocess = sveltePreprocess({ postcss: true });
