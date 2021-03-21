@@ -41,7 +41,7 @@
 
 {#if isHome || open}
   <div
-    class="h-screen hero sm:bg-cover fixed top-0 left w-full"
+    class="h-screen hero sm:bg-cover fixed top-0 left w-full z-40"
     out:fade={{ duration: 200 }}
     in:fade={{ duration: 200 }}
   >
@@ -74,9 +74,13 @@
     --font: 'Raleway', sans-serif;
   }
 
-  *,
-  html,
-  body {
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  ol {
     font-family: var(--font);
   }
 

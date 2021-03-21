@@ -10,6 +10,7 @@
     "validate": "svelte-check --ignore src/node_modules/@sapper"
   },
   "dependencies": {
+    "@sanity/client": "^2.2.6",
     "body-parser": "^1.19.0",
     "compression": "^1.7.1",
     "polka": "next",
@@ -49,6 +50,7 @@
     "sass": "^1.32.8",
     "svelte": "^3.17.3",
     "svelte-check": "^1.0.46",
+    "svelte-highlight": "^0.7.1",
     "svelte-preprocess": "^4.3.0",
     "svelte-prismjs": "^1.0.1",
     "tailwindcss": "^2.0.2",
