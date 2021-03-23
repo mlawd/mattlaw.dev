@@ -1,47 +1,13 @@
 <script context="module" lang="ts">
   export async function preload() {
-    const resp = await this.fetch('/graphcms', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-query {
-  allPost {
-    title
-    excerpt
-    publishedAt
-    slug {
-      current
-    }
-    categories {
-      title
-    }
-    mainImage {
-      asset {
-        originalFilename
-        url
-      }
-    }
-  }
-}`,
-      }),
-    });
+    const resp = await this.fetch('/api/blog/all');
 
-    const { allPost } = await resp.json();
+    const { posts } = await resp.json();
 
     return {
-      posts: allPost.map((p) => ({
-        title: p.title,
-        excerpt: p.excerpt,
-        slug: `blog/${p.slug.current}`,
-        categories: p.categories.map((c) => c.title),
-        date: new Date(p.publishedAt),
-        image: {
-          url: p.mainImage.asset.url,
-          filename: p.mainImage.asset.fileName,
-        },
+      posts: posts.map((p) => ({
+        ...p,
+        date: new Date(p.date),
       })),
     };
   }
