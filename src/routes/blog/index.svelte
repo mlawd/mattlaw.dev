@@ -22,10 +22,14 @@
 </script>
 
 <svelte:head>
-  <title>Blog</title>
+  <title>mattlaw.dev | Blogs</title>
+  <meta
+    name="description"
+    content="Listing out my thoughts, ideas technical  how-tos"
+  />
 </svelte:head>
 
-<section class="mx-auto container p-4">
+<section class="mx-auto container p-8">
   <h1 class="mb-4">.blog</h1>
 
   <div class="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-1.5">

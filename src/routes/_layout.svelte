@@ -8,7 +8,7 @@
   const { page } = stores();
 
   $: isHome = $page.path === '/';
-  $: title = $page.path === '/' ? 'dev' : $page.path.split('/')[1];
+  $: pageTitle = $page.path === '/' ? 'dev' : $page.path.split('/')[1];
 
   let open = false;
 
@@ -25,7 +25,7 @@
 
 {#if !isHome}
   <span
-    class="absolute top-6 right-6 z-50 hover:cursor-pointer"
+    class="fixed top-6 right-6 z-50 hover:cursor-pointer"
     on:click={toggleMenu}
   >
     {#if open}
@@ -34,19 +34,16 @@
       <Menu size="24px" />
     {/if}
   </span>
-  <main class="mx-auto p-8">
-    <slot />
-  </main>
 {/if}
 
 {#if isHome || open}
   <div
-    class="h-screen hero sm:bg-cover fixed top-0 left w-full z-40"
+    class="h-screen menu sm:bg-cover fixed top-0 left w-full z-40"
     out:fade={{ duration: 200 }}
     in:fade={{ duration: 200 }}
   >
-    <div class="hero__text">
-      <h1 class="mb-0 fade-right wait-2">mattlaw.{title}</h1>
+    <div class="menu__text">
+      <h1 class="mb-0 fade-right wait-2">mattlaw.{pageTitle}</h1>
       <h2 class="mt-0 fade-left wait-2 leading-7">software.engineer</h2>
       <h2 class="mt-0 fade-left wait-3 leading-7">technical.lead</h2>
       <h2 class="mt-0 fade-left wait-4 leading-7">agile.fanatic</h2>
@@ -68,6 +65,10 @@
     </div>
   </div>
 {/if}
+
+<main>
+  <slot />
+</main>
 
 <style global lang="scss">
   :root {
@@ -97,7 +98,7 @@
     font-weight: 700;
   }
 
-  .hero {
+  .menu {
     background-image: linear-gradient(
         90deg,
         rgba(61, 64, 91, 0.7) 0%,
@@ -108,20 +109,20 @@
     background-position: 60% 40%;
   }
 
-  .hero__text {
+  .menu__text {
     margin: auto;
     padding-top: 88px;
     max-width: 300px;
   }
 
   @screen sm {
-    .hero__text {
+    .menu__text {
       max-width: 400px;
     }
   }
 
   @screen md {
-    .hero__text {
+    .menu__text {
       max-width: 600px;
     }
   }

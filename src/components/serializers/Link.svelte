@@ -16,7 +16,7 @@
       left: 0;
       width: 100%;
       height: 30%;
-      @apply bg-cta;
+      @apply bg-primary;
       z-index: -1;
 
       transition: all 0.2s;
@@ -24,7 +24,7 @@
 
     &:hover {
       &:before {
-        @apply bg-primary;
+        @apply bg-cta;
       }
     }
   }

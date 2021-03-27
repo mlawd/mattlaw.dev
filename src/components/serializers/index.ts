@@ -6,7 +6,7 @@ import Code from './Code.svelte';
 import Image from './Image.svelte';
 import Link from './Link.svelte';
 
-const urlFor = (source) => urlBuilder(client).image(source);
+export const urlFor = (source) => urlBuilder(client).image(source);
 
 export const serializers = {
   marks: {

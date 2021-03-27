@@ -13,7 +13,7 @@
   }
 </script>
 
-<script lang="ts">
+<script>
   import BlockContent from '@movingbrands/svelte-portable-text';
   import { serializers } from '../../components/serializers/';
   export let post;
@@ -21,16 +21,25 @@
 
 <svelte:head>
   <title>mattlaw.dev | {post.title}</title>
+  <meta name="description" content={post.excerpt} />
 </svelte:head>
 
-<article>
+<article class="p-8">
   <div class="article-hero -m-8 mb-16 flex flex-col justify-end items-center">
     <div class="z-10 w-full max-w-screen-md mx-auto mb-8">
       <div class="article-hero-content inline-block bg-accent p-8">
-        <h1 class="pl-8">{post.title}</h1>
-        <span class="text-secondary pl-8">
-          {new Date(post.publishedAt).toLocaleDateString()}
-        </span>
+        <h1 class="pl-8 md:pl-0">{post.title}</h1>
+        <div class="pl-8 mt-4 md:pl-0 flex flex-wrap">
+          <span class="m-2 ml-0 rounded-lg text-secondary">
+            {new Date(post.publishedAt).toLocaleDateString()}
+          </span>
+          {#each post.categories as cat}
+            <span class="m-2 ml-0 text-secondary"> | </span>
+            <span class="m-2 ml-0 text-secondary">
+              {cat}
+            </span>
+          {/each}
+        </div>
       </div>
     </div>
     <img
@@ -46,7 +55,7 @@
 
 <style lang="scss">
   .article-hero {
-    height: 75vh;
+    height: 65vh;
     position: relative;
 
     .article-hero-content {
@@ -54,13 +63,7 @@
       padding-left: 1000px;
     }
   }
-  /*
-  .article-hero {
-    @apply bg-accent;
-    @apply flex;
-    @apply flex-col;
-    @apply justify-center;
-  }
+
   /*
 		By default, CSS is locally scoped to the component,
 		and any unused styles are dead-code-eliminated.
