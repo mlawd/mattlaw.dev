@@ -43,17 +43,21 @@
 
 <div class="excerpt">
   {#each page.content as content, i}
-    <div class="grid md:grid-cols-2 max-w-screen-md mx-auto py-8 gap-4">
-      {#if i % 2 === 0}
-        <img src={urlFor(content.image).width(600).url()} alt="" />
-      {/if}
-      <div class="prose-lg text-center flex flex-col justify-center">
+    <div
+      class="flex flex-wrap max-w-screen-md mx-auto py-8"
+      class:flex-row-reverse={i % 2}
+    >
+      <img
+        class="w-full md:w-1/2 px-4"
+        src={urlFor(content.image).width(600).url()}
+        alt=""
+      />
+      <div
+        class="w-full md:w-1/2 prose-lg text-center flex flex-col justify-center p-4"
+      >
         <h2>{content.title}</h2>
         <BlockContent blocks={content.contentRaw} {serializers} />
       </div>
-      {#if i % 2 === 1}
-        <img src={urlFor(content.image).width(600).url()} alt="" />
-      {/if}
     </div>
   {/each}
 </div>
