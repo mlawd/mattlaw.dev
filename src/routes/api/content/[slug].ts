@@ -7,11 +7,9 @@ export async function get(req, res, next) {
       method: 'POST',
       body: JSON.stringify({
         query: `
-
 query {
   allContent(where:{slug:{current:{eq:"${req.params.slug}"}}}){
     title
-    subtitle
     byline
     excerptRaw 
     content {

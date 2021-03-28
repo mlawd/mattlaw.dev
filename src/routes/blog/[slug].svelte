@@ -17,6 +17,7 @@
   import BlockContent from '@movingbrands/svelte-portable-text';
   import Hero from '../../components/Hero.svelte';
   import { serializers } from '../../components/serializers/';
+  import Meta from '../../components/Meta.svelte';
   export let post;
 
   const date = new Date(post.publishedAt).toLocaleDateString();
@@ -26,10 +27,13 @@
   );
 </script>
 
-<svelte:head>
-  <title>mattlaw.dev | {post.title}</title>
-  <meta name="description" content={post.excerpt} />
-</svelte:head>
+<Meta
+  title={post.title}
+  description={post.excerpt}
+  image={post.mainImage.asset.url}
+  type="article"
+  tags={post.categories}
+/>
 
 <Hero title={post.title} {byline} image={post.mainImage.asset.url}>
   {post.excerpt}
@@ -42,24 +46,6 @@
 </article>
 
 <style lang="scss">
-  .article-hero {
-    height: 65vh;
-    position: relative;
-
-    .article-hero-content {
-      margin-left: -1000px;
-      padding-left: 1000px;
-    }
-  }
-
-  /*
-		By default, CSS is locally scoped to the component,
-		and any unused styles are dead-code-eliminated.
-		In this page, Svelte can't know which elements are
-		going to appear inside the {{{post.html}}} block,
-		so we have to use the :global(...) modifier to target
-		all elements inside .content
-	*/
   article :global(h2) {
     @apply text-secondary;
     @apply bg-accent;
@@ -72,6 +58,14 @@
     @apply text-secondary;
     @apply bg-accent;
     @apply py-4;
-    margin-right: -2000px;
+    margin-left: -2000px;
+    padding-left: 2000px;
+  }
+
+  article :global(code) {
+    &:before,
+    &:after {
+      content: '';
+    }
   }
 </style>

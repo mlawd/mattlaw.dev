@@ -2,11 +2,12 @@
   export let href;
 </script>
 
-<a {href}>
+<a {href} class="transition-all hover:text-cta">
   <slot />
 </a>
 
 <style lang="scss">
+  /*
   a {
     position: relative;
     &:before {
@@ -28,4 +29,5 @@
       }
     }
   }
+   */
 </style>

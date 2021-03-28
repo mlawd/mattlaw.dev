@@ -15,7 +15,7 @@
     />
   {/if}
   <div class="z-20 bg-accent max-w-3xl px-4 py-8">
-    <h1 class="text-7xl md:text-9xl mb-8">
+    <h1 class="text-7xl md:text-8xl mb-8">
       {title}
     </h1>
     <p class="text-secondary my-4 text-lg md:text-2xl">

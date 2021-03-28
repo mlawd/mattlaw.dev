@@ -1,14 +1,19 @@
 <script context="module" lang="ts">
   export async function preload() {
-    const resp = await this.fetch('/api/blog/all');
+    const [blogs, content] = await Promise.all([
+      this.fetch('/api/blog/all'),
+      this.fetch(`/api/content/blog`),
+    ]);
 
-    const { posts } = await resp.json();
+    const { posts } = await blogs.json();
+    const { page } = await content.json();
 
     return {
       posts: posts.map((p) => ({
         ...p,
         date: new Date(p.date),
       })),
+      page,
     };
   }
 </script>
@@ -16,24 +21,18 @@
 <script lang="ts">
   import Hero from '../../components/Hero.svelte';
   import PostPreview from '../../components/PostPreview.svelte';
+  import Meta from '../../components/Meta.svelte';
+
   export let posts: {
     title: string;
     excerpt: string;
   }[] = [];
+  export let page;
 </script>
 
-<svelte:head>
-  <title>mattlaw.dev | Blogs</title>
-  <meta
-    name="description"
-    content="Listing out my thoughts, technical ideas & how-tos"
-  />
-</svelte:head>
+<Meta title={page.title} description={page.byline} />
 
-<Hero
-  title=".blog"
-  byline="Listing out my thoughts, technical ideas and how-tos"
-/>
+<Hero title={page.title} byline={page.byline} />
 
 <section class="mx-auto container p-8">
   <div class="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-1.5">

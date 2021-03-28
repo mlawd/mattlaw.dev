@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   export async function preload({ params }) {
-    const resp = await this.fetch(`/api/content/me`);
+    const resp = await this.fetch(`/api/content/${params.slug}`);
 
     const { page } = await resp.json();
 
@@ -14,21 +14,20 @@
   import BlockContent from '@movingbrands/svelte-portable-text';
   import { urlFor, serializers } from '../components/serializers/';
   import Hero from '../components/Hero.svelte';
+  import Meta from '../components/Meta.svelte';
   export let page;
 </script>
 
-<svelte:head>
-  <title>
-    mattlaw.dev | {page.byline}
-  </title>
-</svelte:head>
+<Meta title={page.title} description={page.byline} />
 
-<Hero title={`.${page.title}`} byline={page.byline}>
-  <BlockContent blocks={page.excerptRaw} {serializers} />
+<Hero title={page.title} byline={page.byline}>
+  {#if page.excerptRaw}
+    <BlockContent blocks={page.excerptRaw} {serializers} />
+  {/if}
 </Hero>
 
 <div class="excerpt">
-  {#each page.content as content, i}
+  {#each page.content || [] as content, i}
     <div
       class="flex flex-wrap max-w-screen-md mx-auto py-8"
       class:flex-row-reverse={i % 2}
