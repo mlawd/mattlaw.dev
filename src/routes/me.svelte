@@ -13,33 +13,19 @@
 <script>
   import BlockContent from '@movingbrands/svelte-portable-text';
   import { urlFor, serializers } from '../components/serializers/';
+  import Hero from '../components/Hero.svelte';
   export let page;
 </script>
 
 <svelte:head>
   <title>
-    mattlaw.dev | Software engineer, technical leader, agile enthusiast
+    mattlaw.dev | {page.byline}
   </title>
 </svelte:head>
 
-<div
-  class="bg-accent h-screen lg:h-screen-small flex items-center justify-center text-center"
->
-  <div class="max-w-3xl p-4">
-    <h1 class="text-9xl my-4">
-      .{page.title}
-    </h1>
-    <p class="text-secondary my-4 text-4xl">
-      {page.subtitle}
-    </p>
-    <p class="text-secondary my-4 text-2xl">
-      {page.byline}
-    </p>
-    <section class="bio">
-      <BlockContent blocks={page.excerptRaw} {serializers} />
-    </section>
-  </div>
-</div>
+<Hero title={`.${page.title}`} byline={page.byline}>
+  <BlockContent blocks={page.excerptRaw} {serializers} />
+</Hero>
 
 <div class="excerpt">
   {#each page.content as content, i}
@@ -63,22 +49,6 @@
 </div>
 
 <style lang="scss">
-  .lg\:h-screen-small {
-    @screen lg {
-      height: 65vh;
-    }
-  }
-  .md\:h-screen-small {
-    @screen md {
-      height: 65vh;
-    }
-  }
-
-  .bio :global(p) {
-    @apply my-4;
-    @apply text-secondary;
-  }
-
   .excerpt :global(h2) {
     @apply text-accent;
   }

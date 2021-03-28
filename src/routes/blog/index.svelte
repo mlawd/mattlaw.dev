@@ -14,6 +14,7 @@
 </script>
 
 <script lang="ts">
+  import Hero from '../../components/Hero.svelte';
   import PostPreview from '../../components/PostPreview.svelte';
   export let posts: {
     title: string;
@@ -25,13 +26,16 @@
   <title>mattlaw.dev | Blogs</title>
   <meta
     name="description"
-    content="Listing out my thoughts, ideas technical  how-tos"
+    content="Listing out my thoughts, technical ideas & how-tos"
   />
 </svelte:head>
 
-<section class="mx-auto container p-8">
-  <h1 class="mb-4">.blog</h1>
+<Hero
+  title=".blog"
+  byline="Listing out my thoughts, technical ideas and how-tos"
+/>
 
+<section class="mx-auto container p-8">
   <div class="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-1.5">
     {#each posts as post}
       <PostPreview {...post} />

@@ -44,9 +44,15 @@
   >
     <div class="menu__text">
       <h1 class="mb-0 fade-right wait-2">mattlaw.{pageTitle}</h1>
-      <h2 class="mt-0 fade-left wait-2 leading-7">software.engineer</h2>
-      <h2 class="mt-0 fade-left wait-3 leading-7">technical.lead</h2>
-      <h2 class="mt-0 fade-left wait-4 leading-7">agile.fanatic</h2>
+      <h2 class="text-secondary mt-0 fade-left wait-2 leading-7">
+        software.engineer
+      </h2>
+      <h2 class="text-secondary mt-0 fade-left wait-3 leading-7">
+        technical.lead
+      </h2>
+      <h2 class="text-secondary mt-0 fade-left wait-4 leading-7">
+        agile.fanatic
+      </h2>
 
       <ul class="pl-0 text-secondary font-bold">
         <li>
@@ -93,9 +99,14 @@
   }
 
   h2 {
-    @apply text-secondary;
     font-size: 24px;
     font-weight: 700;
+  }
+
+  .lg\:h-screen-small {
+    @screen lg {
+      height: 65vh;
+    }
   }
 
   .menu {
