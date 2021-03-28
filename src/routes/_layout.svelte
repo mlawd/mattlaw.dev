@@ -16,9 +16,11 @@
     open = !open;
   }
 
-  function closeMenu() {
+  function closeMenu() {}
+
+  page.subscribe(() => {
     open = false;
-  }
+  });
 </script>
 
 <Tailwindcss />
