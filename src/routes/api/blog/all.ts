@@ -8,7 +8,7 @@ export async function get(req, res, next) {
       body: JSON.stringify({
         query: `
 query {
-  allPost {
+  allPost(sort:{publishedAt:DESC}) {
     title
     excerpt
     publishedAt

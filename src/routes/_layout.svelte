@@ -2,8 +2,12 @@
   import Tailwindcss from '../components/Tailwindcss.svelte';
   import Menu from 'svelte-material-icons/Menu.svelte';
   import Close from 'svelte-material-icons/Close.svelte';
+  import Github from 'svelte-material-icons/GithubFace.svelte';
+  import Linkedin from 'svelte-material-icons/Linkedin.svelte';
+  import Twitter from 'svelte-material-icons/Twitter.svelte';
   import { stores } from '@sapper/app';
   import { fade } from 'svelte/transition';
+  import GithubBox from 'svelte-material-icons/GithubBox.svelte';
 
   const { page } = stores();
 
@@ -56,18 +60,52 @@
         agile.fanatic
       </h2>
 
-      <ul class="pl-0 text-secondary font-bold">
-        <li>
-          <a href="/projects" class="fade-down wait-6" on:click={closeMenu}>
-            .projects
+      <div class="sub-menu mt-2">
+        <p class="text-secondary font-bold">
+          <a href="/blog" class="fade-down wait-7" on:click={closeMenu}>
+            <span>.blog</span>
+          </a>
+        </p>
+        <p class="text-secondary font-bold">
+          <a href="/me" class="fade-down wait-8" on:click={closeMenu}>
+            <span>.me</span>
+          </a>
+        </p>
+      </div>
+
+      <ul class="socials pl-0 mt-2">
+        <li class="fade-down wait-9">
+          <a
+            role="button"
+            href="https://github.com/mlawd"
+            aria-label="Github"
+            rel="noopener"
+            target="_blank"
+          >
+            <Github size="1.5em" />
           </a>
         </li>
-        <li>
-          <a href="/blog" class="fade-down wait-7" on:click={closeMenu}>.blog</a
+        <li class="fade-down wait-10">
+          <a
+            role="button"
+            href="https://twitter.com/mattlawdev"
+            aria-label="Twitter"
+            rel="noopener"
+            target="_blank"
           >
+            <Twitter size="1.5em" />
+          </a>
         </li>
-        <li>
-          <a href="/me" class="fade-down wait-8" on:click={closeMenu}>.me</a>
+        <li class="fade-down wait-11">
+          <a
+            role="button"
+            href="https://www.linkedin.com/in/mattlawdev"
+            aria-label="Linkedin"
+            rel="noopener"
+            target="_blank"
+          >
+            <Linkedin size="1.5em" />
+          </a>
         </li>
       </ul>
     </div>
@@ -103,6 +141,26 @@
   h2 {
     font-size: 24px;
     font-weight: 700;
+  }
+
+  .socials {
+    li {
+      display: inline-block;
+      @apply text-secondary;
+      transition: color 0.2s;
+
+      &:hover {
+        @apply text-accent;
+      }
+
+      a {
+        @apply p-2;
+        svg {
+          display: inline-block;
+          @apply fill-current;
+        }
+      }
+    }
   }
 
   .lg\:h-screen-small {
@@ -165,20 +223,24 @@
     transform: translateX(-20px);
   }
 
-  @for $i from 1 through 10 {
+  @for $i from 1 through 11 {
     .wait-#{$i} {
       animation-delay: $i * 0.1s;
     }
   }
 
-  ul {
-    margin: 0 -5px;
-    li {
+  .sub-menu {
+    a {
       position: relative;
-      display: table;
-      margin: 0 5px;
+      @apply p-1;
+      display: inline-block;
 
-      &:after {
+      span {
+        position: relative;
+        z-index: 2;
+      }
+
+      &:before {
         content: ' ';
         background-color: #3d405b;
         position: absolute;
@@ -186,19 +248,14 @@
         left: 0;
         width: 100%;
         height: 0px;
-        z-index: 0;
         transition: height 0.2s;
+        z-index: 1;
       }
 
       &:hover {
-        &:after {
-          height: 10px;
+        &:before {
+          height: 50%;
         }
-      }
-
-      a {
-        position: relative;
-        z-index: 1;
       }
     }
   }
