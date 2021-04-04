@@ -147,7 +147,7 @@
     li {
       display: inline-block;
       @apply text-secondary;
-      transition: color 0.2s;
+      transition: all 0.4s;
 
       &:hover {
         @apply text-accent;

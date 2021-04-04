@@ -41,7 +41,9 @@
         class="w-full md:w-1/2 prose-lg text-center flex flex-col justify-center p-4"
       >
         <h2>{content.title}</h2>
-        <BlockContent blocks={content.contentRaw} {serializers} />
+        {#if content.contentRaw}
+          <BlockContent blocks={content.contentRaw} {serializers} />
+        {/if}
       </div>
     </div>
   {/each}
