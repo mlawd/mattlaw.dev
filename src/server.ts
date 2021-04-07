@@ -12,7 +12,11 @@ polka() // You can also use Express
   .use(
     compression({ threshold: 0 }),
     sirv('static', { dev }),
-    sapper.middleware()
+    sapper.middleware({
+      session: () => ({
+        gaId: process.env.GA_ID,
+      }),
+    })
   )
   .listen(PORT, (err) => {
     if (err) console.log('error', err);

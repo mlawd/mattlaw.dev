@@ -2712,6 +2712,11 @@ same-origin@^0.1.1:
   resolved "https://registry.yarnpkg.com/same-origin/-/same-origin-0.1.1.tgz#c2287d3192577df517acbbd6d1451a9c3c3914f5"
   integrity sha1-wih9MZJXffUXrLvW0UUanDw5FPU=
 
+sapper-google-analytics@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/sapper-google-analytics/-/sapper-google-analytics-1.0.2.tgz#a2d3e38ef827ac31b2857f26b643510358affb84"
+  integrity sha512-l9e4dxUnk8zAxZNk44rGiIoRJK00R1RWPOGwDo62xvv7VepH8XpUG+gtLO0ow9UBmoglinzdnreD4KVNuhrYHQ==
+
 sapper@^0.29.1:
   version "0.29.1"
   resolved "https://registry.yarnpkg.com/sapper/-/sapper-0.29.1.tgz#152102d97eb1ad4185671095052d976acf7187c1"

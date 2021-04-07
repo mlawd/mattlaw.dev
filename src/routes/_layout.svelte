@@ -1,4 +1,13 @@
+<script context="module">
+  export function preload(_, session) {
+    return {
+      gaId: session.gaId,
+    };
+  }
+</script>
+
 <script lang="ts">
+  import GoogleAnalytics from 'sapper-google-analytics/GoogleAnalytics.svelte';
   import Tailwindcss from '../components/Tailwindcss.svelte';
   import Menu from 'svelte-material-icons/Menu.svelte';
   import Close from 'svelte-material-icons/Close.svelte';
@@ -25,7 +34,13 @@
   page.subscribe(() => {
     open = false;
   });
+
+  export let gaId: string;
 </script>
+
+{#if gaId}
+  <GoogleAnalytics {stores} id={gaId} />
+{/if}
 
 <Tailwindcss />
 
