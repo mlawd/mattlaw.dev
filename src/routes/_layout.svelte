@@ -77,12 +77,12 @@
 
       <div class="sub-menu mt-2">
         <p class="text-secondary font-bold">
-          <a href="/blog" class="fade-down wait-7" on:click={closeMenu}>
+          <a href="/blog/" class="fade-down wait-7" on:click={closeMenu}>
             <span>.blog</span>
           </a>
         </p>
         <p class="text-secondary font-bold">
-          <a href="/me" class="fade-down wait-8" on:click={closeMenu}>
+          <a href="/me/" class="fade-down wait-8" on:click={closeMenu}>
             <span>.me</span>
           </a>
         </p>

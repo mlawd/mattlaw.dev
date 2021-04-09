@@ -10,7 +10,7 @@
   };
 </script>
 
-<a class="shadow-md flex flex-col" href={slug}>
+<a class="shadow-md flex flex-col" href={`${slug.trimRight('/')}/`}>
   <div>
     <img
       src={image.url}

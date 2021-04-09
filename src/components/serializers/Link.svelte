@@ -2,9 +2,7 @@
   export let href;
 </script>
 
-<a {href} class="transition-all hover:text-cta">
-  <slot />
-</a>
+<a {href} class="transition-all hover:text-cta"><slot /></a>
 
 <style lang="scss">
   /*
