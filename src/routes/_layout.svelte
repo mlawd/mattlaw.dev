@@ -4,6 +4,7 @@
       gaId: session.gaId,
     };
   }
+
 </script>
 
 <script lang="ts">
@@ -36,6 +37,7 @@
   });
 
   export let gaId: string;
+
 </script>
 
 {#if gaId}
@@ -46,7 +48,7 @@
 
 {#if !isHome}
   <span
-    class="fixed top-6 right-6 z-50 hover:cursor-pointer"
+    class="fixed top-6 right-6 z-50 hover:cursor-pointer print:hidden"
     on:click={toggleMenu}
   >
     {#if open}
@@ -72,7 +74,7 @@
         technical.lead
       </h2>
       <h2 class="text-secondary mt-0 fade-left wait-4 leading-7">
-        agile.fanatic
+        process.dev
       </h2>
 
       <div class="sub-menu mt-2">
@@ -158,6 +160,10 @@
     font-weight: 700;
   }
 
+  .min-h-screen {
+    min-height: 100vh;
+  }
+
   .socials {
     li {
       display: inline-block;
@@ -180,7 +186,7 @@
 
   .lg\:h-screen-small {
     @screen lg {
-      height: 65vh;
+      min-height: 65vh;
     }
   }
 
@@ -274,4 +280,5 @@
       }
     }
   }
+
 </style>

@@ -21,8 +21,12 @@ module.exports = {
       accent: '#3d405b',
       cta: '#81b29a',
       gray: colors.coolGray,
+      transparent: 'transparent',
     },
     extend: {
+      screens: {
+        print: { raw: 'print' },
+      },
       backgroundImage: (theme) => ({
         'hero-pattern': "url('/img/me.jpeg')",
       }),
