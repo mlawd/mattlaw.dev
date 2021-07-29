@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   export async function preload() {
-    const resp = await this.fetch(`/api/cv/`);
+    const resp = await this.fetch(`/api/cv`);
 
     const { page } = await resp.json();
 
@@ -8,7 +8,6 @@
       page,
     };
   }
-
 </script>
 
 <script>
@@ -68,7 +67,6 @@
       title: 'me@mattlaw.dev',
     },
   ];
-
 </script>
 
 <Meta title={page.title} description={page.byline} />
@@ -188,5 +186,4 @@
       }
     }
   }
-
 </style>
