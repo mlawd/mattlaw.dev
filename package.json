@@ -51,7 +51,7 @@
     "sass": "^1.32.8",
     "svelte": "^3.35.0",
     "svelte-check": "^1.0.46",
-    "svelte-highlight": "^0.7.1",
+    "svelte-highlight": "^6.2.1",
     "svelte-preprocess": "^4.3.0",
     "svelte-prismjs": "^1.0.1",
     "tailwindcss": "^2.0.2",
