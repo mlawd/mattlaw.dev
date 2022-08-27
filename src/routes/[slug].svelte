@@ -8,6 +8,7 @@
       page,
     };
   }
+
 </script>
 
 <script>
@@ -16,6 +17,7 @@
   import Hero from '../components/Hero.svelte';
   import Meta from '../components/Meta.svelte';
   export let page;
+
 </script>
 
 <Meta title={page.title} description={page.byline} />
@@ -29,7 +31,7 @@
 <div class="excerpt">
   {#each page.content || [] as content, i}
     <div
-      class="flex flex-wrap max-w-screen-md mx-auto py-8"
+      class="flex flex-wrap max-w-screen-md mx-auto py-8 items-center"
       class:flex-row-reverse={i % 2}
     >
       <img
@@ -53,4 +55,5 @@
   .excerpt :global(h2) {
     @apply text-accent;
   }
+
 </style>

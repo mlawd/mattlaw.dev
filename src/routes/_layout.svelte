@@ -4,6 +4,7 @@
       gaId: session.gaId,
     };
   }
+
 </script>
 
 <script lang="ts">
@@ -36,6 +37,7 @@
   });
 
   export let gaId: string;
+
 </script>
 
 {#if gaId}
@@ -68,12 +70,8 @@
       <h2 class="text-secondary mt-0 fade-left wait-2 leading-7">
         software.engineer
       </h2>
-      <h2 class="text-secondary mt-0 fade-left wait-3 leading-7">
-        technical.lead
-      </h2>
-      <h2 class="text-secondary mt-0 fade-left wait-4 leading-7">
-        process.dev
-      </h2>
+      <h2 class="text-secondary mt-0 fade-left wait-3 leading-7">tech.lead</h2>
+      <h2 class="text-secondary mt-0 fade-left wait-4 leading-7">father</h2>
 
       <div class="sub-menu mt-2">
         <p class="text-secondary font-bold">
@@ -84,11 +82,6 @@
         <p class="text-secondary font-bold">
           <a href="/me/" class="fade-down wait-8" on:click={closeMenu}>
             <span>.me</span>
-          </a>
-        </p>
-        <p class="text-secondary font-bold">
-          <a href="/cv/" class="fade-down wait-9" on:click={closeMenu}>
-            <span>.cv</span>
           </a>
         </p>
       </div>
@@ -283,4 +276,5 @@
       }
     }
   }
+
 </style>
