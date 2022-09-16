@@ -4,7 +4,6 @@
       gaId: session.gaId,
     };
   }
-
 </script>
 
 <script lang="ts">
@@ -37,7 +36,6 @@
   });
 
   export let gaId: string;
-
 </script>
 
 {#if gaId}
@@ -82,6 +80,11 @@
         <p class="text-secondary font-bold">
           <a href="/me/" class="fade-down wait-8" on:click={closeMenu}>
             <span>.me</span>
+          </a>
+        </p>
+        <p class="text-secondary font-bold">
+          <a href="/cv/" class="fade-down wait-8" on:click={closeMenu}>
+            <span>.cv</span>
           </a>
         </p>
       </div>
@@ -276,5 +279,4 @@
       }
     }
   }
-
 </style>

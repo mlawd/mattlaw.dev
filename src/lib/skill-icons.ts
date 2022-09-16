@@ -13,17 +13,15 @@ import Aws from 'svelte-material-icons/Aws.svelte';
 import Git from 'svelte-material-icons/Git.svelte';
 
 export const skillIcons = [
-  CSharp,
-  Cpp,
   JS,
   TS,
-  Css3,
   Nodejs,
   Vue,
   React,
   DotNet,
-  Azure,
+  CSharp,
   Aws,
+  Azure,
   Git,
 ];
 
