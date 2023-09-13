@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--font: 'Raleway', sans-serif;
+	--bg-color: rgb(61, 64, 91);
+	--bg-color-light: #f4f1de;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol {
+	font-family: var(--font);
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 42px;
+}
+
+h2 {
+	font-size: 24px;
+	font-weight: 700;
+}
