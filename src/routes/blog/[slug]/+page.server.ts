@@ -1,7 +1,21 @@
-import type { PageServerLoad } from './$types';
+import type { EntryGenerator, PageServerLoad } from './$types';
 import { deliveryClient, type PostType } from '$lib/model';
 import { createRichTextHtmlResolver } from '@kontent-ai/delivery-sdk';
 import { nodeParser } from '@kontent-ai/delivery-node-parser';
+
+export const entries: EntryGenerator = async () => {
+	const { data } = await deliveryClient
+		.items<PostType>()
+		.type('post')
+		.orderByDescending('elements.publish_override')
+		.toPromise();
+
+	return data.items.map((i) => ({
+		slug: i.elements.slug.value
+	}));
+};
+
+export const prerender = true;
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { data } = await deliveryClient
@@ -24,8 +38,6 @@ export const load: PageServerLoad = async ({ params }) => {
 			};
 		}
 	});
-
-	console.log(i.elements.taxonomy);
 
 	return {
 		post: {
