@@ -104,9 +104,9 @@
 		</aside>
 	</section>
 
-	<SectionLayout class="section" ariaLabelledby="about-heading">
+	<SectionLayout id="about" class="section" ariaLabelledby="about-heading">
 		{#snippet label()}
-			<h2 id="about">About</h2>
+			<h2 id="about-heading">About</h2>
 		{/snippet}
 		<div class="prose">
 			<h2 id="about-heading">
@@ -246,6 +246,10 @@
 	:global(a:focus-visible) {
 		outline: 2px solid #edece4;
 		outline-offset: 4px;
+	}
+
+	:global([id]) {
+		scroll-margin-top: 66px;
 	}
 
 	.site-header,
@@ -680,6 +684,12 @@
 
 		footer p {
 			text-align: right;
+		}
+	}
+
+	@media (max-width: 340px) {
+		:global([id]) {
+			scroll-margin-top: 97px;
 		}
 	}
 </style>
