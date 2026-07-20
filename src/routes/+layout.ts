@@ -71,10 +71,10 @@ const cv = {
 				'Designing and building distributed, event-driven services on GCP — from architecture through delivery, with a growing focus on AI-assisted engineering workflows.',
 			bullets: [
 				'Started as a Senior Software Engineer, working on authentication and client onboarding, promoted to Lead Engineer and given a new team geared towards "special projects" and our most pressing architecture decisions, then promoted to Staff Engineer sitting between 2 engineering teams to co-ordinate and help design new systems and external integrations.',
-				'Led a cross functional team on the migration from our legacy system (monolythic API on top of Dataverse & PowerApps) into a serverless GCP event sourced architecture, a first for us as a company.',
-				'Created our first services in Kubernetes, including setting out the blueprint for containersation builds in GitHub pipelines and eventual deployment into ArgoCD.',
-				'Led the migration from Firestore to Postgres, minimising down time service/API changes as much as possible to migrate purely the database technology without having a knock-on effect of months of re-development.',
-				'Researched, designed, architected and scoped the migration from a unfit for purpose hand-rolled permission system to OpenFGA, opening up an infinitely more flexible system to serve emerging customer needs. As the Staff Engineer I designed and prototyped the system then handed off to the engineer team to build out fully.'
+				'Led a cross functional team on the migration from our legacy system (monolithic API on top of Dataverse & PowerApps) into a serverless GCP event sourced architecture, a first for us as a company.',
+				'Created our first services in Kubernetes, including setting out the blueprint for containerisation builds in GitHub pipelines and eventual deployment into ArgoCD.',
+				'Led the migration from Firestore to Postgres, minimising downtime and API changes to keep it a pure database swap — avoiding months of knock-on re-development.',
+				'Researched, designed, architected and scoped the migration from a unfit for purpose hand-rolled permission system to OpenFGA, opening up an infinitely more flexible system to serve emerging customer needs. As Staff Engineer, I designed and prototyped the system, then handed it off to the engineering team to build out fully.'
 			],
 			skills: [
 				'TypeScript',
@@ -96,9 +96,10 @@ const cv = {
 			bullets: [
 				'Greenfield platform build using TypeScript, Postgres, Cloud Run, Stripe and Svelte.',
 				'Event driven GCP architecture utilising Pub Sub for message delivery to facilitate asynchronous operations.',
-				'Free-entry prize draw functions ran on a schedule to pick random winners from entry tickets, send emails and gather payout bank details.',
-				'Integrated with Stripe as a payment provider, ensuring idempotent handling of webhooks.',
-				'Built an cloud agent using GKE, Agent Sandboxes and Iron.sh integrated with Slack, Linear and GitHub to speed up delivery of small tickets.'
+				'Built free-entry prize draw functions that run on a schedule to pick random winners from entry tickets, send emails and gather payout bank details.',
+				'Integrated with Stripe as a payment provider, ensuring idempotent handling of webhooks averaging roughly 150 webhooks per day with an error rate of ~0.',
+				'Built a cloud agent using GKE, Agent Sandboxes and Iron.sh integrated with Slack, Linear and GitHub to speed up delivery of small tickets.',
+				'Re-architected from Cloud Functions to Cloud Run due to cold start and performance issues inherent in low traffice serverless applications. Reduced first load by ~2s.'
 			],
 			skills: ['TypeScript', 'GCP', 'Pub/Sub', 'Kubernetes', 'Postgres']
 		},
