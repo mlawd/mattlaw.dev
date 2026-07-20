@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SectionLayout from '$lib/components/SectionLayout.svelte';
 	import { EmailIcon, GitHubIcon, LinkedInIcon } from '$lib/components/icons';
 
 	import type { PageProps } from './$types';
@@ -103,11 +104,11 @@
 		</aside>
 	</section>
 
-	<section id="about" class="section split-section" aria-labelledby="about-heading">
-		<div class="section-label">
-			<p>About</p>
-		</div>
-		<div class="section-content prose">
+	<SectionLayout class="section" ariaLabelledby="about-heading">
+		{#snippet label()}
+			<h2 id="about">About</h2>
+		{/snippet}
+		<div class="prose">
 			<h2 id="about-heading">
 				I'm Matt — an enthusiastic, hard-working software engineer with a decade-plus building
 				enterprise and distributed systems, from training simulators to serverless platforms.
@@ -123,25 +124,25 @@
 				when it's needed, but I'd rather the team win than take the credit.
 			</p>
 		</div>
-	</section>
+	</SectionLayout>
 
-	<section id="now" class="section split-section" aria-labelledby="now-heading">
-		<div class="section-label">
+	<SectionLayout id="now" class="section" ariaLabelledby="now-heading">
+		{#snippet label()}
 			<h2 id="now-heading">Now</h2>
 			<span>updated jul 2026</span>
-		</div>
-		<ul class="section-content update-list">
+		{/snippet}
+		<ul class="update-list">
 			{#each data.cv.updates as update (update)}
 				<li>{update}</li>
 			{/each}
 		</ul>
-	</section>
+	</SectionLayout>
 
-	<section id="cv" class="section split-section experience" aria-labelledby="experience-heading">
-		<div class="section-label">
+	<SectionLayout id="cv" class="section experience" ariaLabelledby="experience-heading">
+		{#snippet label()}
 			<h2 id="experience-heading">Experience</h2>
-		</div>
-		<div class="section-content timeline">
+		{/snippet}
+		<div class="timeline">
 			{#each data.cv.experience as role (role.period + role.title)}
 				<article>
 					<div class="timeline-meta">
@@ -163,13 +164,13 @@
 				</article>
 			{/each}
 		</div>
-	</section>
+	</SectionLayout>
 
-	<section id="skills" class="section split-section" aria-labelledby="skills-heading">
-		<div class="section-label">
+	<SectionLayout id="skills" class="section" ariaLabelledby="skills-heading">
+		{#snippet label()}
 			<h2 id="skills-heading">Stack</h2>
-		</div>
-		<div class="section-content stack-grid">
+		{/snippet}
+		<div class="stack-grid">
 			{#each data.cv.stack as group (group.title)}
 				<div>
 					<h3>{group.title}</h3>
@@ -181,7 +182,7 @@
 				</div>
 			{/each}
 		</div>
-	</section>
+	</SectionLayout>
 
 	<section id="contact" class="section contact" aria-labelledby="contact-heading">
 		<p class="eyebrow">Contact</p>
@@ -301,8 +302,6 @@
 	}
 
 	.eyebrow,
-	.section-label p,
-	.section-label h2,
 	.glance h2 {
 		margin: 0;
 		color: #c3c4ce;
@@ -310,13 +309,6 @@
 		font-weight: 600;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
-	}
-
-	.section-label h2 {
-		color: #edece4;
-		font-size: 16px;
-		letter-spacing: 0.12em;
-		line-height: 1.2;
 	}
 
 	h1,
@@ -463,23 +455,7 @@
 	}
 
 	.section {
-		border-top: 1px solid rgba(237, 236, 228, 0.12);
 		scroll-margin-top: 70px;
-	}
-
-	.split-section {
-		display: grid;
-		grid-template-columns: minmax(130px, 0.62fr) minmax(0, 1.38fr);
-		gap: clamp(46px, 9vw, 145px);
-		padding: 72px 0;
-	}
-
-	.section-label span {
-		display: block;
-		margin-top: 3px;
-		color: #aeb1c1;
-		font-size: 11px;
-		line-height: 1.4;
 	}
 
 	.prose {
@@ -520,10 +496,6 @@
 	.update-list li::before {
 		content: '•';
 		color: #edece4;
-	}
-
-	.experience {
-		padding-bottom: 82px;
 	}
 
 	.timeline {
@@ -679,12 +651,6 @@
 
 		.roles {
 			font-size: 13px;
-		}
-
-		.split-section {
-			grid-template-columns: 1fr;
-			gap: 28px;
-			padding: 54px 0;
 		}
 
 		.timeline article {

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import SectionLayout from '$lib/components/SectionLayout.svelte';
 	import { EmailIcon, GitHubIcon, LinkedInIcon } from '$lib/components/icons';
 	import type { PageProps } from './$types';
 
@@ -66,20 +67,18 @@
 		</address>
 	</header>
 
-	<section class="cv-section profile" aria-labelledby="profile-heading">
-		<div class="section-label"><p>Profile</p></div>
-		<div class="section-content">
-			<h2 id="profile-heading">{cv.profile.focus}</h2>
-			{#each cv.profile.about as paragraph (paragraph)}
-				<p>{paragraph}</p>
-			{/each}
-		</div>
-	</section>
+	<SectionLayout variant="cv" class="cv-section profile" ariaLabelledby="profile-heading">
+		{#snippet label()}<p>Profile</p>{/snippet}
+		<h2 id="profile-heading">{cv.profile.focus}</h2>
+		{#each cv.profile.about as paragraph (paragraph)}
+			<p>{paragraph}</p>
+		{/each}
+	</SectionLayout>
 
 	<div class="lower-sections">
-		<section class="cv-section skills" aria-labelledby="skills-heading">
-			<div class="section-label"><h2 id="skills-heading">Skills</h2></div>
-			<div class="section-content stack-grid">
+		<SectionLayout variant="cv" class="cv-section skills" ariaLabelledby="skills-heading">
+			{#snippet label()}<h2 id="skills-heading">Skills</h2>{/snippet}
+			<div class="stack-grid">
 				{#each cv.stack as group (group.title)}
 					<div>
 						<h3>{group.title}</h3>
@@ -91,11 +90,11 @@
 					</div>
 				{/each}
 			</div>
-		</section>
+		</SectionLayout>
 
-		<section class="cv-section experience" aria-labelledby="experience-heading">
-			<div class="section-label"><h2 id="experience-heading">Experience</h2></div>
-			<div class="section-content timeline">
+		<SectionLayout variant="cv" class="cv-section experience" ariaLabelledby="experience-heading">
+			{#snippet label()}<h2 id="experience-heading">Experience</h2>{/snippet}
+			<div class="timeline">
 				{#each cv.experience as role (role.period + role.title)}
 					<article class="role">
 						<div class="role-period">{role.period}</div>
@@ -119,16 +118,14 @@
 					</article>
 				{/each}
 			</div>
-		</section>
+		</SectionLayout>
 
-		<section class="cv-section education" aria-labelledby="education-heading">
-			<div class="section-label"><h2 id="education-heading">Education</h2></div>
-			<div class="section-content">
-				<h3>{cv.education.institution}</h3>
-				<p>{cv.education.degree}</p>
-				<p class="result">{cv.education.result}</p>
-			</div>
-		</section>
+		<SectionLayout variant="cv" class="cv-section education" ariaLabelledby="education-heading">
+			{#snippet label()}<h2 id="education-heading">Education</h2>{/snippet}
+			<h3>{cv.education.institution}</h3>
+			<p>{cv.education.degree}</p>
+			<p class="result">{cv.education.result}</p>
+		</SectionLayout>
 	</div>
 </main>
 
@@ -234,9 +231,7 @@
 		padding: 72px 0 62px;
 	}
 
-	.eyebrow,
-	.section-label p,
-	.section-label h2 {
+	.eyebrow {
 		margin: 0;
 		color: #c3c4ce;
 		font-size: 11px;
@@ -301,26 +296,7 @@
 		fill: currentColor;
 	}
 
-	.cv-section {
-		display: grid;
-		grid-template-columns: minmax(130px, 0.2fr) minmax(0, 1.8fr);
-		gap: clamp(46px, 7vw, 145px);
-		padding: 52px 0;
-		border-top: 1px solid rgba(237, 236, 228, 0.12);
-	}
-
-	.section-label h2 {
-		color: #edece4;
-		font-size: 16px;
-		letter-spacing: 0.12em;
-		line-height: 1.2;
-	}
-
-	.section-content {
-		min-width: 0;
-	}
-
-	.profile h2 {
+	:global(.cv-section.profile) h2 {
 		max-width: 700px;
 		margin-bottom: 24px;
 		font-size: clamp(20px, 2vw, 25px);
@@ -330,8 +306,8 @@
 		text-transform: capitalize;
 	}
 
-	.profile p,
-	.education p {
+	:global(.cv-section.profile) p,
+	:global(.cv-section.education) p {
 		max-width: 700px;
 		margin-bottom: 14px;
 		color: #c3c4cf;
@@ -358,7 +334,7 @@
 
 	.role h3,
 	.stack-grid h3,
-	.education h3 {
+	:global(.cv-section.education) h3 {
 		margin-bottom: 10px;
 		font-size: 17px;
 		font-weight: 500;
@@ -404,26 +380,26 @@
 		border-top: 1px solid rgba(237, 236, 228, 0.12);
 	}
 
-	.lower-sections .skills,
-	.lower-sections .education {
+	:global(.lower-sections .skills),
+	:global(.lower-sections .education) {
 		display: block;
 		border-top: 0;
 	}
 
-	.lower-sections .skills .section-label,
-	.lower-sections .education .section-label {
+	:global(.lower-sections .skills .section-label),
+	:global(.lower-sections .education .section-label) {
 		margin-bottom: 10px;
 	}
 
-	.lower-sections .skills {
+	:global(.lower-sections .skills) {
 		grid-area: skills;
 	}
 
-	.lower-sections .experience {
+	:global(.lower-sections .experience) {
 		grid-area: experience;
 	}
 
-	.lower-sections .education {
+	:global(.lower-sections .education) {
 		grid-area: education;
 	}
 
@@ -447,15 +423,15 @@
 		line-height: 1.7;
 	}
 
-	.education h3 {
+	:global(.cv-section.education) h3 {
 		margin-bottom: 5px;
 	}
 
-	.education p {
+	:global(.cv-section.education) p {
 		margin-bottom: 5px;
 	}
 
-	.education .result {
+	:global(.cv-section.education .result) {
 		color: #edece4;
 		font-weight: 600;
 	}
@@ -516,12 +492,6 @@
 
 		.contact-links {
 			justify-items: start;
-		}
-
-		.cv-section {
-			grid-template-columns: 1fr;
-			gap: 25px;
-			padding: 43px 0;
 		}
 
 		.role {
@@ -614,9 +584,7 @@
 			color: black;
 		}
 
-		.eyebrow,
-		.section-label p,
-		.section-label h2 {
+		.eyebrow {
 			color: #3d405b;
 			font-size: 7.5pt;
 		}
@@ -642,39 +610,20 @@
 			display: none;
 		}
 
-		.cv-section {
-			display: block;
-			border-color: #b5bac3;
-			break-inside: auto;
-		}
-
-		.cv-section {
-			padding: 11px 0 10px;
-		}
-
-		.section-label {
-			margin-bottom: 5px;
-		}
-
-		.section-label h2,
-		.section-label p {
-			line-height: 1.2;
-		}
-
-		.profile h2 {
+		:global(.cv-section.profile) h2 {
 			margin-bottom: 5px;
 			font-size: 12pt;
 			line-height: 1.3;
 		}
 
-		.profile p,
-		.education p,
+		:global(.cv-section.profile) p,
+		:global(.cv-section.education) p,
 		.achievement-list,
 		.stack-grid ul {
 			color: #252a33;
 		}
 
-		.profile p {
+		:global(.cv-section.profile) p {
 			margin-bottom: 4px;
 		}
 
@@ -696,7 +645,7 @@
 
 		.role h3,
 		.stack-grid h3,
-		.education h3 {
+		:global(.cv-section.education) h3 {
 			margin-bottom: 3px;
 			font-size: 10.5pt;
 		}
@@ -718,10 +667,6 @@
 			display: block;
 		}
 
-		.lower-sections .cv-section {
-			padding-top: 11px;
-		}
-
 		.stack-grid {
 			grid-template-columns: repeat(4, minmax(0, 1fr));
 			gap: 10px 18px;
@@ -732,12 +677,12 @@
 			line-height: 1.35;
 		}
 
-		.education .result {
+		:global(.cv-section.education .result) {
 			color: #17191f;
 		}
 
 		.role,
-		.education,
+		:global(.cv-section.education),
 		.stack-grid > div {
 			break-inside: avoid;
 			page-break-inside: avoid;
