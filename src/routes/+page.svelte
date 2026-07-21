@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SectionLayout from '$lib/components/SectionLayout.svelte';
+	import PostListItem from '$lib/components/PostListItem.svelte';
 	import { EmailIcon, GitHubIcon, LinkedInIcon } from '$lib/components/icons';
 	import { resolve } from '$app/paths';
 
@@ -57,7 +58,7 @@
 			<dl>
 				<div>
 					<dt>role</dt>
-					<dd>staff engineer, Titanbay</dd>
+					<dd>Staff Engineer, Titanbay</dd>
 				</div>
 				<div>
 					<dt>based</dt>
@@ -131,28 +132,7 @@
 				<h2 id="writing-heading" class="sr-only">Recent writing</h2>
 				<ul class="writing-list">
 					{#each data.posts as post (post.slug)}
-						<li>
-							<article>
-								<p class="writing-meta">
-									<time datetime={post.publishedAt}>
-										{new Intl.DateTimeFormat('en-GB', {
-											day: 'numeric',
-											month: 'short',
-											year: 'numeric',
-											timeZone: 'UTC'
-										}).format(new Date(post.publishedAt))}
-									</time>
-								</p>
-								<h3>
-									<a href={resolve('/blog/[slug]', { slug: post.slug })}
-										>{post.title}<span aria-hidden="true"> →</span></a
-									>
-								</h3>
-								{#if post.excerpt}
-									<p>{post.excerpt}</p>
-								{/if}
-							</article>
-						</li>
+						<PostListItem {post} />
 					{/each}
 				</ul>
 				<a class="writing-link" href={resolve('/blog')}
@@ -560,45 +540,14 @@
 		list-style: none;
 	}
 
-	.writing-list li {
-		border-bottom: 1px solid rgba(237, 236, 228, 0.12);
-	}
-
-	.writing-list article {
-		padding: 20px 0 21px;
-	}
-
-	.writing-meta {
-		margin-bottom: 4px;
-		color: #aeb1c1;
-		font-size: 12px;
-	}
-
-	.writing-list h3 {
-		margin-bottom: 6px;
-		font-size: 18px;
-		font-weight: 500;
-		letter-spacing: -0.03em;
-		line-height: 1.25;
-	}
-
-	.writing-list h3 span,
 	.writing-link span {
 		display: inline-block;
 		transition: transform 160ms ease;
 		margin-left: 8px;
 	}
 
-	.writing-list h3 a:hover span,
 	.writing-link:hover span {
 		transform: translateX(4px);
-	}
-
-	.writing-list article > p:not(.writing-meta) {
-		max-width: 665px;
-		margin-bottom: 0;
-		color: #c3c4ce;
-		font-size: 15px;
 	}
 
 	.writing-link {

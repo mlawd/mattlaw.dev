@@ -1,17 +1,9 @@
 <script lang="ts">
 	import SectionLayout from '$lib/components/SectionLayout.svelte';
-	import { resolve } from '$app/paths';
+	import PostListItem from '$lib/components/PostListItem.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-
-	const formatDate = (value: string) =>
-		new Intl.DateTimeFormat('en-GB', {
-			day: 'numeric',
-			month: 'short',
-			year: 'numeric',
-			timeZone: 'UTC'
-		}).format(new Date(value));
 </script>
 
 <svelte:head>
@@ -30,25 +22,7 @@
 		{#if data.posts.length}
 			<ul class="post-list">
 				{#each data.posts as post (post.slug)}
-					<li>
-						<article>
-							<p class="post-meta">
-								<time datetime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
-								{#if post.categories.length}
-									<span aria-hidden="true"> · </span>
-									{post.categories.map((category) => category.title).join(', ')}
-								{/if}
-							</p>
-							<h2>
-								<a href={resolve('/blog/[slug]', { slug: post.slug })}
-									>{post.title}<span aria-hidden="true"> →</span></a
-								>
-							</h2>
-							{#if post.excerpt}
-								<p class="excerpt">{post.excerpt}</p>
-							{/if}
-						</article>
-					</li>
+					<PostListItem {post} />
 				{/each}
 			</ul>
 		{:else}
@@ -86,20 +60,6 @@
 		list-style: none;
 	}
 
-	.post-list li {
-		border-bottom: 1px solid rgba(237, 236, 228, 0.12);
-	}
-
-	.post-list article {
-		padding: 25px 0 27px;
-	}
-
-	.post-meta {
-		margin-bottom: 5px;
-		color: #aeb1c1;
-		font-size: 12px;
-	}
-
 	h2 {
 		margin-bottom: 7px;
 		font-size: clamp(20px, 2vw, 25px);
@@ -108,16 +68,6 @@
 		line-height: 1.2;
 	}
 
-	h2 a span {
-		display: inline-block;
-		transition: transform 160ms ease;
-	}
-
-	h2 a:hover span {
-		transform: translateX(4px);
-	}
-
-	.excerpt,
 	.empty {
 		max-width: 680px;
 		margin-bottom: 0;
