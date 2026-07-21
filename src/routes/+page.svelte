@@ -24,20 +24,6 @@
 	/>
 </svelte:head>
 
-<header id="top" class="site-header">
-	<a class="wordmark" href="#top">mattlaw.dev</a>
-	<nav aria-label="Primary navigation">
-		<a href="#about">about</a>
-		<a href="#now">now</a>
-		<a href={resolve('/blog')}>blog</a>
-		<a href={resolve('/cv')}>cv</a>
-		<a href="#skills">skills</a>
-		<a href="#contact">contact</a>
-	</nav>
-</header>
-
-<a class="skip-link" href="#main">Skip to content</a>
-
 <main id="main">
 	<section class="hero" aria-labelledby="intro-title">
 		<div class="hero-copy">
@@ -285,43 +271,15 @@
 		scroll-margin-top: 66px;
 	}
 
-	.site-header,
 	main {
 		width: min(100% - 48px, 1080px);
 		margin: 0 auto;
 	}
 
-	.site-header {
-		position: sticky;
-		top: 0;
-		z-index: 10;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 21px 0;
-		background: #3d405b;
-		font-size: 12px;
-		color: rgba(237, 236, 228, 0.8);
-	}
-
-	.wordmark {
-		font-weight: 600;
-	}
-
-	nav {
-		display: flex;
-		gap: 25px;
-		font-size: 14px;
-	}
-
-	nav a,
-	.wordmark,
 	.profile-links a {
 		transition: color 160ms ease;
 	}
 
-	nav a:hover,
-	.wordmark:hover,
 	.profile-links a:hover {
 		color: #ffffff;
 	}
@@ -695,38 +653,9 @@
 		font-size: 16px;
 	}
 
-	.skip-link {
-		position: fixed;
-		z-index: 20;
-		top: 12px;
-		left: 12px;
-		padding: 8px 12px;
-		background: #edece4;
-		color: #3d405b;
-		font-size: 11px;
-		transform: translateY(-160%);
-		transition: transform 160ms ease;
-	}
-
-	.skip-link:focus {
-		transform: translateY(0);
-	}
-
 	@media (max-width: 680px) {
-		.site-header,
 		main {
 			width: min(100% - 36px, 540px);
-		}
-
-		.site-header {
-			align-items: flex-start;
-			gap: 20px;
-		}
-
-		nav {
-			flex-wrap: wrap;
-			justify-content: flex-end;
-			gap: 8px 16px;
 		}
 
 		.hero {

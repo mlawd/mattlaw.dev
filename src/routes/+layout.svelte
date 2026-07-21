@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import SiteNav from '$lib/components/SiteNav.svelte';
 
 	let { children } = $props();
 </script>
+
+<SiteNav />
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 {@render children()}
 
@@ -35,6 +40,23 @@
 		margin: 0;
 	}
 
+	.skip-link {
+		position: fixed;
+		z-index: 20;
+		top: 12px;
+		left: 12px;
+		padding: 8px 12px;
+		background: #edece4;
+		color: #3d405b;
+		font-size: 11px;
+		transform: translateY(-160%);
+		transition: transform 160ms ease;
+	}
+
+	.skip-link:focus {
+		transform: translateY(0);
+	}
+
 	@media (max-width: 680px) {
 		.site-footer {
 			width: min(100% - 36px, 540px);
@@ -48,6 +70,7 @@
 	}
 
 	@media print {
+		.skip-link,
 		.site-footer {
 			display: none;
 		}

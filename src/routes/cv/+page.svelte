@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import SectionLayout from '$lib/components/SectionLayout.svelte';
 	import { EmailIcon, GitHubIcon, LinkedInIcon } from '$lib/components/icons';
 	import type { PageProps } from './$types';
@@ -19,15 +18,9 @@
 	/>
 </svelte:head>
 
-<header class="site-header">
-	<a class="wordmark" href={resolve('/')}>mattlaw.dev</a>
-	<div class="header-actions actions">
-		<a class="back-link" href={resolve('/')}>← Return home</a>
-		<button class="print-link" type="button" onclick={() => window.print()}>Print CV</button>
-	</div>
-</header>
-
-<a class="skip-link" href="#main">Skip to content</a>
+<div class="cv-actions">
+	<button class="print-link" type="button" onclick={() => window.print()}>Print CV</button>
+</div>
 
 <main id="main">
 	<header class="cv-header">
@@ -164,39 +157,18 @@
 		outline-offset: 4px;
 	}
 
-	.site-header,
+	.cv-actions,
 	main {
 		width: min(100% - 48px, 1080px);
 		margin: 0 auto;
 	}
 
-	.site-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 21px 0;
+	.cv-actions {
+		padding-top: 4px;
 		color: rgba(237, 236, 228, 0.8);
 		font-size: 12px;
 	}
 
-	.wordmark {
-		font-weight: 600;
-		transition: color 160ms ease;
-	}
-
-	.wordmark:hover,
-	.back-link:hover,
-	.contact-links a:hover {
-		color: #ffffff;
-	}
-
-	.header-actions {
-		display: flex;
-		align-items: center;
-		gap: 20px;
-	}
-
-	.back-link,
 	.contact-links a {
 		transition: color 160ms ease;
 	}
@@ -429,38 +401,10 @@
 		font-weight: 600;
 	}
 
-	.skip-link {
-		position: fixed;
-		z-index: 20;
-		top: 12px;
-		left: 12px;
-		padding: 8px 12px;
-		background: #edece4;
-		color: #3d405b;
-		font-size: 11px;
-		transform: translateY(-160%);
-		transition: transform 160ms ease;
-	}
-
-	.skip-link:focus {
-		transform: translateY(0);
-	}
-
 	@media (max-width: 680px) {
-		.site-header,
+		.cv-actions,
 		main {
 			width: min(100% - 36px, 540px);
-		}
-
-		.site-header {
-			align-items: flex-start;
-			gap: 18px;
-		}
-
-		.header-actions {
-			flex-wrap: wrap;
-			justify-content: flex-end;
-			gap: 8px 14px;
 		}
 
 		.cv-header {
@@ -495,7 +439,6 @@
 			grid-template-columns: 1fr;
 			gap: 26px;
 		}
-
 	}
 
 	@media print {
@@ -517,13 +460,11 @@
 			line-height: 1.35;
 		}
 
-		.site-header,
-		.skip-link,
-		.actions {
+		:global(.skip-link),
+		.cv-actions {
 			display: none;
 		}
 
-		.site-header,
 		main {
 			width: 100%;
 		}
