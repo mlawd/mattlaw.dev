@@ -4,7 +4,7 @@
 	interface Props {
 		id?: string;
 		class?: string;
-		variant?: 'cv';
+		variant?: 'cv' | 'writing';
 		ariaLabelledby?: string;
 		label: Snippet;
 		children: Snippet;
@@ -65,6 +65,10 @@
 			grid-template-columns: 1fr;
 			gap: 25px;
 			padding: 43px 0;
+		}
+
+		.section-layout.writing {
+			grid-template-columns: minmax(64px, auto) minmax(0, 1fr);
 		}
 	}
 
