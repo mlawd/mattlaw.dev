@@ -129,11 +129,6 @@
 	</div>
 </main>
 
-<footer>
-	<a href={resolve('/')}>mattlaw.dev</a>
-	<p>{cv.profile.name} · {cv.profile.title}</p>
-</footer>
-
 <style>
 	:global(*) {
 		box-sizing: border-box;
@@ -170,8 +165,7 @@
 	}
 
 	.site-header,
-	main,
-	footer {
+	main {
 		width: min(100% - 48px, 1080px);
 		margin: 0 auto;
 	}
@@ -192,8 +186,7 @@
 
 	.wordmark:hover,
 	.back-link:hover,
-	.contact-links a:hover,
-	footer a:hover {
+	.contact-links a:hover {
 		color: #ffffff;
 	}
 
@@ -436,19 +429,6 @@
 		font-weight: 600;
 	}
 
-	footer {
-		display: flex;
-		justify-content: space-between;
-		padding: 21px 0 31px;
-		border-top: 1px solid rgba(237, 236, 228, 0.12);
-		color: #c3c4ce;
-		font-size: 11px;
-	}
-
-	footer p {
-		margin: 0;
-	}
-
 	.skip-link {
 		position: fixed;
 		z-index: 20;
@@ -468,8 +448,7 @@
 
 	@media (max-width: 680px) {
 		.site-header,
-		main,
-		footer {
+		main {
 			width: min(100% - 36px, 540px);
 		}
 
@@ -517,13 +496,6 @@
 			gap: 26px;
 		}
 
-		footer {
-			gap: 16px;
-		}
-
-		footer p {
-			text-align: right;
-		}
 	}
 
 	@media print {
@@ -547,14 +519,12 @@
 
 		.site-header,
 		.skip-link,
-		.actions,
-		footer {
+		.actions {
 			display: none;
 		}
 
 		.site-header,
-		main,
-		footer {
+		main {
 			width: 100%;
 		}
 

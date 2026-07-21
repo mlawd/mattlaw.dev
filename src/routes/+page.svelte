@@ -1,16 +1,9 @@
 <script lang="ts">
 	import SectionLayout from '$lib/components/SectionLayout.svelte';
 	import { EmailIcon, GitHubIcon, LinkedInIcon } from '$lib/components/icons';
+	import { resolve } from '$app/paths';
 
 	import type { PageProps } from './$types';
-
-	const navigation = [
-		{ label: 'about', href: '/#about' },
-		{ label: 'now', href: '/#now' },
-		{ label: 'cv', href: '/cv' },
-		{ label: 'skills', href: '/#skills' },
-		{ label: 'contact', href: '/#contact' }
-	] as const;
 
 	let { data }: PageProps = $props();
 
@@ -34,9 +27,12 @@
 <header id="top" class="site-header">
 	<a class="wordmark" href="#top">mattlaw.dev</a>
 	<nav aria-label="Primary navigation">
-		{#each navigation as item (item.href)}
-			<a href={item.href}>{item.label}</a>
-		{/each}
+		<a href="#about">about</a>
+		<a href="#now">now</a>
+		<a href={resolve('/blog')}>blog</a>
+		<a href={resolve('/cv')}>cv</a>
+		<a href="#skills">skills</a>
+		<a href="#contact">contact</a>
 	</nav>
 </header>
 
@@ -63,7 +59,8 @@
 				there's a scrum board or a scoreboard involved.
 			</p>
 			<div class="actions">
-				<a class="button button-primary" href="/cv">Read the CV <span aria-hidden="true">→</span></a
+				<a class="button button-primary" href={resolve('/cv')}
+					>Read the CV <span aria-hidden="true">→</span></a
 				>
 				<a class="button" href="#contact">Get in touch</a>
 			</div>
@@ -109,7 +106,7 @@
 			<h2 id="about-heading">About</h2>
 		{/snippet}
 		<div class="prose">
-			<h2 id="about-heading">
+			<h2 id="about-copy-heading">
 				I'm Matt — an enthusiastic, hard-working software engineer with a decade-plus building
 				enterprise and distributed systems, from training simulators to serverless platforms.
 			</h2>
@@ -137,6 +134,47 @@
 			{/each}
 		</ul>
 	</SectionLayout>
+
+	{#if data.posts.length}
+		<SectionLayout id="writing" class="section" variant="writing" ariaLabelledby="writing-heading">
+			{#snippet label()}
+				<h2>Writing</h2>
+				<span>recent notes</span>
+			{/snippet}
+			<div>
+				<h2 id="writing-heading" class="sr-only">Recent writing</h2>
+				<ul class="writing-list">
+					{#each data.posts as post (post.slug)}
+						<li>
+							<article>
+								<p class="writing-meta">
+									<time datetime={post.publishedAt}>
+										{new Intl.DateTimeFormat('en-GB', {
+											day: 'numeric',
+											month: 'short',
+											year: 'numeric',
+											timeZone: 'UTC'
+										}).format(new Date(post.publishedAt))}
+									</time>
+								</p>
+								<h3>
+									<a href={resolve('/blog/[slug]', { slug: post.slug })}
+										>{post.title}<span aria-hidden="true"> →</span></a
+									>
+								</h3>
+								{#if post.excerpt}
+									<p>{post.excerpt}</p>
+								{/if}
+							</article>
+						</li>
+					{/each}
+				</ul>
+				<a class="writing-link" href={resolve('/blog')}
+					>View all writing <span aria-hidden="true">→</span></a
+				>
+			</div>
+		</SectionLayout>
+	{/if}
 
 	<SectionLayout id="cv" class="section experience" ariaLabelledby="experience-heading">
 		{#snippet label()}
@@ -209,11 +247,6 @@
 	</section>
 </main>
 
-<footer>
-	<a href="#top">mattlaw.dev</a>
-	<p>© 2026 Matt Law · built in the terminal</p>
-</footer>
-
 <style>
 	:global(*) {
 		box-sizing: border-box;
@@ -253,8 +286,7 @@
 	}
 
 	.site-header,
-	main,
-	footer {
+	main {
 		width: min(100% - 48px, 1080px);
 		margin: 0 auto;
 	}
@@ -284,15 +316,13 @@
 
 	nav a,
 	.wordmark,
-	.profile-links a,
-	footer a {
+	.profile-links a {
 		transition: color 160ms ease;
 	}
 
 	nav a:hover,
 	.wordmark:hover,
-	.profile-links a:hover,
-	footer a:hover {
+	.profile-links a:hover {
 		color: #ffffff;
 	}
 
@@ -554,6 +584,76 @@
 		font-size: 11px;
 	}
 
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.writing-list {
+		margin: -20px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.writing-list li {
+		border-bottom: 1px solid rgba(237, 236, 228, 0.12);
+	}
+
+	.writing-list article {
+		padding: 20px 0 21px;
+	}
+
+	.writing-meta {
+		margin-bottom: 4px;
+		color: #aeb1c1;
+		font-size: 12px;
+	}
+
+	.writing-list h3 {
+		margin-bottom: 6px;
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: -0.03em;
+		line-height: 1.25;
+	}
+
+	.writing-list h3 span,
+	.writing-link span {
+		display: inline-block;
+		transition: transform 160ms ease;
+		margin-left: 8px;
+	}
+
+	.writing-list h3 a:hover span,
+	.writing-link:hover span {
+		transform: translateX(4px);
+	}
+
+	.writing-list article > p:not(.writing-meta) {
+		max-width: 665px;
+		margin-bottom: 0;
+		color: #c3c4ce;
+		font-size: 15px;
+	}
+
+	.writing-link {
+		display: inline-block;
+		margin-top: 21px;
+		border-bottom: 1px solid rgba(237, 236, 228, 0.35);
+		font-size: 14px;
+	}
+
+	.writing-link:hover {
+		border-color: #edece4;
+	}
+
 	.stack-grid {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -595,19 +695,6 @@
 		font-size: 16px;
 	}
 
-	footer {
-		display: flex;
-		justify-content: space-between;
-		padding: 21px 0 31px;
-		border-top: 1px solid rgba(237, 236, 228, 0.12);
-		color: #c3c4ce;
-		font-size: 11px;
-	}
-
-	footer p {
-		margin: 0;
-	}
-
 	.skip-link {
 		position: fixed;
 		z-index: 20;
@@ -627,8 +714,7 @@
 
 	@media (max-width: 680px) {
 		.site-header,
-		main,
-		footer {
+		main {
 			width: min(100% - 36px, 540px);
 		}
 
@@ -675,15 +761,6 @@
 
 		.contact {
 			padding: 60px 0;
-		}
-
-		footer {
-			gap: 16px;
-			padding-bottom: 24px;
-		}
-
-		footer p {
-			text-align: right;
 		}
 	}
 
