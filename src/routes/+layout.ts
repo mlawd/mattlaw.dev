@@ -43,14 +43,12 @@ const cv = {
 		title: 'Staff Engineer',
 		role: 'staff engineer, Titanbay',
 		location: 'Remote, UK',
-		focus: 'distributed systems · event-driven arch',
+		focus: 'distributed systems • event-driven arch',
 		available: true,
 		intro:
 			"I build distributed, event-driven systems — from serverless microservices to the training simulators I cut my teeth on. Genuinely enjoy picking up new tools, and I lead best when there's a scrum board or a scoreboard involved.",
 		about: [
-			"I'm an enthusiastic, hard-working software engineer with a decade-plus building enterprise and distributed systems, from training simulators to serverless platforms.",
-			"I'm always looking to improve, with a genuine enjoyment of learning new technologies — lately that's meant leaning hard into agentic coding tools alongside the usual Go, TypeScript and cloud infrastructure work. I've led teams both pan-European and remote, and I'm just as comfortable writing the architecture doc as I am pairing on the fix.",
-			"I've played, captained and coached team sports since I was 8, and it shows in how I work — I take leadership when it's needed, but I'm all about the team win."
+			'Backend engineer with 10+ years building distributed, event-driven systems — from training simulators to serverless cloud platforms. Currently focused on TypeScript, cloud-native architecture on GCP, with early hands-on adoption of agentic coding tools. Has led both pan-European and fully remote engineering teams, moving comfortably between designing the architecture and writing the code.'
 		],
 		contact: {
 			email: 'me@mattlaw.dev',
@@ -66,7 +64,7 @@ const cv = {
 	experience: [
 		{
 			period: '2022 — now',
-			title: 'Staff Engineer · Titanbay',
+			title: 'Staff Engineer • Titanbay',
 			description:
 				'Designing and building distributed, event-driven services on GCP — from architecture through delivery, with a growing focus on AI-assisted engineering workflows.',
 			bullets: [
@@ -74,7 +72,9 @@ const cv = {
 				'Led a cross functional team on the migration from our legacy system (monolithic API on top of Dataverse & PowerApps) into a serverless GCP event sourced architecture, a first for us as a company.',
 				'Created our first services in Kubernetes, including setting out the blueprint for containerisation builds in GitHub pipelines and eventual deployment into ArgoCD.',
 				'Led the migration from Firestore to Postgres, minimising downtime and API changes to keep it a pure database swap — avoiding months of knock-on re-development.',
-				'Researched, designed, architected and scoped the migration from a unfit for purpose hand-rolled permission system to OpenFGA, opening up an infinitely more flexible system to serve emerging customer needs. As Staff Engineer, I designed and prototyped the system, then handed it off to the engineering team to build out fully.'
+				'Researched, designed, architected and scoped the migration from a unfit for purpose hand-rolled permission system to OpenFGA, opening up an infinitely more flexible system to serve emerging customer needs. As Staff Engineer, I designed and prototyped the system, then handed it off to the engineering team to build out fully.',
+				'Serve as engineering\'s first port of call for the product team — brought in ahead of scoping on "how should we build X" questions to give early feasibility and architectural input, surfacing edge cases that send them back to research before work reaches the team.',
+				'As Lead Engineer, line-managed a team directly — running mid-year and year-end reviews, providing ongoing feedback, and mentoring.'
 			],
 			skills: [
 				'TypeScript',
@@ -90,7 +90,7 @@ const cv = {
 		},
 		{
 			period: '2023 - now',
-			title: 'Co-Founder · PitchIn Platform',
+			title: 'Co-Founder • PitchIn Platform',
 			description:
 				'Solo build of a fundraising platform for grassroots sports clubs that currently has 32 active clubs and processed over £165,000 to date.',
 			bullets: [
@@ -105,7 +105,7 @@ const cv = {
 		},
 		{
 			period: '2021 — 2022',
-			title: 'Senior Software Engineer · Trilo',
+			title: 'Senior Software Engineer • Trilo',
 			bullets: [
 				'Developed distributed microservices on AWS Lambda.',
 				'Led a team of developers on various development projects.',
@@ -115,7 +115,7 @@ const cv = {
 		},
 		{
 			period: '2020 — 2021',
-			title: 'Senior Software Engineer · Distinction UK',
+			title: 'Senior Software Engineer • Distinction UK',
 			bullets: [
 				'Built CMS-backed apps on Kentico and Umbraco with embedded SPAs in Vue, React and Angular.',
 				'Led adoption of Azure Pipelines CI/CD, automated testing and agile ways of working.'
@@ -124,7 +124,7 @@ const cv = {
 		},
 		{
 			period: '2018 — 2020',
-			title: 'Web Developer · Solutions for Retail Brands',
+			title: 'Web Developer • Solutions for Retail Brands',
 			bullets: [
 				'Maintained legacy NodeJS and Angular 1 single-tenant applications.',
 				'Dockerised applications for Azure App Services.',
@@ -134,7 +134,7 @@ const cv = {
 		},
 		{
 			period: '2015 — 2018',
-			title: 'Senior Engineer & Technical Lead · MBDA',
+			title: 'Senior Engineer & Technical Lead • MBDA',
 			bullets: [
 				'Led a pan-European team of 5+ engineers building a complex training system.',
 				'Drove adoption of Node.js alongside C#/C++ to run an Instructor Station in the browser.'
