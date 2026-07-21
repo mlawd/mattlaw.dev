@@ -113,20 +113,23 @@
 	<SectionLayout id="now" class="section" ariaLabelledby="now-heading">
 		{#snippet label()}
 			<h2 id="now-heading">Now</h2>
-			<span>updated jul 2026</span>
 		{/snippet}
-		<ul class="update-list">
-			{#each data.cv.updates as update (update)}
-				<li>{update}</li>
+		<div class="now-grid">
+			{#each data.cv.experience.slice(0, 2) as role (role.period + role.title)}
+				<article class="now-card">
+					<h3>{role.title}</h3>
+					{#if role.description}
+						<p>{role.description}</p>
+					{/if}
+				</article>
 			{/each}
-		</ul>
+		</div>
 	</SectionLayout>
 
 	{#if data.posts.length}
 		<SectionLayout id="writing" class="section" variant="writing" ariaLabelledby="writing-heading">
 			{#snippet label()}
 				<h2>Writing</h2>
-				<span>recent notes</span>
 			{/snippet}
 			<div>
 				<h2 id="writing-heading" class="sr-only">Recent writing</h2>
@@ -141,34 +144,6 @@
 			</div>
 		</SectionLayout>
 	{/if}
-
-	<SectionLayout id="cv" class="section experience" ariaLabelledby="experience-heading">
-		{#snippet label()}
-			<h2 id="experience-heading">Experience</h2>
-		{/snippet}
-		<div class="timeline">
-			{#each data.cv.experience as role (role.period + role.title)}
-				<article>
-					<div class="timeline-meta">
-						{role.period}
-					</div>
-					<div>
-						<h3>{role.title}</h3>
-						{#if role.description}
-							<p>{role.description}</p>
-						{/if}
-						{#if role.skills.length}
-							<ul class="tags" aria-label={`${role.title} skills`}>
-								{#each role.skills as skill (skill)}
-									<li>{skill}</li>
-								{/each}
-							</ul>
-						{/if}
-					</div>
-				</article>
-			{/each}
-		</div>
-	</SectionLayout>
 
 	<SectionLayout id="skills" class="section" ariaLabelledby="skills-heading">
 		{#snippet label()}
@@ -449,77 +424,30 @@
 		font-size: 16px;
 	}
 
-	.update-list {
+	.now-grid {
 		display: grid;
-		gap: 10px;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		color: #d8d8de;
-		font-size: 16px;
-	}
-
-	.update-list li {
-		display: grid;
-		grid-template-columns: 10px 1fr;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 12px;
+		margin: 0;
 	}
 
-	.update-list li::before {
-		content: '•';
-		color: #edece4;
+	.now-card {
+		padding-inline: 0;
 	}
 
-	.timeline {
-		display: grid;
-		gap: 43px;
-	}
-
-	.timeline article {
-		display: grid;
-		grid-template-columns: 122px minmax(0, 1fr);
-		gap: 39px;
-	}
-
-	.timeline-meta {
-		display: grid;
-		align-content: start;
-		margin-top: 2px;
-		gap: 1px;
-		font-size: 12px;
-		line-height: 1.4;
-	}
-
-	.timeline h3,
+	.now-card h3,
 	.stack-grid h3 {
-		margin-bottom: 7px;
+		margin-bottom: 8px;
 		font-size: 16px;
 		font-weight: 500;
 		letter-spacing: -0.025em;
 	}
 
-	.timeline p {
-		margin-bottom: 11px;
+	.now-card p {
+		margin-bottom: 0;
 		color: #c3c4ce;
 		font-size: 16px;
 		line-height: 1.62;
-	}
-
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 5px;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.tags li {
-		padding: 1px 7px;
-		border: 1px solid rgba(237, 236, 228, 0.18);
-		border-radius: 1px;
-		color: #c6c7d0;
-		font-size: 11px;
 	}
 
 	.sr-only {
@@ -621,15 +549,8 @@
 			font-size: 13px;
 		}
 
-		.timeline article {
+		.now-grid {
 			grid-template-columns: 1fr;
-			gap: 8px;
-		}
-
-		.timeline-meta {
-			grid-auto-flow: column;
-			justify-content: start;
-			gap: 12px;
 		}
 
 		.stack-grid {
